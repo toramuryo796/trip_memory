@@ -1,0 +1,25 @@
+<h1>グループ一覧<h1>
+<div class="group-box">
+  <div class="group-box-header">
+    <div class="search-box">
+      <%# form_with search do |f|%>
+      <%# f.submit "検索" %>
+    </div>
+    <div class="make-group">
+      <%= link_to "グループを作成", new_group_path, local:true %>
+    </div>
+  </div>
+  <div class="group-box-main">
+    <ul class="group-list">
+    <%# グループを一つずつ表示 %>
+      <% @groups.each do |group| %>
+        <%= link_to group_path(@group), local:true do%>
+          <li class="group">
+              <%= group.name %>
+          </li>
+        <% end %>
+      <% end %>
+    <%# グループを一つずつ表示 %>
+    </ul>
+  </div>
+</div>
