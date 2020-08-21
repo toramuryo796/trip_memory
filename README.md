@@ -10,10 +10,10 @@
 
 ### Association
 
-- has_many :groups
+- has_many :user_groups
+- has_many :groups, through: user_groups
 - has_many :candidates
 - has_many :plans
-- has_many :user_groups
 - has_many :memories
 
 ##  Groupsテーブル
@@ -27,6 +27,7 @@
 - has_many :plans
 - has_many :memories
 - has_many :user_groups
+- has_many :users, through: user_groups
 
 ##  User_groupsテーブル
 | Column           | type        |   Options                       |
@@ -45,10 +46,11 @@
 | budget                   | int       | null: false                   |
 | night                    | str       | null: false                   |
 | destination              | str       | null: false                   |
-| reason                   | text      | null: false                   |
-| transportation_id        | int       | null: false                   |
-| take_time                | int       | null: false                   |
-| trans_cost               | int       | null: false                   |
+| reason                   | text      |                               |
+| transportation_id        | int       | null: false                   |（ActiveHash）
+| take_time                | int       |                               |
+| trans_cost               | int       |                               |
+| image                    |           |                               |(ActiveStorage)
 | decision                 | boolean   | null: false, default: false   |
 | user                     | references| null: false, foreign_key: true|
 | group                    | references| null: false, foreign_key: true|
@@ -61,18 +63,18 @@
 - belongs_to :plan
 
 ## Plans テーブル
-| Column            | type       |   Options                      |
-|-------------------|------------|------------------------------- |
-| title             | str        | null: false                    |
-| destination       | str        | null: false                    |
-| departure_day_id  | date       | null: false                    |
-| return_day_id     | date       | null: false                    |
-| hotel             | str        | null: false                    |
-| hotel_memo        | str        | null: false                    |
-| transportation_id | int        | null: false                    |
-| ticket            | text       | null: false                    |
-| user              | references | null: false, foreign_key: true |
-| group             | references | null: false, foreign_key: true |
+| Column            | type       |   Options                        |
+|-------------------|------------|-------------------------------   |
+| title             | str        | null: false                      |
+| destination       | str        | null: false (candidateから引継ぎ)|
+| departure_day     | date       | null: false                      |
+| return_day        | date       | null: false                      |
+| hotel             | str        |                                  |
+| hotel_memo        | text       |                                  |
+| transportation_id | int        | null: false (candidateから引継ぎ)|
+| ticket            | text       |                                  |
+| user              | references | null: false, foreign_key: true   |
+| group             | references | null: false, foreign_key: true   |
 
 ### Association
 
@@ -82,36 +84,36 @@
 - has_many   :brings
 - has_many   :purposes
 - has_many   :Schedules
+- has_one    :memory
 
 ## Brings テーブル
 
 | Column         | type       |   Options                      |
 |----------------|------------|--------------------------------|
-| things         | string     | null: false                    |
-| plan           | references | null: false                    |
+| thing          | string     | null: false                    |
+| plan           | references | null: false, foreign_key: true |
 
 ### Association
 
--belongs_to :plan
+- belongs_to :plan
 
 ## purpose テーブル
 | Column         | type       |   Options                      |
 |----------------|------------|--------------------------------|
-| title          | string     | null: false                    |
 | must           | string     | null: false                    |
 | want           | string     | null: false                    |
 | can            | string     | null: false                    |
 | free           | string     | null: false                    |
-| plan           | references | null: false                    |
+| plan           | references | null: false, foreign_key: true |
 
 ### Association
 
--belongs_to :plan
+- belongs_to :plan
 
 ## schedules テーブル
 | Column         | type       |   Options                      |
 |----------------|------------|--------------------------------|
-| date           | datetime   | null: false                    |
+| date           | datetime   |                                |
 | program        | string     | null: false                    |
 | plan           | references | null: false, foreign_key: true |
 
@@ -127,7 +129,7 @@
 | plan           | references | null: false, foreign_key: true |
 | user           | references | null: false, foreign_key: true |
 | group          | references | null: false, foreign_key: true |
-| photo          | str        | null: false                    |
+| image          | str        | null: false                    |(ActiveStorage)
 
 ### Association
 
