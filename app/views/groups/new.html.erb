@@ -1,7 +1,7 @@
 <h1>グループ作成</h1>
 <div class="making-group">
 
-  <%= form_with model:@groups, url:groups_path, method: :post, local:true do |f| %>
+  <%= form_with model:@group, local:true do |f| %>
     <div class="group-name-box group-form">
       <div class="group-label-form group-form">
         <%= f.label :name, "グループ名:" ,class:"group-label" %>
@@ -13,27 +13,12 @@
 
     <div class="group-member-label" id="decide-member">
       <div class="member-label-form group-form">
-        <%= f.label :member, "メンバーを入力してください:", class:"member-label" %>
+        <%= f.label :members, "メンバーを入力してください:", class:"member-label" %>
       </div>
       <div class="member-nickname-form group-form">
         <ul class="group-form" id="add-member-list">
           <li class="member-box-list">
-            <%= f.text_field :member, name: 'group[:member][]',class:"member-input-text", placeholder:"メンバーのユーザー名を入力してください" %>
-          </li>
-          <li class="member-box-list" id="add-member1">
-            <%= f.text_field :member, name: 'group[:member][]',class:"member-input-text", placeholder:"メンバーのユーザー名を入力してください" %>
-          </li>
-          <li class="member-box-list" id="add-member2">
-            <%= f.text_field :member, name: 'group[:member][]',class:"member-input-text", placeholder:"メンバーのユーザー名を入力してください" %>
-          </li>
-          <li class="member-box-list" id="add-member3">
-            <%= f.text_field :member, name: 'group[:member][]',class:"member-input-text", placeholder:"メンバーのユーザー名を入力してください" %>
-          </li>
-          <li class="member-box-list" id="add-member4">
-            <%= f.text_field :member, name: 'group[:member][]',class:"member-input-text", placeholder:"メンバーのユーザー名を入力してください" %>
-          </li>
-          <li class="member-box-list" id="add-member5">
-            <%= f.text_field :member, name: 'group[:member][]',class:"member-input-text", placeholder:"メンバーのユーザー名を入力してください" %>
+            <%= f.text_field :members, name:'group[members][]', class:"member-input-text", placeholder:"メンバーのユーザー名を入力してください" %>
           </li>
         </ul>
       </div>
