@@ -13,7 +13,7 @@
     <ul class="group-list">
     <%# グループを一つずつ表示 %>
       <% @groups.each do |group| %>
-        <%= link_to group_path(@group), local:true do%>
+        <%= link_to group_path(@group), local: true do %>
           <li class="group">
               <%= group.name %>
           </li>
