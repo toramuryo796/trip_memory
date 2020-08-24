@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
   def index
     @groups = Group.all.order("name DESC")
+    @group = Group.new
   end
 
   def new
@@ -11,4 +12,7 @@ class GroupsController < ApplicationController
 
   def show
   end
+
+
+
 end
