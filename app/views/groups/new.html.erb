@@ -25,6 +25,7 @@
         <ul class="group-form" id="add-member-list">
           <li class="member-box-list">
             <%= f.text_field :members, name:'group[members][]', class:"member-input-text", placeholder:"メンバーのユーザー名を入力してください" %>
+            <input type="button" value="削除" class="delete-btn">
           </li>
         </ul>
       </div>

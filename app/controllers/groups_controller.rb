@@ -11,7 +11,12 @@ class GroupsController < ApplicationController
   def create
     @group = Group.create(name: group_params[:name])
     # 入力されたメンバー情報をmembers変数に代入
-    members = group_params[:members]
+    members = []
+    group_params[:members].each do |member|
+      unless member
+        members << member
+      end
+    end
     @user = nil
     @user_group = nil 
     count = 0
@@ -36,7 +41,7 @@ class GroupsController < ApplicationController
   end
   
   def show
-    @group = Group.find_by(params[:id])
+    @group = Group.find(params[:id])
   end
   
   private

@@ -6,6 +6,7 @@ function add_member () {
     const HTML = `
       <li class="member-box-list">
         <input name="group[members][]" type=text class="member-input-text" placeholder="メンバーのユーザー名を入力してください" >
+        <input type="button" value="削除" class="delete-btn">
       </li>`
     addPlace.insertAdjacentHTML("beforeend", HTML)
   })
