@@ -54,12 +54,11 @@
 | decision                 | boolean   | null: false, default: false   |
 | user                     | references| null: false, foreign_key: true|
 | group                    | references| null: false, foreign_key: true|
-| plan                     | references| null: false, foreign_key: true|
 
 ### Association
 
 - belongs_to :user
-- belongs_to :group
+- has_one    :group
 - belongs_to :plan
 
 ## Plans テーブル
@@ -75,12 +74,13 @@
 | ticket            | text       |                                  |
 | user              | references | null: false, foreign_key: true   |
 | group             | references | null: false, foreign_key: true   |
+| candidate         | references | null: false, foreign_key: true   |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :group
-- has_many   :plans
+- belongs_to :plans
 - has_many   :brings
 - has_many   :purposes
 - has_many   :Schedules
