@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_21_144309) do
+ActiveRecord::Schema.define(version: 2020_08_27_170100) do
+
+  create_table "candidates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "budget", null: false
+    t.string "night", null: false
+    t.string "destination", null: false
+    t.text "reason"
+    t.integer "transportation_id"
+    t.integer "take_time"
+    t.integer "trans_cost"
+    t.boolean "decision", default: false
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_candidates_on_group_id"
+    t.index ["user_id"], name: "index_candidates_on_user_id"
+  end
 
   create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -40,6 +57,8 @@ ActiveRecord::Schema.define(version: 2020_08_21_144309) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "candidates", "groups"
+  add_foreign_key "candidates", "users"
   add_foreign_key "user_groups", "groups"
   add_foreign_key "user_groups", "users"
 end
