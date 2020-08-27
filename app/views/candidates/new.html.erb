@@ -1,2 +1,46 @@
-<h1>Candidates#new</h1>
-<p>Find me in app/views/candidates/new.html.erb</p>
+<%= @group.name %>
+<h1>行先候補を作成</h1>
+<% form_with model: @candidate[@group, @candidate], method: :post, local: true do |f| %>
+  <%# 予算フォーム %>
+  <div class="candidate-form">必須
+    <%= f.text_field :budget, class: "budget-form", placeholder: "¥50,000 〜 ¥80,000" %>
+  </div>
+  <%# 泊数フォーム %>
+  <div class="candidate-form">必須
+    <%= f.text_field :night, class: "night-form", placeholder: "２泊3日" %>
+  </div>
+  <%# 行先フォーム %>
+  <div class="candidate-form">必須
+    <%= f.text_field :destination, class: "candidate-form", palceholder: "行きたい場所をご記入してください" %>
+  </div>
+  <%# 理由フォーム %>
+  <div class="candidate-form">
+    <%= f.text_area :reason, class:"reason-form", placeholder:"行きたい理由、目的、スポットなど400文字以内でご自由にご記入してください"%>
+  </div>
+  <%# 交通手段フォーム %>
+  <div class="candidate-form">
+    <%= f.collection_select(:transportation_id, Transportation.all, :id, :name, {include_blank:"---"}, {class:"transportation-form"}%>
+  </div>
+  <%# 交通時間フォーム %>
+  <div class="candidate-form">
+    <%= f.text_field :take_time, class:"take-time-form", placeholder:"数字を記入"%>
+  </div>
+  <%# 交通費フォーム %>
+  <div class="candidate-form">
+    <%= f.trans_cost ,class:"torans-cost-form", placeholder:"往復の交通費の概算"%>
+  </div>
+<% end %>
+
+
+<%#>
+| budget                   | int       | null: false                   |
+| night                    | str       | null: false                   |
+| destination              | str       | null: false                   |
+| reason                   | text      |                               |
+| transportation_id        | int       |                               |（ActiveHash）
+| take_time                | int       |                               |
+| trans_cost               | int       |                               |
+| image                    |           |                               |(ActiveStorage)
+| decision                 | boolean   | null: false, default: false   |
+| user                     | references| null: false, foreign_key: true|
+| group                    | references| null: false, foreign_key: true|
