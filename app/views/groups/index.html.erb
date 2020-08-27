@@ -12,13 +12,16 @@
   <div class="group-box-main">
     <ul class="group-list">
     <%# グループを一つずつ表示 %>
-      <% @groups.each do |group| %>
-        <%= link_to group_path(group), local: true do%>
-          <li>
-            <%= group.name %></a>
-            <%#= link_to group_path(@group), "#{group.name}", local: true %>
-          </li>
+      <% if user_signed_in? %>
+        <% current_user.groups.each do |group| %>
+          <%= link_to group_path(group), local: true do%>
+            <li>
+              <%= link_to group_path(@group), "#{group.name}", local: true %>
+            </li>
+          <% end %>
         <% end %>
+      <% else %>
+        <p>ログインしてください</p>
       <% end %>
     <%# グループを一つずつ表示 %>
     </ul>
