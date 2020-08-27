@@ -13,7 +13,7 @@ class GroupsController < ApplicationController
     # 入力されたメンバー情報をmembers変数に代入
     members = []
     group_params[:members].each do |member|
-      if member
+      if member && member != ""
         members << member
       end
     end
