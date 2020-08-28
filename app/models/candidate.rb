@@ -5,4 +5,5 @@ class Candidate < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :transportation  
+  belongs_to_active_hash :budget  
 end

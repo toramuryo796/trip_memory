@@ -1,9 +1,31 @@
 class CandidatesController < ApplicationController
-  def new 
-    @group = Group.find_by(id: params[:group_id])
-    @candidate = Candidate.new
+before_action :find_group, only: [:index, :new, :create]
+
+  def index
+    @candidates = @group.candidates.all.order("created_at DESC")
   end
 
-  def create
+  def new 
+    @candidate = Candidate.new
   end
+  
+  def create
+    @candidate = Candidate.new(candidate_params)
+    binding.pry
+    if @candidate.save
+      redirect_to group_candidates_path(@group, @candidate)
+    else
+      render :new
+    end
+  end
+  
+  private
+  def candidate_params
+    params.permit(:budget_id, :night, :destination, :reason, :transportation_id, :take_time, :trans_cost).merge(user_id: current_user.id, group_id: params[:group_id])
+  end
+  
+  def find_group
+    @group = Group.find_by(id: params[:group_id])
+  end
+
 end

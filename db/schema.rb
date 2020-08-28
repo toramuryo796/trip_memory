@@ -13,14 +13,14 @@
 ActiveRecord::Schema.define(version: 2020_08_27_170100) do
 
   create_table "candidates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "budget", null: false
+    t.integer "budget_id", null: false
     t.string "night", null: false
     t.string "destination", null: false
     t.text "reason"
     t.integer "transportation_id"
     t.integer "take_time"
-    t.integer "trans_cost"
-    t.boolean "decision", default: false
+    t.string "trans_cost"
+    t.boolean "decision"
     t.bigint "user_id", null: false
     t.bigint "group_id", null: false
     t.datetime "created_at", precision: 6, null: false

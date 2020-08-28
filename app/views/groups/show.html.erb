@@ -6,4 +6,11 @@
     <%= user.nickname %>
   </li>
 <% end %>
-<%= link_to "行先候補を作成", new_group_candidate_path(@group, @candidate), local: true %>
+<ul>
+  <li>
+    <%= link_to "行先候補を作成", new_group_candidate_path(@group, @candidate), local: true %>
+  </li>
+  <li>
+    <%= link_to "行先候補一覧", group_candidates_path(@group, @candidate), local: true %>
+  </li>
+</ul>

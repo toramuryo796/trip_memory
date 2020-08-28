@@ -1,13 +1,13 @@
 <%= @group.name %>
 <h1>行先候補を作成</h1>
 <%= @group.name %>
-<%= form_with model: [@group, @candidate], url: group_candidates_path(@group, @candidate), method: :post, local: true do |f| %>
+<%= form_with  url: group_candidates_path(@group, @candidate), method: :post, local: true do |f| %>
   <%# 予算フォーム %>
   <div class="candidate-form">
     <div class="form_guide">
       予算 (必須)
     </div>
-    <%= f.text_field :budget, class: "budget-form", placeholder: "¥50,000 〜 ¥80,000" %>
+    <%= f.collection_select(:budget_id, Budget.all, :id, :name, {include_blank:"---"}, {class:"budget-form"}) %>
   </div>
   <%# 泊数フォーム %>
   <div class="candidate-form">
@@ -50,6 +50,9 @@
       交通費の概算 (往復)
     </div>
     <%= f.text_field :trans_cost ,class:"torans-cost-form", placeholder:"往復の交通費の概算" %>
+  </div>
+  <div class="candidate-form">
+    <%= f.submit "作成", class: "make-btn" %>
   </div>
 <% end %>
 
