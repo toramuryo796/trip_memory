@@ -2,7 +2,8 @@ class CandidatesController < ApplicationController
 before_action :find_group, only: [:index, :new, :create]
 
   def index
-    @candidates = @group.candidates.all.order("created_at DESC")
+    @candidates = @group.candidates.all.order("created_at DESC").includes(:user)
+    @count = 1
   end
 
   def new 
@@ -21,7 +22,7 @@ before_action :find_group, only: [:index, :new, :create]
   
   private
   def candidate_params
-    params.permit(:budget_id, :night, :destination, :reason, :transportation_id, :take_time, :trans_cost).merge(user_id: current_user.id, group_id: params[:group_id])
+    params.permit(:budget_id, :night, :destination, :reason, :transportation_id, :take_time, :trans_cost, :image).merge(user_id: current_user.id, group_id: params[:group_id])
   end
   
   def find_group

@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_27_170100) do
+ActiveRecord::Schema.define(version: 2020_08_29_140311) do
+
+  create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "record_type"
+    t.bigint "record_id"
+    t.bigint "blob_id"
+    t.datetime "created_at"
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "key"
+    t.string "filename"
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size"
+    t.string "checksum"
+    t.datetime "created_at"
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "candidates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "budget_id", null: false
@@ -57,6 +78,7 @@ ActiveRecord::Schema.define(version: 2020_08_27_170100) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "candidates", "groups"
   add_foreign_key "candidates", "users"
   add_foreign_key "user_groups", "groups"

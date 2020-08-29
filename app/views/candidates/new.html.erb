@@ -42,14 +42,20 @@
     <div class="form_guide">
       移動時間の概算 (片道)
     </div>
-    <%= f.text_field :take_time, class:"take-time-form", placeholder:"数字を記入"%>
+    <%= f.text_field :take_time, class:"take-time-form", placeholder:"数字を記入"%>時間
   </div>
   <%# 交通費フォーム %>
   <div class="candidate-form">
     <div class="form_guide">
       交通費の概算 (往復)
     </div>
-    <%= f.text_field :trans_cost ,class:"torans-cost-form", placeholder:"往復の交通費の概算" %>
+    <%= f.text_field :trans_cost ,class:"torans-cost-form", placeholder:"往復の交通費の概算" %>円
+  </div>
+  <div class="candidate-form">
+    <div class="form_guide">
+      参考写真(1枚)
+    </div>
+    <%= f.file_field :image ,class:"image-form", placeholder:"往復の交通費の概算" %>
   </div>
   <div class="candidate-form">
     <%= f.submit "作成", class: "make-btn" %>

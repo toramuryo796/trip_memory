@@ -1,37 +1,50 @@
 <h1>行先候補一覧</h1>
+<h1><%= link_to "#{@group.name}", group_path(@group), local: true  %> </h1>
 <% @candidates.each do |candidate| %>
-  <div class="index-large-box">
-    <div class="candidate-box">
-      <div class="budget-index">
-        予算：<%= candidate.budget.name %>
-      </div>
-      <div class="night-index">
-        日数：<%= candidate.night %>
-      </div>
-      <div class="destination-index">
-        行先：<%= candidate.destination %>
-      </div>
-      <div calss="transportation-index">
-        交通手段：<%= candidate.transportation.name %>
-        <div class="trans-time-box">
-          移動時間：<%= candidate.take_time %>時間
+  <div class="index-outside">
+    候補<%= @count %>
+    <div class="index-large-box">
+      <div class="candidate-box">
+        <div class="budget-index">
+          予算：<%= candidate.budget.name %>
         </div>
-        <div class="trans-cost-box">
-          交通費(往復の概算)： <%= candidate.trans_cost %>円
+        <div class="night-index">
+          日数：<%= candidate.night %>
         </div>
+        <div class="destination-index">
+          行先：<%= candidate.destination %>
+        </div>
+        <div calss="transportation-index">
+          交通手段：<%= candidate.transportation.name %>
+          <div class="trans-time-box">
+            移動時間：<%= candidate.take_time %>時間
+          </div>
+          <div class="trans-cost-box">
+            交通費(往復の概算)： <%= candidate.trans_cost %>円
+          </div>
+        </div>
+        <div class="reason-index">
+          理由/目的：
+          <div> <%= candidate.reason %> </div>
+        </div>
+        <div class="reference-image-box">
+          <div class="reference-image">
+            参考写真：
+          </div>
+          <%= image_tag candidate.image.variant(resize:'500x500'), class:"candidate-image" %>
+        <div>
       </div>
-      <div class="reason-index">
-        理由/目的
-        <div> <%= candidate.reason %> </div>
+      <div class="index-footer">
+        <div class="good-btn">
+          <a href="#" class="great">
+            行きたい！!
+          </a>
+        <div>
+        <div class="decide-btn">
+          決定
+        <div>
       </div>
-    </div>
-    <div class="index-footer">
-      <div class="good-btn">
-        行きたい！!
-      <div>
-      <div class="decide-btn">
-        決定
-      <div>
     </div>
   </div>
+  <% @count+=1 %>
 <% end %>
