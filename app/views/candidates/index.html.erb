@@ -31,7 +31,7 @@
           <div class="reference-image">
             参考写真：
           </div>
-          <%= image_tag candidate.image.variant(resize:'500x500'), class:"candidate-image" %>
+          <%= image_tag candidate.image.variant(resize:'500x500'), class:"candidate-image" if candidate.image.attached?%>
         <div>
       </div>
       <div class="index-footer">

@@ -2,7 +2,7 @@ class CandidatesController < ApplicationController
 before_action :find_group, only: [:index, :new, :create]
 
   def index
-    @candidates = @group.candidates.all.order("created_at DESC").includes(:user)
+    @candidates = @group.candidates.all.order("created_at ASC").includes(:user)
     @count = 1
   end
 
@@ -12,7 +12,6 @@ before_action :find_group, only: [:index, :new, :create]
   
   def create
     @candidate = Candidate.new(candidate_params)
-    binding.pry
     if @candidate.save
       redirect_to group_candidates_path(@group, @candidate)
     else
