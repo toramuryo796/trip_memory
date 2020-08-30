@@ -1,3 +1,5 @@
+<h1>さしすせそ</h1>
+
 <h1>グループ一覧<h1>
 <div class="group-box">
   <div class="group-box-header">
@@ -16,7 +18,7 @@
         <% current_user.groups.each do |group| %>
           <%= link_to group_path(group), local: true do%>
             <li>
-              <%= link_to group_path(@group), "#{group.name}", local: true %>
+              <%= link_to "#{group.name}", group_path(group),  local: true %>
             </li>
           <% end %>
         <% end %>

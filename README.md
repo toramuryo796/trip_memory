@@ -47,7 +47,7 @@
 | night                    | str       | null: false                   |
 | destination              | str       | null: false                   |
 | reason                   | text      |                               |
-| transportation_id        | int       | null: false                   |（ActiveHash）
+| transportation_id        | int       |                               |（ActiveHash）
 | take_time                | int       |                               |
 | trans_cost               | int       |                               |
 | image                    |           |                               |(ActiveStorage)
@@ -58,8 +58,8 @@
 ### Association
 
 - belongs_to :user
-- has_one    :group
-- belongs_to :plan
+- belongs_to :group
+- has_one    :plan
 
 ## Plans テーブル
 | Column            | type       |   Options                        |
