@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_29_140311) do
+ActiveRecord::Schema.define(version: 2020_08_30_160640) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -56,6 +56,25 @@ ActiveRecord::Schema.define(version: 2020_08_29_140311) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "plans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title", null: false
+    t.date "departure_day"
+    t.date "return_day"
+    t.string "hotel"
+    t.text "hotel_memo"
+    t.integer "Candidate"
+    t.integer "transportation_id"
+    t.text "ticket"
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.bigint "candidate_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["candidate_id"], name: "index_plans_on_candidate_id"
+    t.index ["group_id"], name: "index_plans_on_group_id"
+    t.index ["user_id"], name: "index_plans_on_user_id"
+  end
+
   create_table "user_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "group_id", null: false
@@ -81,6 +100,9 @@ ActiveRecord::Schema.define(version: 2020_08_29_140311) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "candidates", "groups"
   add_foreign_key "candidates", "users"
+  add_foreign_key "plans", "candidates"
+  add_foreign_key "plans", "groups"
+  add_foreign_key "plans", "users"
   add_foreign_key "user_groups", "groups"
   add_foreign_key "user_groups", "users"
 end
