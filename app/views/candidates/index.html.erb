@@ -4,6 +4,9 @@
   <div class="index-outside">
     候補<%= @count %>
     <div class="index-large-box">
+      <div class="candidate-header">
+        <%= link_to "編集", edit_group_candidate_path(@group, candidate), local: true %> / <%= link_to "削除", group_candidate_path(@group, candidate), method: :delete, local: true %> 
+      </div>
       <div class="candidate-box">
         <div class="budget-index">
           予算：<%= candidate.budget.name %>
