@@ -1,0 +1,74 @@
+<div class="plan-article">
+  <h1>旅行計画作成</h1>
+</div>
+<div class="plan-guide">
+  <h2> 旅行計画の詳細を記入してください </h2>
+</div>
+<div class="plan-form-box">
+  <%= form_with url: plans_create_path, local: true do |f| %>
+  <div class="plan_form">
+    <div class="form-guide">
+      タイトル
+    </div>
+    <div class="form-box">
+      <%= f.text_field :title, class: "title-form", placeholder:"タイトルを記入してください" %>
+    </div>
+  </div>
+  <div class="plan_form">
+    <div class="form-guide">
+      出発日
+    </div>
+    <div class="form-box">
+      <%= f.date_field :departure_day,  class: "departure_form" %>
+    </div>
+  </div>
+  <div class="plan_form">
+    <div class="form-guide">
+      帰着日
+    </div>
+    <div class="form-box">
+      <%= f.date_field :return_day, class: "return_form" %>
+    </div>
+  </div>
+  <div class="plan_form">
+    <div class="form-guide">
+      ホテル名
+    </div>
+    <div class="form-box">
+      <%= f.text_field :hotel, class: "hotel-form", placeholder: "ホテル名を入力してください" %>
+    </div>
+  </div>
+  
+  <div class="plan_form">
+    <div class="form-guide">
+      ホテル情報(メモ)
+    </div>
+    <div class="form-box">
+      <%= f.text_area :hotel_memo, class: "hotel-memo-form", placeholder:"ホテルに関するメモとしてホテル情報を記入してください" %>
+    </div>
+  </div>
+
+  <div class="plan_form">
+    <div class="form-guide">
+      交通手段
+    </div>
+    <div class="form-box">
+      <%= f.collection_select :transportation_id, Transportation.all, :id, :name, {include_brank:"---"}, {class: "transportation-form"} %>
+    </div>
+  </div>
+
+  <div class="plan_form">
+    <div class="form-guide">
+      交通手段の詳細
+    </div>
+    <div class="form-box">
+      <%= f.text_area :ticket, class: "ticket-form", placeholder:"交通手段に関するメモとしてチケット情報などを記入してください" %>
+    </div>
+  </div>
+  <div class="plan_form">
+    <div class="form-box">
+      <%= f.submit "作成" , class:"plan-submit"%>
+    </div>
+  </div>
+  <% end %>
+</div>
