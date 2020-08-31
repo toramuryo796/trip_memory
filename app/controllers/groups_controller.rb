@@ -43,7 +43,7 @@ class GroupsController < ApplicationController
       @group = Group.new(name: group_params[:name])                       # グループを生成
       if @group.save                                                      # グループが保存できたとき
         user_ids.each do |user_id|                                        # user_ids配列の中身を1つずつ見ていく
-          if User.find_by(id: user_id)                                # 登録されているユーザーか
+          if User.find_by(id: user_id)                                    # 登録されているユーザーか
             UserGroup.create(user_id: user_id, group_id: @group.id)       # UserGroupを作成
           end
         end
