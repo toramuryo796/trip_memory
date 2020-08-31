@@ -1,7 +1,7 @@
 class Plan < ApplicationRecord
-  belongs_to :users
-  belongs_to :groups
-  belongs_to :candidates
+  belongs_to :user
+  belongs_to :group
+  belongs_to :candidate
   # has_one :Bring
   # has_one :purpose
   # has_one :Schedule
