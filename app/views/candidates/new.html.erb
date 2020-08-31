@@ -32,7 +32,7 @@
   <%# 交通手段フォーム %>
   <div class="candidate-form">
     <div class="form_guide">
-      交通手段
+      移動手段
     </div>
     <%= f.collection_select(:transportation_id, Transportation.all, :id, :name, {include_blank:"---"}, {class:"transportation-form"}) %>
   </div>

@@ -20,7 +20,7 @@ function add_member () {
     const boxNum = document.querySelectorAll(".member-input-text").length;  // 画面上にいくつメンバーboxがあるか
     const HTML = `
     <li class="member-box-list" data-num="${boxNum+1}">
-    <input name="group[members][]" type=text class="member-input-text" placeholder="メンバーのユーザー名を入力してください" data-num="${boxNum+1}">
+    <input name="group[user_ids][]" type=text class="member-input-text" placeholder="メンバーのユーザー名を入力してください" data-num="${boxNum+1}">
     <input type="button" value="削除" class="delete-btn" data-num="${boxNum+1}">
     </li>`;
     addPlace.insertAdjacentHTML("beforeend", HTML);

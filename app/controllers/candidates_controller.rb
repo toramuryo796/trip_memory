@@ -1,9 +1,9 @@
 class CandidatesController < ApplicationController
 before_action :find_group, only: [:index, :new, :create, :edit]
-before_action :find_candidate, only: [:edit, :updete, :destroy]
+before_action :find_candidate, only: [:index, :edit, :updete, :destroy]
 
   def index
-    @candidates = @group.candidates.all.order("created_at ASC").includes(:user)
+    @candidates = @group.candidates.includes(:user).order("created_at ASC")
     @count = 1
   end
 
@@ -54,7 +54,7 @@ before_action :find_candidate, only: [:edit, :updete, :destroy]
   end
   
   def find_candidate
-    @candidate = Candidate.find(params[:id])
+    @candidate = Candidate.find_by(id: params[:candidate_id])
   end
 
 end

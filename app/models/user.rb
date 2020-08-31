@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :user_groups
   has_many :groups, through: :user_groups, dependent: :destroy
   has_many :candidates
-  # has_many :plans
+  has_many :plans
   # has_many :memories
   
   all_characters = /\A[0-9a-zA-Zぁ-んァ-ンー-龥]+\Z/

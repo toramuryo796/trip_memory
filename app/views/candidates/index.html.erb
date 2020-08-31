@@ -11,30 +11,30 @@
           <%= link_to "編集", edit_group_candidate_path(@group, candidate), local: true %> / <%= link_to "削除", group_candidate_path(@group, candidate), method: :delete, local: true %> 
         </div>
         <div class="candidate-box">
-          <div class="budget-index">
+          <div class="budget-index candidate-guide">
             予算：<%= candidate.budget.name %>
           </div>
-          <div class="night-index">
+          <div class="night-index candidate-guide">
             日数：<%= candidate.night %>
           </div>
-          <div class="destination-index">
+          <div class="destination-index candidate-guide">
             行先：<%= candidate.destination %>
           </div>
-          <div calss="transportation-index">
+          <div calss="transportation-index candidate-guide">
             交通手段：<%= candidate.transportation.name %>
-            <div class="trans-time-box">
+            <div class="trans-time-box candidate-guide">
               移動時間：<%= candidate.take_time %>時間
             </div>
-            <div class="trans-cost-box">
+            <div class="trans-cost-box candidate-guide">
               交通費(往復の概算)： <%= candidate.trans_cost %>円
             </div>
           </div>
-          <div class="reason-index">
+          <div class="reason-index candidate-guide">
             理由/目的：
             <div> <%= candidate.reason %> </div>
           </div>
           <div class="reference-image-box">
-            <div class="reference-image">
+            <div class="reference-image candidate-guide">
               参考写真：
             </div>
             <%= image_tag candidate.image.variant(resize:'500x500'), class:"candidate-image" if candidate.image.attached?%>
@@ -47,17 +47,17 @@
             </a>
           </div>
           <div class="decide-btn">
-            <a hrev="#">決定</a>
+            <%= link_to "決定！！", new_group_plan_path(@group, @plan), local: true %>
           </div>
         </div>
       </div>
     </div>
-    <% @count+=1 %>
+    <% @count+=1 %>  <%# 候補数の数字 %>
   <% end %>
 <% else %>
 <%# 行先候補がない場合は作成画面のリンクを表示 %>
   <p>行先候補がありません</p>
-  <%= link_to  new_group_candidate_path(@group, @candidate), local: true do%>
+  <%= link_to  new_group_candidate_path(@group, @candidate), local: true do %>
     <h1> 行先候補を作成する </h1>
   <% end %>
 <% end %>
