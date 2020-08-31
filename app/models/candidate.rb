@@ -3,7 +3,6 @@ class Candidate < ApplicationRecord
   belongs_to :group
   has_one :plan
   has_one_attached :image
-  has_one :plan
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :transportation  

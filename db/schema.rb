@@ -62,12 +62,11 @@ ActiveRecord::Schema.define(version: 2020_08_30_160640) do
     t.date "return_day"
     t.string "hotel"
     t.text "hotel_memo"
-    t.integer "Candidate"
     t.integer "transportation_id"
     t.text "ticket"
     t.bigint "user_id", null: false
     t.bigint "group_id", null: false
-    t.bigint "candidate_id", null: false
+    t.bigint "candidate_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["candidate_id"], name: "index_plans_on_candidate_id"
