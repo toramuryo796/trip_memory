@@ -1,7 +1,7 @@
 class PlansController < ApplicationController
-  before_action :find_group,       only: [:new, :create]
-  before_action :find_candidate,   only: [:new]
-
+  before_action :find_group,       only: [:index,:new, :create]
+  before_action :find_candidate,   only: [:index,:new]
+  
   def new
     @plan = Plan.new()
   end
@@ -15,9 +15,13 @@ class PlansController < ApplicationController
     end
   end
 
+  def index
+    @plans = Plan.includes(:user).order('created_at DESC')
+  end
+
   private 
   def plan_params
-    params.require(:group).permit(:title, :departure_day, :return_day, :hotel, :hotel_memo, :transportation_id, :ticket).merge(group_id: params[:group_id], user_id: current_user.id)
+    params.require(:group).permit(:title, :destination, :departure_day, :return_day, :hotel, :hotel_memo, :transportation_id, :ticket, :start_place).merge(group_id: params[:group_id], user_id: current_user.id)
   end
 
   def find_group

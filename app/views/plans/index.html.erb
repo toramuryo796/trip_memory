@@ -1,0 +1,87 @@
+<h2>旅行計画一覧</h2>
+<% @plans.each do |plan| %>
+  <div class="paln-lists">
+
+    <div class="plan-content">
+      <div class="plan-title plan-index"> 
+        <h1 class="trip-title"><%= plan.title %></h1>
+      </div>
+    </div>
+
+    <div class="plan-content">
+      <div class="plan-destination-guide plan-guide">
+        行先
+      </div>
+      <div class="plan-destination plan-index">
+        <% plan.destination %>
+      </div>
+      <div class ="destination-image">  
+        <% if @candidate.present? %>
+          <%= plan.candidate.image %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="plan-content">
+      <div class="plan-date-guide plan-guide">
+        日程
+      </div>
+      <div class="plan-departure-guide plan-index">
+        出発日：<%= plan.departure_day %>
+      </div>
+      <div class="plan-return-guide plan-index">
+        帰着日：<%= plan.return_day %>
+      </div>
+    </div>
+
+    <div class="plan-content">
+      <div class="transportaion-guide plan-guide">
+        移動手段
+      </div>
+      <div class="plan-transportation plan-index">
+        <%= plan.transportation.name %>
+      </div>
+    </div>
+    <div class="plan-content">
+      <div class="start-guide plan-guide">
+        出発地点
+      </div>
+      <div class="plan-start plan-index">
+        <%= plan.start_place %>
+      </div>
+    </div>
+    <div class="plan-content">
+      <div class="ticket-guide plan-guide">
+        移動手段に関するメモ
+      </div>
+      <div class="plan-ticket plan-index">
+        <%= plan.ticket %>
+      </div>
+    </div>
+
+    <div class="plan-content">
+      <div class="hotel-guide plan-guide">
+        ホテル名
+      </div>
+      <div class="plan-hotel plan-index">
+        <%= plan.hotel %>
+      </div>
+    </div>
+
+    <div class="plan-content">
+      <div class="hotel-memo-guide plan-guide">
+        ホテルに関するメモ
+      </div>
+      <div class="plan-hotel-memo plan-index">
+        <%= plan.hotel_memo %>
+      </div>
+    </div>
+
+    <div class="plan-content">
+      <div class="-guide plan-guide">
+      </div>
+      <div class="plan- plan-index">
+      </div>
+    </div>
+  </div>
+<% end %>

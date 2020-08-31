@@ -58,11 +58,13 @@ ActiveRecord::Schema.define(version: 2020_08_30_160640) do
 
   create_table "plans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
+    t.string "destination", null: false
     t.date "departure_day"
     t.date "return_day"
     t.string "hotel"
     t.text "hotel_memo"
     t.integer "transportation_id"
+    t.string "start_place"
     t.text "ticket"
     t.bigint "user_id", null: false
     t.bigint "group_id", null: false
