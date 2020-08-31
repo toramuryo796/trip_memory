@@ -9,37 +9,53 @@ class GroupsController < ApplicationController
   end
   
   def create
-    @group = Group.create(name: group_params[:name])
-    # 入力されたメンバー情報をmembers変数に代入
-    members = []
-    group_params[:members].each do |member|
-      if member && member != ""
-        members << member
-      end
-    end
-    @user = nil
-    @user_group = nil 
-    count = 0
-
-    members.each do |member|
-      #paramsで送られてきたユーザーを一つずつ取得
-      @user = User.find_by(nickname: member)
-      #中間テーブルに上のuserとgroupを紐付けて保存
-      @user_group = UserGroup.new(group_id: @group.id, user_id: @user.id) 
-      # ユーザーが全員登録できればcountされていく
-      if @user_group.save
-        count += 1
+    user_ids = []
+    # user_ids[]には入力されたユーザー名が入っているため、idに直す
+    group_params[:user_ids].each do |user|       # 入力されたユーザー名を１つずつ見ていく
+      if user && (user != "")                    # ユーザー名が記入されているか
+        if User.find_by(nickname: user)          # 入力されたユーザーが登録されているものか
+          user = User.find_by(nickname: user)    # userに記入されたユーザーの情報を代入
+          user_id = user.id                      # userのidを取得
+          user_ids << user_id                    # user_ids配列に入れていく
+        end
       end
     end
 
-    if count == members.length
-      redirect_to group_path(@group)
+    # user_idsにいくつ入っているか、重複ユーザーが入っていないか
+    count_box = []
+    count = 0;
+    user_ids.each do |user_id|                   # user_idsの中身を一つ一つ見ていく
+      if count_box.length == 0                   # count_boxの中身が何もないとき(1順目)は配列に入れる
+        count_box << user_id                     # count_box配列に入れていく
+        count += 1                               # countに1加算
+      else                      
+        count_box.each do |num|                  # count_boxの中身があるときに一つずつ見ていく
+          unless num == user_id                  # count_boxの中身の数字とuser_idsの中身の数字が違う場合
+            count_box << user_id                 # count_box配列に入れていく
+            count += 1                           # countに1を加算
+          end
+        end
+      end
+    end
+
+    #重複していないユーザーが2人以上いるときに保存する
+    if count >= 2                                                         # グループのメンバーが2人以上いるとき
+      @group = Group.new(name: group_params[:name])                       # グループを生成
+      if @group.save                                                      # グループが保存できたとき
+        user_ids.each do |user_id|                                        # user_ids配列の中身を1つずつ見ていく
+          if User.find_by(id: user_id)                                # 登録されているユーザーか
+            UserGroup.create(user_id: user_id, group_id: @group.id)       # UserGroupを作成
+          end
+        end
+        redirect_to group_path(@group)
+      else
+        render :new
+      end
     else
-      redirect_to :new
+      render :new
     end
-
   end
-  
+
   def show
     @group = Group.find(params[:id])
   end
@@ -49,10 +65,10 @@ class GroupsController < ApplicationController
     group.destroy
     redirect_to root_path  
   end
-
+  
   private
   def group_params
-    params.require(:group).permit(:commit, :name, members:[]).merge(user_id: current_user.id)
+    params.require(:group).permit(:commit, :name, user_ids:[])
   end
 
   def move_to_index
