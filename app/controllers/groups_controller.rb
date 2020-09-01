@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :move_to_index, only: :index
+  before_action :move_to_index
   def index
     @group = Group.new
   end

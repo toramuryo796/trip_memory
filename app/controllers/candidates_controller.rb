@@ -1,5 +1,5 @@
 class CandidatesController < ApplicationController
-before_action :find_group, only: [:index, :new, :create, :edit]
+before_action :find_group, only: [:index, :new, :create, :edit, :destroy]
 before_action :find_candidate, only: [:index, :edit, :updete, :destroy]
 
   def index
@@ -33,8 +33,10 @@ before_action :find_candidate, only: [:index, :edit, :updete, :destroy]
   end
 
   def destroy
+
+    binding.pry
     @candidate.destroy
-    redirect_to group_candidates_path
+    redirect_to group_candidates_path(@group, @candidate)
   end
   
   private
@@ -51,7 +53,7 @@ before_action :find_candidate, only: [:index, :edit, :updete, :destroy]
   end
   
   def find_candidate
-    @candidate = Candidate.find_by(id: params[:candidate_id])
+    @candidate = Candidate.find_by(id: params[:id])
   end
 
 end
