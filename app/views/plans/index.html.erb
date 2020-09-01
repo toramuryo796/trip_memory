@@ -8,6 +8,10 @@
       </div>
     </div>
 
+    <div class="candidate-header">
+      <%= link_to "編集", edit_group_plan_path(@group, plan), local: true %> / <%= link_to "削除", group_plan_path(@group, plan), method: :delete, local: true %> 
+    </div>
+
     <div class="plan-content">
       <div class="plan-destination-guide plan-guide">
         行先
