@@ -54,7 +54,9 @@
     <div class="form_guide">
       参考写真(1枚)
     </div>
-    <%= f.file_field :image ,class:"image-form", placeholder:"往復の交通費の概算" %>
+    <%= f.file_field :image ,class:"image-form",id:"image-form", placeholder:"往復の交通費の概算" %>
+    <div class="image-preview" id="image-preview">
+    </div>
   </div>
   <div class="candidate-form">
     <%= f.submit "作成", class: "make-btn" %>

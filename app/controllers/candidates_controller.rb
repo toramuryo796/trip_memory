@@ -33,6 +33,7 @@ before_action :find_candidate, only: [:index, :edit, :updete, :destroy]
   end
 
   def destroy
+
     binding.pry
     @candidate.destroy
     redirect_to group_candidates_path(@group, @candidate)

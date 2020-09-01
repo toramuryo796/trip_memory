@@ -6,3 +6,8 @@
 .index-footer{
   border-top: solid 2px #dcdcdc;
 }
+
+.candidate-image{
+  width: 450px;
+  height: 300px;
+}
