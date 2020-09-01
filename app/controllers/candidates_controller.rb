@@ -33,11 +33,8 @@ before_action :find_candidate, only: [:index, :edit, :updete, :destroy]
   end
 
   def destroy
-    if @candidate.destroy
-      redirect_to group_candidates_path
-    else 
-      render :edit
-    end
+    @candidate.destroy
+    redirect_to group_candidates_path
   end
   
   private
