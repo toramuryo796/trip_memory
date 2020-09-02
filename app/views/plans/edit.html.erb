@@ -5,7 +5,7 @@
   <h2> 旅行計画の詳細を記入してください </h2>
 </div>
 <div class="plan-form-box">
-  <%= form_with model: @plan, url: plan_path(@plan), method: :patch, local: true do |f| %>
+  <%= form_with model: [@plan, @group], url: group_plan_path(@group, @plan), method: :patch, local: true do |f| %>
 
     <div class="plan_form">
       <div class="form-guide">
