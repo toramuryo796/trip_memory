@@ -9,7 +9,7 @@
     </div>
 
     <div class="candidate-header">
-      <%= link_to "編集", edit_group_plan_path(@group, plan), local: true %> / <%= link_to "削除", group_plan_path(@group, plan), method: :delete, local: true %> 
+      <%= link_to "編集", edit_plan_path, local: true %> / <%= link_to "削除", plan_path(plan), method: :delete, local: true %> 
     </div>
 
     <div class="plan-content">

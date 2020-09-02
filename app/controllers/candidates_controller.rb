@@ -5,6 +5,8 @@ before_action :find_candidate, only: [:index, :edit, :updete, :destroy]
   def index
     @candidates = @group.candidates.includes(:user).order("created_at ASC")
     @count = 1
+    # 行きたいカウント
+    goods = @candidate.goods.count
   end
 
   def new 
@@ -14,7 +16,7 @@ before_action :find_candidate, only: [:index, :edit, :updete, :destroy]
   def create
     @candidate = Candidate.new(candidate_params)
     if @candidate.save
-      redirect_to group_candidates_path(@group, @candidate)
+      redirect_to candidates_path
     else
       render :new
     end
@@ -33,9 +35,8 @@ before_action :find_candidate, only: [:index, :edit, :updete, :destroy]
   end
 
   def destroy
-    binding.pry
     @candidate.destroy
-    redirect_to group_candidates_path(@group, @candidate)
+    redirect_to candidates_path
   end
   
   private
@@ -52,7 +53,6 @@ before_action :find_candidate, only: [:index, :edit, :updete, :destroy]
   end
   
   def find_candidate
-    @candidate = Candidate.find_by(id: params[:id])
+    @candidate = Candidate.find_by(params[:id])
   end
-
 end

@@ -1,6 +1,6 @@
 <%= link_to @group.name, group_path(@group), local: true %>
 <h1>行先候補を作成</h1>
-<%= form_with  url: group_candidates_path(@group, @candidate), method: :post, local: true do |f| %>
+<%= form_with  url: candidates_path, method: :post, local: true do |f| %>
   <%# 予算フォーム %>
   <div class="candidate-form">
     <div class="form_guide">

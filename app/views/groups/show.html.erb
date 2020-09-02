@@ -11,15 +11,15 @@
 </ul>
 <ul class="contents-list">
   <li class="contents">
-    <%= link_to "行先候補を作成", new_group_candidate_path(@group, @candidate), local: true %>
+    <%= link_to "行先候補を作成", new_candidate_path, local: true %>
   </li>
   <li class="contents">
-    <%= link_to "行先候補一覧", group_candidates_path(@group, @candidate), local: true %>
+    <%= link_to "行先候補一覧", candidates_path, local: true %>
   </li>
   <li class="contents">
-    <%= link_to "旅行計画作成",  new_group_plan_path(@group, @candidate), local: true %>
+    <%= link_to "旅行計画作成",  new_plan_path, local: true %>
   </li>
   <li class="contents">
-    <%= link_to "旅行計画一覧",  group_plans_path(@group, @candidate), local: true %>
+    <%= link_to "旅行計画一覧",  plans_path, local: true %>
   </li>
 </ul>

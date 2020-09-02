@@ -10,7 +10,7 @@ class PlansController < ApplicationController
   def create
     plan = Plan.new(plan_params)
     if plan.save
-      redirect_to group_plans_path(@group, @plan)
+      redirect_to plans_path
     else
       render :new
     end
@@ -25,21 +25,20 @@ class PlansController < ApplicationController
 
   def update
     if @plan.update(paln_params)
-      redirect_to group_plans_path(@group, @plan)
+      redirect_to plans_path
     else
       render :edit
     end
   end
 
   def destroy
-    binding.pry
     @plan.destroy
-    redirect_to group_plans_path(@group, @plan)
+    redirect_to plans_path
   end
 
   private 
   def plan_params
-    params.require(:group).permit(:title, :destination, :departure_day, :return_day, :hotel, :hotel_memo, :transportation_id, :ticket, :start_place).merge(group_id: params[:group_id], user_id: current_user.id)
+    params.require(:plan).permit(:title, :destination, :departure_day, :return_day, :hotel, :hotel_memo, :transportation_id, :ticket, :start_place).merge(group_id: params[:group_id], user_id: current_user.id)
   end
 
   def find_group

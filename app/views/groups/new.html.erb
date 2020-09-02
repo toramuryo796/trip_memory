@@ -1,6 +1,6 @@
 <h1>グループ作成</h1>
 <div class="making-group">
-  <%= form_with model:@group, local:true do |f| %>
+  <%= form_with url: groups_path, local:true do |f| %>
     <%# グループ名を作成 %>
     <div class="group-name-box group-form">
       <div class="group-label-form group-form">
