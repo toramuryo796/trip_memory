@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_02_123441) do
+ActiveRecord::Schema.define(version: 2020_09_02_141902) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -50,6 +50,14 @@ ActiveRecord::Schema.define(version: 2020_09_02_123441) do
     t.index ["user_id"], name: "index_candidates_on_user_id"
   end
 
+  create_table "day_hows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "days", null: false
+    t.bigint "plan_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["plan_id"], name: "index_day_hows_on_plan_id"
+  end
+
   create_table "goods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "candidate_id", null: false
     t.bigint "user_id", null: false
@@ -86,14 +94,16 @@ ActiveRecord::Schema.define(version: 2020_09_02_123441) do
   end
 
   create_table "schedules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "move_time", null: false
+    t.time "move_time", null: false
     t.string "program", null: false
     t.integer "category_id", null: false
     t.bigint "plan_id", null: false
     t.bigint "user_id", null: false
+    t.bigint "schedule_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["plan_id"], name: "index_schedules_on_plan_id"
+    t.index ["schedule_id"], name: "index_schedules_on_schedule_id"
     t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 
@@ -122,12 +132,14 @@ ActiveRecord::Schema.define(version: 2020_09_02_123441) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "candidates", "groups"
   add_foreign_key "candidates", "users"
+  add_foreign_key "day_hows", "plans"
   add_foreign_key "goods", "candidates"
   add_foreign_key "goods", "users"
   add_foreign_key "plans", "candidates"
   add_foreign_key "plans", "groups"
   add_foreign_key "plans", "users"
   add_foreign_key "schedules", "plans"
+  add_foreign_key "schedules", "schedules"
   add_foreign_key "schedules", "users"
   add_foreign_key "user_groups", "groups"
   add_foreign_key "user_groups", "users"

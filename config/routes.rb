@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   get 'candidates/new'
   devise_for :users
   root "groups#index"
-  resources :schedules,    only: [:index, :create, :update, :delete]
+  resources :schedules,    only: [:index,:new, :create, :update, :delete]
+  resources :day_how,      only: [new, :create, :update, :destroy]
 
   resources :groups,       only: [:index, :new, :create, :show, :destroy] do
     resources :candidates, only: [:index, :new, :create, :edit, :update, :destroy ] do
