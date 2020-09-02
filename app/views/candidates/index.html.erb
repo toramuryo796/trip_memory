@@ -45,13 +45,17 @@
           </div>
         </div>
         <div class="index-footer">
-          <div class="good-btn">
-            <% if current_user.already_good?(candidate) %>
-              <%= button_to "行きたいボタン取り消し", group_candidate_good_path(@group, candidate, candidate.goods), method: :delete %>
+          <div class="good-btn" id="good-btn-<%= candidate.id%>">
+            <% if current_user.already_good?(candidate) %> 
+              <%# いいね押してたら取り消しボタンを表示 %>
+              <%= button_to "行きたいボタン取り消し", group_candidate_good_path(@group, candidate, candidate.goods), method: :delete, class:"good-btn reset-good", id:"reset-good-#{candidate.id}", data:{num: candidate.id}, data:{group: @group.id} %>
+              <%= button_to "行きたい！！", group_candidate_goods_path(@group, candidate, @good), method: :post, class:"hidden-set-good good-btn", id:"hidden-set-good-#{candidate.id}", data:{num: candidate.id}, data:{group: @group.id} %>
             <% else %>
-              <%= button_to "行きたい！！", group_candidate_goods_path(@group, candidate, @good), method: :post %>
+              <%# 押してなかったら行きたい！btnを表示 %>
+              <%= button_to "行きたいボタン取り消し", group_candidate_good_path(@group, candidate, candidate.goods), method: :delete, class:"hidden-reset-good good-btn", id:"hidden-reset-good-#{candidate.id}", data:{num: candidate.id}, data:{group: @group.id} %>  
+              <%= button_to "行きたい！！", group_candidate_goods_path(@group, candidate, @good), method: :post, class:"set-good good-btn", id:"set-good-#{candidate.id}", data:{num:candidate.id}, data:{group: @group.id}%>
             <% end %>
-            <div class="good-count"><%= candidate.goods.count %>人</div>
+            <div class="good-count" ><%= candidate.goods.count %>人</div>
           </div> 
           <div class="decide-btn">
             <%= link_to "決定！！", new_group_plan_path(@group, @plan), local: true %>

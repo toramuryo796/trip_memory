@@ -11,3 +11,11 @@
   width: 450px;
   height: 300px;
 }
+
+.hidden-set-good{
+  display: none;
+}
+
+.hidden-reset-good{
+  display: none;
+}

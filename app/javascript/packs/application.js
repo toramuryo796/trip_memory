@@ -10,7 +10,7 @@ require("channels")
 require("jquery")
 require("../members")
 require("../preview")
-
+require("../good")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
