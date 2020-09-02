@@ -11,8 +11,8 @@ class GroupsController < ApplicationController
   def create
     user_ids = []
     # user_ids[]には入力されたユーザー名が入っているため、idに直す
-    group_params[:user_ids].each do |user|       # 入力されたユーザー名を１つずつ見ていく
-      if user && (user != "")                    # ユーザー名が記入されているか
+    if group_params[:user_ids]                       # ユーザー名が記入されているか
+      group_params[:user_ids].each do |user|     # 入力されたユーザー名を１つずつ見ていく
         if User.find_by(nickname: user)          # 入力されたユーザーが登録されているものか
           user = User.find_by(nickname: user)    # userに記入されたユーザーの情報を代入
           user_id = user.id                      # userのidを取得
@@ -20,7 +20,6 @@ class GroupsController < ApplicationController
         end
       end
     end
-
     # user_idsにいくつ入っているか、重複ユーザーが入っていないか
     count_box = []
     count = 0;
@@ -37,10 +36,9 @@ class GroupsController < ApplicationController
         end
       end
     end
-
     #重複していないユーザーが2人以上いるときに保存する
     if count >= 2                                                         # グループのメンバーが2人以上いるとき
-      @group = Group.new(name: group_params[:name])                       # グループを生成
+      @group = Group.new(name: group_params[:name])                             # グループを生成 
       if @group.save                                                      # グループが保存できたとき
         user_ids.each do |user_id|                                        # user_ids配列の中身を1つずつ見ていく
           if User.find_by(id: user_id)                                    # 登録されているユーザーか
@@ -49,10 +47,11 @@ class GroupsController < ApplicationController
         end
         redirect_to group_path(@group)
       else
-        render :new
+        @group.destroy
+        redirect_to new_group_path
       end
     else
-      render :new
+      redirect_to new_group_path
     end
   end
 
@@ -68,7 +67,7 @@ class GroupsController < ApplicationController
   
   private
   def group_params
-    params.require(:group).permit(:commit, :name, user_ids:[])
+    params.require(:group).permit(:name, user_ids:[]).merge(name: params[:name])
   end
 
   def move_to_index
