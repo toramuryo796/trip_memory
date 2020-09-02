@@ -46,7 +46,12 @@
         </div>
         <div class="index-footer">
           <div class="good-btn">
-              <%#= link_to "行きたい！!", goods_path, method: :post, local: true, class: "good-btn" %>&nbsp;<%= @goods %>人
+            <% if current_user.already_good?(candidate) %>
+              <%= button_to "行きたいボタン取り消し", group_candidate_good_path(@group, candidate, candidate.goods), method: :delete %>
+            <% else %>
+              <%= button_to "行きたい！！", group_candidate_goods_path(@group, candidate, @good), method: :post %>
+            <% end %>
+            <div class="good-count"><%= candidate.goods.count %>人</div>
           </div> 
           <div class="decide-btn">
             <%= link_to "決定！！", new_group_plan_path(@group, @plan), local: true %>

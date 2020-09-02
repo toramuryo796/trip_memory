@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root "groups#index"
   resources :groups,       only: [:index, :new, :create, :show, :destroy] do
     resources :candidates, only: [:index, :new, :create, :edit, :update, :destroy ] do
-      resources :goods,      only: :create
+      resources :goods,      only: [:create,:destroy]
     end
     resources :plans,      only: [:index, :new, :create, :edit, :update, :destroy ]
   end

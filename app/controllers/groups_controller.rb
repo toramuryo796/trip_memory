@@ -47,7 +47,6 @@ class GroupsController < ApplicationController
         end
         redirect_to group_path(@group)
       else
-        @group.destroy
         redirect_to new_group_path
       end
     else
@@ -67,7 +66,7 @@ class GroupsController < ApplicationController
   
   private
   def group_params
-    params.require(:group).permit(:name, user_ids:[]).merge(name: params[:name])
+    params.require(:group).permit(:name, user_ids:[])
   end
 
   def move_to_index

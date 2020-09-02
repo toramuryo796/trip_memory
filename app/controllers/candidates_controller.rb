@@ -7,7 +7,7 @@ before_action :find_candidate, only: [:index, :edit,:update, :destroy]
     @count = 1
     # 行きたいカウント
     if @candidate
-      goods = @candidate.goods.count
+      @good = Good.new
     end
   end
 

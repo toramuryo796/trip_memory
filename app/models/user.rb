@@ -8,8 +8,14 @@ class User < ApplicationRecord
   has_many :groups, through: :user_groups, dependent: :destroy
   has_many :candidates
   has_many :plans
-  has_one  :good
+  has_many  :goods
   # has_many :memories
+
+  def already_good?(candidate)
+    self.goods.exists?(candidate_id: candidate.id)
+  end
+
+
   
   all_characters = /\A[0-9a-zA-Zぁ-んァ-ンー-龥]+\Z/
   with_options presence: true do
