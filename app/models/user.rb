@@ -8,7 +8,8 @@ class User < ApplicationRecord
   has_many :groups, through: :user_groups, dependent: :destroy
   has_many :candidates
   has_many :plans
-  has_many  :goods
+  has_many :goods
+  has_many :schedules 
   # has_many :memories
 
   def already_good?(candidate)

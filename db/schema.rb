@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_01_145641) do
+ActiveRecord::Schema.define(version: 2020_09_02_123441) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -85,6 +85,18 @@ ActiveRecord::Schema.define(version: 2020_09_01_145641) do
     t.index ["user_id"], name: "index_plans_on_user_id"
   end
 
+  create_table "schedules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "move_time", null: false
+    t.string "program", null: false
+    t.integer "category_id", null: false
+    t.bigint "plan_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["plan_id"], name: "index_schedules_on_plan_id"
+    t.index ["user_id"], name: "index_schedules_on_user_id"
+  end
+
   create_table "user_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "group_id", null: false
@@ -115,6 +127,8 @@ ActiveRecord::Schema.define(version: 2020_09_01_145641) do
   add_foreign_key "plans", "candidates"
   add_foreign_key "plans", "groups"
   add_foreign_key "plans", "users"
+  add_foreign_key "schedules", "plans"
+  add_foreign_key "schedules", "users"
   add_foreign_key "user_groups", "groups"
   add_foreign_key "user_groups", "users"
 end
