@@ -54,6 +54,6 @@ before_action :find_candidate, only: [:index, :edit,:update, :destroy]
   end
   
   def find_candidate
-    @candidate = Candidate.find_by(params[:id])
+    @candidate = Candidate.find_by(id: params[:id])
   end
 end
