@@ -48,6 +48,9 @@
             <%= link_to "決定！！", new_plan_path, local: true %>
           </div>
         </div>
+        <div class="created_date">
+          <%= candidate.created_at %>
+        </div>
       </div>
     </div>
     <% @count+=1 %>  <%# 候補数の数字 %>
