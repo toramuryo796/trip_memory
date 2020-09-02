@@ -1,7 +1,7 @@
 User.create(
   [
-    {nickname: "ishida", email: "ishida@gmail.com", password: "asd123", password_confirmation: "asd123" },
-    {nickname: "masuda", email: "masuda@gmail.com", password: "asd123", password_confirmation: "asd123" }
+    {user_ID: "ishida", email: "ishida@gmail.com", password: "asd123", password_confirmation: "asd123" },
+    {user_ID: "masuda", email: "masuda@gmail.com", password: "asd123", password_confirmation: "asd123" }
   ]
 )
 

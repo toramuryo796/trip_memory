@@ -15,14 +15,14 @@
       <div class="member-label-form group-form">
         <%= f.label :members, "メンバーを入力してください:", class:"member-label" %>
       </div>
-      <div class="member-nickname-form group-form">
+      <div class="member-user_ID-form group-form">
         <ul class="group-form" id="add-member-list">
           <li class="member-box-list" data-num="1">
             <%= f.text_field :user_ids, name:'group[user_ids][]', class:"member-input-text", placeholder:"メンバーのユーザー名を入力してください",  data:{num:1}%>
             <input type="button" value="削除" class="delete-btn" data-num="1">
           </li>
         </ul>
-        <input name="group[user_ids][]" type="hidden" value=<%= current_user.nickname %> > <%# 自分の情報も送付 %>
+        <input name="group[user_ids][]" type="hidden" value=<%= current_user.user_ID %> > <%# 自分の情報も送付 %>
       </div>
     </div>
       <div class="group-form" id="add-member-box">

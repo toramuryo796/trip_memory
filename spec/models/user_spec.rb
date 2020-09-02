@@ -8,15 +8,15 @@ RSpec.describe User, type: :model do
     it "全て正しい情報を入力したら登録できる" do
       expect(@user).to be_valid
     end
-    it "nicknameが空だと登録できない" do
-      @user.nickname = nil
+    it "user_IDが空だと登録できない" do
+      @user.user_ID = nil
       @user.valid?
-      expect(@user.errors.full_messages).to include("Nickname can't be blank")
+      expect(@user.errors.full_messages).to include("user_ID can't be blank")
     end
-    it "nicknameが41文字以上だと登録できない" do
-      @user.nickname = Faker::Lorem.characters(number: 41)
+    it "user_IDが41文字以上だと登録できない" do
+      @user.user_ID = Faker::Lorem.characters(number: 41)
       @user.valid?
-      expect(@user.errors.full_messages).to include("Nickname is invalid. Input within 40 characters")
+      expect(@user.errors.full_messages).to include("user_ID is invalid. Input within 40 characters")
     end
     it "emailが空だと登録できない" do
       @user.email = nil

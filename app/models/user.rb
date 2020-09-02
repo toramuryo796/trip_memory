@@ -19,7 +19,7 @@ class User < ApplicationRecord
   
   all_characters = /\A[0-9a-zA-Zぁ-んァ-ンー-龥]+\Z/
   with_options presence: true do
-    validates :nickname, format: {with: all_characters}, length: {maximum: 40, message: "is invalid. Input within 40 characters"}
+    validates :user_ID, format: {with: all_characters}, length: {maximum: 40, message: "is invalid. Input within 40 characters"}
   end
   validates :password, format: {with: /(?=.*\d+.*)(?=.*[a-zA-Z]+.*)+/, message: "is invalid.Input half_width characters and number."}
   validates :email,    format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, message: "is invalid. Include half_characters with '@'"}
