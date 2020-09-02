@@ -1,5 +1,5 @@
 class CandidatesController < ApplicationController
-before_action :find_group, only: [:index, :new, :create, :edit, :destroy]
+before_action :find_group, only: [:index, :new, :create, :edit, :update, :destroy]
 before_action :find_candidate, only: [:index, :edit,:update, :destroy]
 
   def index
@@ -29,7 +29,7 @@ before_action :find_candidate, only: [:index, :edit,:update, :destroy]
   
   def update
     if @candidate.update(edit_params)
-      redirect_to root_path
+      redirect_to group_candidates_path(@group, @candidate)
     else
       render :edit
     end

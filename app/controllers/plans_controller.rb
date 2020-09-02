@@ -1,5 +1,5 @@
 class PlansController < ApplicationController
-  before_action :find_group,       only: [:index,:new, :create, :edit]
+  before_action :find_group,       only: [:index,:new, :create, :edit, :destroy, :update]
   before_action :find_candidate,   only: [:index,:new]
   before_action :find_plan,        only: [:edit, :update, :destroy]
   
@@ -24,7 +24,8 @@ class PlansController < ApplicationController
   end
 
   def update
-    if @plan.update(paln_params)
+    binding.pry
+    if @plan.update(plan_params)
       redirect_to group_plans_path(@group, @plan)
     else
       render :edit
