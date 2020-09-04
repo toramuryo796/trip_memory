@@ -1,0 +1,38 @@
+<%= form_with model: Schedule.new  do |f| %>
+  <div class="hidden">
+    <%= f.text_field :day, value:1, class: "how-day"%>
+    <%= f.text_field :format, value: plan.id, class: "plan-id"%>
+  </div>
+  <div class="form-box hidden-form">
+    <div class="from-guide">
+      時間
+    </div>
+    <div class="time-box">
+      <%= f.collection_select(:hour_id, Hour.all, :id, :name, {include_blank:"---"},{class: "hour_form", id:"hour"} )%>
+      :
+      <%= f.collection_select(:minute_id, Minute.all, :id, :name, {include_blank:"---"},{class: "minute_form", id:"minute"} )%>
+    </div>
+  </div>
+
+  <div class="form-box">
+    <div class="from-guide">
+      カテゴリー
+    </div>
+    <div class="category-box">
+      <%= f.collection_select(:category_id, Category.all, :id, :name, {include_blank:"---"},{class: "category_form", id:"category"} )%>
+    </div>
+  </div>
+
+  <div class="form-box">
+    <div class="from-guide">
+    予定
+    </div>
+    <div class="program-box">
+      <%= f.text_field :program, class: "program_form", id:"program" %>
+    </div>
+  </div>
+
+  <div class="make-schedule">
+    <%= f.submit "作成", class:"schedule-submit", id: "submit" %>
+  </div>
+<% end %>

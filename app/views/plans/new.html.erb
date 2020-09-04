@@ -5,8 +5,8 @@
   <h2> 旅行計画の詳細を記入してください </h2>
 </div>
 <div class="plan-form-box">
-  <%= form_with model: [@plan, @group], url: group_plans_path(@group, @plan), method: :post, local: true do |f| %>
-
+  <%= form_with  url: group_plans_path(@group, @plan), method: :post, local: true do |f| %>
+  
     <div class="plan_form">
       <div class="form-guide">
         旅行計画のタイトル(必須)
@@ -21,7 +21,7 @@
         行き先(必須)
       </div>
       <div class="form-box">
-          <%= f.text_field :destination, class: "destination-form", placeholder:"行き先を記入してください" %>
+          <%= f.text_field :destination, class: "destination-form", placeholder:"行き先を記入してください", value:"#{@candidate.destination}" %>
       </div>
     </div>
     
@@ -47,7 +47,7 @@
         移動手段
       </div>
       <div class="form-box">
-        <%= f.collection_select(:transportation_id, Transportation.all, :id, :name, {include_blank:"---"}, {class: "transportation-form"}) %>
+        <%= f.collection_select(:transportation_id, Transportation.all, :id, :name, {include_blank:"---"}, {class: "transportation-form", value:"#{@candidate.transportation_id}" })%>
       </div>
     </div>
     <div class="plan_form">

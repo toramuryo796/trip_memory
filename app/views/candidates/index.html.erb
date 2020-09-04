@@ -44,7 +44,9 @@
             <%= image_tag candidate.image.variant(resize:'500x500'), class:"candidate-image" if candidate.image.attached?%>
           </div>
         </div>
+
         <div class="index-footer">
+
           <div class="good-btn" id="good-btn-<%= candidate.id%>">
             <% if current_user.already_good?(candidate) %> 
               <%# いいね押してたら取り消しボタンを表示 %>
@@ -56,9 +58,10 @@
               <%= button_to "行きたい！！", group_candidate_goods_path(@group, candidate, @good), method: :post, class:"set-good good-btn", id:"set-good-#{candidate.id}", data:{num:candidate.id}, data:{group: @group.id}%>
             <% end %>
             <div class="good-count" ><%= candidate.goods.count %>人</div>
-          </div> 
+          </div>
+           
           <div class="decide-btn">
-            <%= link_to "決定！！", new_group_plan_path(@group, @plan), local: true %>
+            <%= link_to "決定！！", new_group_plan_path(@group,candidate.id, @plan), local: true %>
           </div>
         </div>
         <div class="created_date">

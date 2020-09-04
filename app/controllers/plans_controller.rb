@@ -4,6 +4,7 @@ class PlansController < ApplicationController
   before_action :find_plan,        only: [:edit, :update, :destroy]
   
   def new
+    @candidate = Candidate.find_by(id: params[:format])
     @plan = Plan.new()
   end
 
@@ -24,7 +25,6 @@ class PlansController < ApplicationController
   end
 
   def update
-    binding.pry
     if @plan.update(plan_params)
       redirect_to group_plans_path(@group, @plan)
     else
@@ -39,7 +39,7 @@ class PlansController < ApplicationController
 
   private 
   def plan_params
-    params.require(:group).permit(:title, :destination, :departure_day, :return_day, :hotel, :hotel_memo, :transportation_id, :ticket, :start_place).merge(group_id: params[:group_id], user_id: current_user.id)
+    params.permit(:title, :destination, :departure_day, :return_day, :hotel, :hotel_memo, :transportation_id, :ticket, :start_place).merge(group_id: params[:group_id], user_id: current_user.id)
   end
 
   def find_group

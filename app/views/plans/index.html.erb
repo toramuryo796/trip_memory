@@ -43,7 +43,11 @@
         移動手段
       </div>
       <div class="plan-transportation plan-index">
-        <%= plan.transportation.name %>
+        <% if plan.transportation %>
+          交通手段：<%= plan.transportation.name %>
+        <% else %>
+          交通手段：
+        <% end %>
       </div>
     </div>
     <div class="plan-content">
@@ -81,11 +85,12 @@
       </div>
     </div>
 
-    <div class="plan-content">
-      <div class="-guide plan-guide">
-      </div>
-      <div class="plan- plan-index">
-      </div>
+    <div class="mova-to-shcedule">
+      <% if plan.schedules.present? %>
+        <%= link_to "スケジュールを確認/編集する", schedules_path(plan.day_hows), local: true %>
+      <% else %>
+        <%= link_to "スケジュールを作成する", schedules_path(plan.id), local: true %>
+      <% end %>
     </div>
   </div>
 <% end %>

@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2020_09_02_141902) do
   end
 
   create_table "day_hows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "days", null: false
+    t.integer "day", null: false
     t.bigint "plan_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -94,17 +94,16 @@ ActiveRecord::Schema.define(version: 2020_09_02_141902) do
   end
 
   create_table "schedules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.time "move_time", null: false
+    t.integer "hour_id", null: false
+    t.integer "minute_id", null: false
     t.string "program", null: false
     t.integer "category_id", null: false
+    t.integer "day", null: false
     t.bigint "plan_id", null: false
     t.bigint "user_id", null: false
-    t.bigint "schedule_id", null: false
+    t.bigint "how_day_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["plan_id"], name: "index_schedules_on_plan_id"
-    t.index ["schedule_id"], name: "index_schedules_on_schedule_id"
-    t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 
   create_table "user_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -138,9 +137,6 @@ ActiveRecord::Schema.define(version: 2020_09_02_141902) do
   add_foreign_key "plans", "candidates"
   add_foreign_key "plans", "groups"
   add_foreign_key "plans", "users"
-  add_foreign_key "schedules", "plans"
-  add_foreign_key "schedules", "schedules"
-  add_foreign_key "schedules", "users"
   add_foreign_key "user_groups", "groups"
   add_foreign_key "user_groups", "users"
 end
