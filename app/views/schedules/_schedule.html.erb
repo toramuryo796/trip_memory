@@ -1,0 +1,19 @@
+  <tr class="table-list" id="table-list-<%= schedule.id %>">
+    <td class="schedule-list time-list">
+      <%= schedule.hour.name %>:<%= schedule.minute.name %>
+    </td>
+    <td class="schedule-list category-list">
+      <%= schedule.category.name %>
+    </td>
+    <td class="schedule-list program-list">
+      <%= schedule.program %>
+    </td>
+    <td class="update">
+      <%= link_to '編集', edit_schedule_path(schedule.id), data: { remote: true } %>
+    </td>
+    <td class="delete">
+      <%= link_to '削除',schedule_path(schedule), 
+                  method: :delete,
+                  data: { remote: true } %>
+    </td>
+  </tr>

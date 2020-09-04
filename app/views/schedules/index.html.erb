@@ -3,6 +3,7 @@
 <div class="day-display">
   <h2> <%= @passed %>日目のスケジュール </h2>
 </div>
+<%# ↑以外の日のスケジュール %>
 <div class="other-days">
   <ul class="other-days-list">
     <li class="day-list">
@@ -12,12 +13,14 @@
     </li>
   </ul>
 </div>
+<%# /↑以外の日のスケジュール %>
 <div class="day-schedule-large-box">
-
+  <%# ajaxのform %>
   <div id="schedule-form">
-    <%= render partial: "form", locals:{plan: @plan} %>
+    <%= render partial: "form", locals:{plan_id: @plan_id, schedule: Schedule.new, value: "作成" } %>
   </div>
-
+  <%# /ajaxのform %>
+  <%# schedule表%>
   <table id="day-table" border="1">
     <tbody id="tbody">
       <tr>
@@ -25,18 +28,21 @@
         <th>カテゴリー</th>
         <th>予定</th>
       </tr>
-      <%# if @day_how.schedule %>
-        <%# @day_how.schedules.each do |schedule|%>
-          <%#<tr class="exist-tr">
-            <td class="time-td"><%= schedule.hour.name %><%#= schedule.minute.name %><%#> </td>
-            <td class="category-td"><%= schedule.category.name %><%#</td>
-            <td class="program-td"><%= schedule.program %><%#<th>
+      <%# DB保存済みのスケジュール %>
+      <% if @day_schedules %>
+        <% @day_schedules.each do |schedule|%>
+          <tr class="exist-tr">
+            <td class="time-td"><%= schedule.hour.name %><%= schedule.minute.name %> </td>
+            <td class="category-td"><%= schedule.category.name %></td>
+            <td class="program-td"><%= schedule.program %><th>
           </tr>
         <% end %>
-      <%# end %>
-      <% @schedules.each do |schedule| %>
-        <%= render schedule %>
       <% end %>
+      <%# /DB保存済みのスケジュール %>
+      <%# /ajaxでのスケジュール登録%>
+        <%= render @schedules %>
+      <%# /ajaxでのスケジュール登録%>
     </tbody>
   </table>
+  <%# /schedule表%>
 </div>

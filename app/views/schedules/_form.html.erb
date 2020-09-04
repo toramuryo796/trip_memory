@@ -1,7 +1,7 @@
-<%= form_with model: Schedule.new  do |f| %>
+<%= form_with model: schedule, id:"schedule-form"  do |f| %>
   <div class="hidden">
-    <%= f.text_field :passed, value: 1, class: "how-day"%>
-    <%= f.text_field :format, value: plan.id, class: "plan-id"%>
+    <%= f.text_field :day_id, value: 1, class: "how-day"%>
+    <%= f.text_field :format, value: plan_id, class: "plan-id"%>
   </div>
   <div class="form-box hidden-form">
     <div class="from-guide">
@@ -33,6 +33,14 @@
   </div>
 
   <div class="make-schedule">
-    <%= f.submit "作成", class:"schedule-submit", id: "submit" %>
+    <%= f.submit value, class:"schedule-submit", id: "submit" %>
+  </div>
+
+  <div class="back-new"> 
+    <% if value == "更新" %>
+      <%= link_to new_schedule_path, data: { remote: true } do %>
+        <input type="button" class="back-botton" value="取消">
+      <% end %>
+    <% end %>
   </div>
 <% end %>
