@@ -53,9 +53,11 @@ ActiveRecord::Schema.define(version: 2020_09_02_141902) do
   create_table "day_hows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "passed", null: false
     t.bigint "plan_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["plan_id"], name: "index_day_hows_on_plan_id"
+    t.index ["user_id"], name: "index_day_hows_on_user_id"
   end
 
   create_table "goods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -131,6 +133,7 @@ ActiveRecord::Schema.define(version: 2020_09_02_141902) do
   add_foreign_key "candidates", "groups"
   add_foreign_key "candidates", "users"
   add_foreign_key "day_hows", "plans"
+  add_foreign_key "day_hows", "users"
   add_foreign_key "goods", "candidates"
   add_foreign_key "goods", "users"
   add_foreign_key "plans", "candidates"

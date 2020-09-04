@@ -5,15 +5,15 @@
   <h2> 旅行計画の詳細を記入してください </h2>
 </div>
 <div class="plan-form-box">
-  <%= form_with model: [@plan, @group], url: group_plan_path(@group, @plan), method: :patch, local: true do |f| %>
+  <%= form_with model: [@group, @plan], url: group_plan_path(@group, @plan), method: :patch, local: true do |f| %>
 
     <div class="plan_form">
       <div class="form-guide">
         旅行計画のタイトル(必須)
       </div>
-      <div class="form-box">
-        <%= f.text_field :title, class: "title-form", placeholder:"タイトルを記入してください" %>
-      </div>
+        <div class="form-box">
+          <%= f.text_field :title, class: "title-form",placeholder:"タイトルを記入してください" %>
+        </div>
     </div>
 
     <div class="plan_form">

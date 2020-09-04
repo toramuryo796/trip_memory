@@ -8,6 +8,6 @@ class Schedule < ApplicationRecord
   belongs_to_active_hash :hour
   belongs_to_active_hash :minute
 
-  validates :category_id, :hour_id, :minute_id, presence: true
+  validates  :hour_id, :minute_id, presence: true
 
 end

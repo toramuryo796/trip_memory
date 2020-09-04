@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :plans
   has_many :goods
   has_many :schedules 
+  has_many :day_hows 
   # has_many :memories
 
   def already_good?(candidate)

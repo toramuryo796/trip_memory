@@ -18,7 +18,8 @@ class DayHowPlans
     )
     DayHow.create(
       passed: 1, 
-      plan_id: plan.id
+      plan_id: plan.id,
+      user_id: user_id
     )
   end
 end

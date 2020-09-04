@@ -6,10 +6,13 @@
 <%# ↑以外の日のスケジュール %>
 <div class="other-days">
   <ul class="other-days-list">
-    <li class="day-list">
-      <% @other_days.each do |other| %>
+    <% @other_days.each do |other| %>
+      <li class="day-list">
         <%= other.passed %>日目
-      <% end %>
+      </li>
+    <% end %>
+    <li>
+      <%= link_to  "その他の日程を作成する", new_day_how_path(@plan_id), local: true %>
     </li>
   </ul>
 </div>
@@ -28,17 +31,6 @@
         <th>カテゴリー</th>
         <th>予定</th>
       </tr>
-      <%# DB保存済みのスケジュール %>
-      <% if @day_schedules %>
-        <% @day_schedules.each do |schedule|%>
-          <tr class="exist-tr">
-            <td class="time-td"><%= schedule.hour.name %><%= schedule.minute.name %> </td>
-            <td class="category-td"><%= schedule.category.name %></td>
-            <td class="program-td"><%= schedule.program %><th>
-          </tr>
-        <% end %>
-      <% end %>
-      <%# /DB保存済みのスケジュール %>
       <%# /ajaxでのスケジュール登録%>
         <%= render @schedules %>
       <%# /ajaxでのスケジュール登録%>

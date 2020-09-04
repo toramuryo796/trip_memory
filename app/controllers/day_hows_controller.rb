@@ -5,22 +5,33 @@ class DayHowsController < ApplicationController
   end 
 
   def new
-    @day = DayHow.new
-    @plan = Plan.find_by(id: params[:plan_id])
-    @plan_id = @plan.id 
+    @day_how = DayHow.new
+    @plan = Plan.find_by(id: params[:format])         #formatにはplanのidが入っている
   end
 
   def create
-    @other_day = DayHow.new(day: day_how_params[:day], plan_id: day_how_params[:plan_id])
-    if @other_day.save
-      redirect_to schedules_path
+    @plan = Plan.find_by(id: create_day_how[:format])
+    day_how = DayHow.new(passed: create_day_how[:passed],
+      plan_id: create_day_how[:format],
+      user_id: create_day_how[:user_id]
+    )
+    if day_how != @plan.day_hows                # すでに取得している日程じゃないか確認
+      if day_how.save
+        redirect_to schedules_path(@plan.id)
+      else
+        render :new
+      end
     else
-      redirect_to group_plans_path
+      render :new
     end
   end
 
   private
   def day_how_params
-    params.permit(:passed).merge(user_id: current_user.id, group_id: params[:group_id], plan_id: params[:plan_id])
+    params.permit(:passed, :format).merge(user_id: current_user.id)
+  end
+  
+  def create_day_how
+    params.require(:day_how).permit(:passed, :format).merge(user_id: current_user.id)
   end
 end
