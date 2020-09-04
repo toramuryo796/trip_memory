@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
   root "groups#index"
   resources :schedules,     only: [:index, :create, :show, :update, :delete]
-  resources :day_hows,      only: [:new, :create, :show, :update, :destroy]
+  resources :day_hows,      only: [:index, :new, :create, :show, :update, :destroy]
 
   resources :groups,       only: [:index, :new, :create, :show, :destroy] do
     resources :candidates, only: [:index, :new, :create, :edit, :update, :destroy ] do
