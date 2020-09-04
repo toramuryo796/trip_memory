@@ -1,6 +1,6 @@
 <%= form_with model: Schedule.new  do |f| %>
   <div class="hidden">
-    <%= f.text_field :day, value:1, class: "how-day"%>
+    <%= f.text_field :passed, value: 1, class: "how-day"%>
     <%= f.text_field :format, value: plan.id, class: "plan-id"%>
   </div>
   <div class="form-box hidden-form">
@@ -28,7 +28,7 @@
     予定
     </div>
     <div class="program-box">
-      <%= f.text_field :program, class: "program_form", id:"program" %>
+      <%= f.text_area :program, class: "program_form", id:"program" %>
     </div>
   </div>
 

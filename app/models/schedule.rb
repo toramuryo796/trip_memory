@@ -1,6 +1,6 @@
 class Schedule < ApplicationRecord
   belongs_to :user
-  belongs_to  :plan
+  belongs_to :plan
   belongs_to :day_how
 
   extend ActiveHash::Associations::ActiveRecordExtensions

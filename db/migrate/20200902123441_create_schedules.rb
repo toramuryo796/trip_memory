@@ -1,14 +1,13 @@
 class CreateSchedules < ActiveRecord::Migration[6.0]
   def change
     create_table :schedules do |t|
-      t.integer    :hour_id,        null: false
-      t.integer    :minute_id,      null: false
-      t.string     :program,        null: false
-      t.integer    :category_id,    null: false
-      t.integer    :day,            null: false
+      t.string     :hour_id
+      t.string     :minute_id
+      t.text       :program,        null: false
+      t.integer    :category_id
       t.bigint     :plan_id,        null: false, foreign_key: true
       t.bigint     :user_id,        null: false, foreign_key: true  
-      t.bigint     :how_day_id,     foreign_key: true  
+      t.bigint     :day_how_id,     foreign_key: true  
       t.timestamps
     end
   end

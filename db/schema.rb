@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2020_09_02_141902) do
   end
 
   create_table "day_hows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "day", null: false
+    t.integer "passed", null: false
     t.bigint "plan_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -94,14 +94,13 @@ ActiveRecord::Schema.define(version: 2020_09_02_141902) do
   end
 
   create_table "schedules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "hour_id", null: false
-    t.integer "minute_id", null: false
-    t.string "program", null: false
-    t.integer "category_id", null: false
-    t.integer "day", null: false
+    t.string "hour_id"
+    t.string "minute_id"
+    t.text "program", null: false
+    t.integer "category_id"
     t.bigint "plan_id", null: false
     t.bigint "user_id", null: false
-    t.bigint "how_day_id"
+    t.bigint "day_how_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
