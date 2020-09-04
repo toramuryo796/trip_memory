@@ -20,9 +20,17 @@
       <div class="form-guide">
         行き先(必須)
       </div>
-      <div class="form-box">
-          <%= f.text_field :destination, class: "destination-form", placeholder:"行き先を記入してください", value:"#{@candidate.destination}" %>
-      </div>
+      <% if @candidate %>
+        <% if @candidate.destination %>
+          <div class="form-box">
+              <%= f.text_field :destination, class: "destination-form", placeholder:"行き先を記入してください", value:"#{@candidate.destination}" %>
+          </div>
+        <% end %>
+      <% else %>
+          <div class="form-box">
+              <%= f.text_field :destination, class: "destination-form", placeholder:"行き先を記入してください" %>
+          </div>
+        <% end %>
     </div>
     
     <div class="plan_form">
@@ -47,7 +55,7 @@
         移動手段
       </div>
       <div class="form-box">
-        <%= f.collection_select(:transportation_id, Transportation.all, :id, :name, {include_blank:"---"}, {class: "transportation-form", value:"#{@candidate.transportation_id}" })%>
+        <%= f.collection_select(:transportation_id, Transportation.all, :id, :name, {include_blank:"---"}, {class: "transportation-form" })%>
       </div>
     </div>
     <div class="plan_form">

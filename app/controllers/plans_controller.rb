@@ -9,8 +9,9 @@ class PlansController < ApplicationController
   end
 
   def create
-    plan = Plan.new(plan_params)
-    if plan.save
+    plan = DayHowPlans.new(plan_params)
+    if plan.valid?
+      plan.save
       redirect_to group_plans_path(@group, @plan)
     else
       render :new

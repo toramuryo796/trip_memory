@@ -86,11 +86,7 @@
     </div>
 
     <div class="mova-to-shcedule">
-      <% if plan.schedules.present? %>
-        <%= link_to "スケジュールを確認/編集する", schedules_path(plan.day_hows), local: true %>
-      <% else %>
-        <%= link_to "スケジュールを作成する", schedules_path(plan.id), local: true %>
-      <% end %>
+        <%= link_to "スケジュールを作成/確認する", schedules_path(plan.id), local: true %>
     </div>
   </div>
 <% end %>
