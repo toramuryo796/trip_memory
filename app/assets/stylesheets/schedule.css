@@ -1,0 +1,12 @@
+.category-image{
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  border-radius: 50% 50%;
+}
+.category-list{
+  text-align: center;
+}
+.hidden{
+  display: none;
+}

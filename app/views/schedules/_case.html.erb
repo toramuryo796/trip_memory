@@ -1,0 +1,19 @@
+<% category = schedule.category_id %>
+<% case category %>
+  <% when 1 %>
+    <%= image_tag "move.jpeg", class: "category-image" %>
+  <% when 2 %>
+    <%= image_tag "lunch.jpeg", class: "category-image" %>
+  <% when 3 %>
+    <%= image_tag "hotel.jpeg", class: "category-image" %>
+  <% when 4 %>
+    <%= image_tag "sightseeing.png", class: "category-image" %>
+  <% when 5 %>
+    <%= image_tag "summer01.png", class: "category-image" %>
+  <% when 6 %>
+    <%= image_tag "nature.jpeg", class: "category-image" %>
+  <% when 7 %>
+    <%= image_tag "work.jpeg", class: "category-image" %>
+  <% when 7 %>
+    <p> その他 </p>
+<% end %>

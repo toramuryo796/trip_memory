@@ -28,7 +28,7 @@ class SchedulesController < ApplicationController
       @day_schedules = day_how.schedules
       @day_id = day_how.id
     end
-    @group = @plan.group                                 # planのグループを特定
+    @group = @plan.group.id                                # planのグループを特定
     # @schedules = Schedule.where(plan_id: plan_id )     # planのスケジュールを特定
   end
   

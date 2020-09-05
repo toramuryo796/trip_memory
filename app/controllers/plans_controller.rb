@@ -19,6 +19,7 @@ class PlansController < ApplicationController
   end
 
   def index
+    @group = Group.find_by(params[:group_id])
     @plans = Plan.includes(:user).order('created_at DESC')
   end
 
@@ -44,7 +45,7 @@ class PlansController < ApplicationController
   end
 
   def find_group
-    @group = Group.find(params[:group_id])
+    @group = Group.find_by(id: params[:id])
   end
 
   def find_candidate

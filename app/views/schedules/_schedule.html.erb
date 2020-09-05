@@ -3,7 +3,7 @@
       <%= schedule.hour.name %>:<%= schedule.minute.name %>
     </td>
     <td class="schedule-list category-list">
-      <%= schedule.category.name %>
+      <%= render partial: 'case' ,locals: {schedule: schedule} %>
     </td>
     <td class="schedule-list program-list">
       <%= schedule.program %>
