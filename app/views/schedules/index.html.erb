@@ -8,11 +8,13 @@
   <ul class="other-days-list">
     <% @other_days.each do |other| %>
       <li class="day-list">
-        <%= other.passed %>日目
+        <%= link_to schedules_path(day_how_id: other.id, plan_id: @plan.id),  local: true do %>
+          <%= other.passed %>日目
+        <% end %>
       </li>
     <% end %>
     <li>
-      <%= link_to  "その他の日程を作成する", new_day_how_path(@plan_id), local: true %>
+      <%= link_to  "その他の日程を作成する", new_day_how_path(plan_id: @plan_id), local: true %>
     </li>
   </ul>
 </div>
@@ -20,7 +22,7 @@
 <div class="day-schedule-large-box">
   <%# ajaxのform %>
   <div id="schedule-form">
-    <%= render partial: "form", locals:{plan_id: @plan_id, schedule: Schedule.new, value: "作成" } %>
+    <%= render partial: "form", locals:{plan_id: @plan_id, schedule: Schedule.new, value: "作成" , day: @passed} %>
   </div>
   <%# /ajaxのform %>
   <%# schedule表%>

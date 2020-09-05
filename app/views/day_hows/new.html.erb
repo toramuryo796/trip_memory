@@ -1,7 +1,7 @@
 <h1>スケジュール日程の追加</h1>
 <%= form_with model: @day_how, url: day_hows_path,  method: :post, local: true do |f| %>
   <%= f.text_field :passed, class: "passed-form" %>日目を加える
-  <%= f.text_field :format, class: "hidden plan_id_form", value: "#{@plan.id}" %>
+  <%= f.text_field :plan_id, class: "hidden plan_id_form", value: "#{@plan_id}" %>
   <%= f.submit "作成" %>
 <% end %>
-<%= link_to "スケジュール画面に戻る", schedules_path(@plan.id), local: true %>
+<%= link_to "スケジュール画面に戻る", schedules_path(plan_id: @plan_id), local: true %>

@@ -1,3 +1,3 @@
 document.getElementById('table-list-<%= @schedule.id %>').innerHTML = '<%= j(render @schedule) %>'
 var form = document.getElementById("schedule-form") 
-form.outerHTML= '<%= j(render "form", schedule: Schedule.new, plan_id: @plan_id, value: "投稿") %>'
+form.outerHTML= '<%= j(render "form", schedule: Schedule.new, plan_id: @plan_id, value: "投稿", day: @schedule.day_how_id) %>'
