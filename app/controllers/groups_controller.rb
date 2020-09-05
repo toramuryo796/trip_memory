@@ -56,7 +56,7 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.find(params[:id])
+    @group = Group.find_by(params[:group_id])
   end
 
   def destroy

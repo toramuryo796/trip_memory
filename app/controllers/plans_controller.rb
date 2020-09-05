@@ -6,7 +6,9 @@ class PlansController < ApplicationController
   def new
     @group = Group.find_by(id: params[:group_id]) 
     @candidate = Candidate.find_by(id: params[:candidate_id])
-    @candidate_id = @candidate.id
+    if @candidate
+      @candidate_id = @candidate.id
+    end
     @plan = Plan.new()
   end
 
@@ -44,6 +46,11 @@ class PlansController < ApplicationController
     @group = Plan.find_by(id: params[:group_id])
     @plan.destroy
     redirect_to group_plans_path(@group, @plan)
+  end
+
+  def show
+    @group = Group.find_by(id: params[:group_id])
+    @plan = Plan.find(params[:id])
   end
 
   private 

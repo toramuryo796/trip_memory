@@ -14,10 +14,11 @@
   <%= form_with url: group_plans_path(@group, @plan), method: :post, local: true do |f| %>
   
   <%#= candidateのid %>
-  <div class="candidate-id hidden">
-    <%= f.text_field :candidate_id, value: "#{@candidate_id}" %>
-  </div>
-
+  <% if @candidate %>
+    <div class="candidate-id hidden">
+      <%= f.text_field :candidate_id, value: "#{@candidate_id}" %>
+    </div>
+  <% end %>
     <div class="plan_form">
       <div class="form-guide">
         旅行計画のタイトル(必須)

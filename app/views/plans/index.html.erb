@@ -1,15 +1,15 @@
 <h2>旅行計画一覧</h2>
+<p>※タイトルをクリックすると詳細ページに移動します </p>
+
 <% @plans.each do |plan| %>
   <div class="paln-lists">
 
     <div class="plan-content">
-      <div class="plan-title plan-index"> 
-        <h1 class="trip-title"><%= plan.title %></h1>
+      <div class="plan-title plan-index">
+        <%= link_to group_plan_path(@group, plan), local: true do %> 
+          <h1 class="trip-title"><%= plan.title %></h1>
+        <% end %>
       </div>
-    </div>
-
-    <div class="candidate-header">
-      <%= link_to "編集", edit_group_plan_path(@group, plan), local: true %> / <%= link_to "削除", group_plan_path(@group, plan), method: :delete, local: true %>
     </div>
 
     <div class="plan-content">
@@ -39,9 +39,6 @@
     </div>
 
     <div class="plan-content">
-      <div class="transportaion-guide plan-guide">
-        移動手段
-      </div>
       <div class="plan-transportation plan-index">
         <% if plan.transportation %>
           交通手段：<%= plan.transportation.name %>
@@ -58,32 +55,6 @@
         <%= plan.start_place %>
       </div>
     </div>
-    <div class="plan-content">
-      <div class="ticket-guide plan-guide">
-        移動手段に関するメモ
-      </div>
-      <div class="plan-ticket plan-index">
-        <%= plan.ticket %>
-      </div>
-    </div>
-
-    <div class="plan-content">
-      <div class="hotel-guide plan-guide">
-        ホテル名
-      </div>
-      <div class="plan-hotel plan-index">
-        <%= plan.hotel %>
-      </div>
-    </div>
-
-    <div class="plan-content">
-      <div class="hotel-memo-guide plan-guide">
-        ホテルに関するメモ
-      </div>
-      <div class="plan-hotel-memo plan-index">
-        <%= plan.hotel_memo %>
-      </div>
-    </div>
 
     <div class="reference-image-box">
       <div class="reference-image candidate-guide">
@@ -92,8 +63,5 @@
       <%= image_tag plan.candidate.image.variant(resize:'500x500'), class:"candidate-image" if plan.candidate.image.attached?%>
     </div>
 
-    <div class="mova-to-shcedule">
-        <%= link_to "スケジュールを作成/確認する", schedules_path(plan_id: plan.id), local: true %>
-    </div>
   </div>
 <% end %>

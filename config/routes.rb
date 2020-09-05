@@ -11,6 +11,6 @@ Rails.application.routes.draw do
     resources :candidates, only: [:index, :new, :create, :edit, :update, :destroy ] do
       resources :goods,    only: [:create,:destroy]
     end
-    resources :plans,      only: [:index, :new, :create, :edit, :update, :destroy ]
+    resources :plans
   end
 end

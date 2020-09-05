@@ -11,7 +11,7 @@ class SchedulesController < ApplicationController
     if params[:day_how_passed]
       @plan = Plan.find_by(id: other_schedule[:plan_id])
       @plan_id = @plan.id                                # plan_idを取得
-      @day_how = DayHow.find_by(passed: other_schedule[:day_how_passed], plan_id: other_schedule[:plan_id])
+      @day_how = DayHow.find_by(passed: other_schedule[:day_how_passed])
       @schedules = Schedule.where(plan_id: @plan_id, day_how_id: @day_how.id)  # 日程に該当するのスケジュールを特定
       @passed = @day_how.passed
     else
@@ -21,6 +21,7 @@ class SchedulesController < ApplicationController
       @schedules = Schedule.where(plan_id: @plan_id, day_how_id: @day_how.id)  # 日程に該当するのスケジュールを特定
       @passed = @day_how.passed
     end
+    
     
     @other_days = DayHow.where(plan_id: @plan.id).select(:plan_id, :passed).distinct.order("passed ASC")        # palnのday_howを特定
     @other_days.each do |day_how|                        # 日にち毎の各カラム値を取得する

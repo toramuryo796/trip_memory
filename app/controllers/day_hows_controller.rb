@@ -16,6 +16,7 @@ class DayHowsController < ApplicationController
       plan_id: create_day_how[:plan_id],
       user_id: create_day_how[:user_id]
     )
+    binding.pry
     exsist_day_hows = DayHow.where(plan_id: plan.id).select(:plan_id, :passed).distinct
     count = 0
     # すでに取得している日程じゃないか確認して保存
@@ -26,7 +27,7 @@ class DayHowsController < ApplicationController
     end
     if count < 1                                                                                 #countに加算されていれば、同じ日付があるということなので、保存できない
       if day_how.save
-        redirect_to schedules_path(day_how_id: day_how.id, plan_id: plan.id)
+        redirect_to schedules_path(day_how_passed: day_how.passed, plan_id: plan.id)
       else
         redirect_to new_day_how_path(plan_id: plan.id)
       end
