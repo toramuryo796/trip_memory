@@ -1,12 +1,23 @@
 <div class="plan-article">
   <h1>旅行計画作成</h1>
 </div>
+<%# グループ詳細に戻る %>
+<div class="back-page">
+  <%= link_to "#{@group.name}", groups_path, local: true %>
+</div>
+<%# /グループ詳細に戻る %>
+<%# 両校詳細の記入 %>
 <div class="plan-guide">
   <h2> 旅行計画の詳細を記入してください </h2>
 </div>
 <div class="plan-form-box">
-  <%= form_with  url: group_plans_path(@group, @plan), method: :post, local: true do |f| %>
+  <%= form_with url: group_plans_path(@group, @plan), method: :post, local: true do |f| %>
   
+  <%#= candidateのid %>
+  <div class="candidate-id hidden">
+    <%= f.text_field :candidate_id, value: "#{@candidate_id}" %>
+  </div>
+
     <div class="plan_form">
       <div class="form-guide">
         旅行計画のタイトル(必須)
@@ -20,6 +31,7 @@
       <div class="form-guide">
         行き先(必須)
       </div>
+      <%# 行先候補からの遷移且つ行先を記入していた場合、継承する %>
       <% if @candidate %>
         <% if @candidate.destination %>
           <div class="form-box">
@@ -98,4 +110,5 @@
       </div>
     </div>
   <% end %>
+<%# /旅行詳細の記入 %>
 </div>

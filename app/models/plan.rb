@@ -1,9 +1,10 @@
 class Plan < ApplicationRecord
-  belongs_to :user
-  belongs_to :group
-  belongs_to :candidate, optional: true
-  has_many   :schedules
-  has_many   :day_hows
+  belongs_to        :user 
+  belongs_to        :group
+  belongs_to        :candidate, optional: true
+  has_many          :schedules, dependent: :destroy
+  has_many          :day_hows, dependent: :destroy
+  has_one_attached  :image
   # has_one :Bring
   # has_one :purpose
   # has_one :memory

@@ -1,6 +1,7 @@
 class DayHowPlans
   include ActiveModel::Model
-  attr_accessor :title, :destination, :departure_day, :return_day, :hotel, :hotel_memo, :transportation_id, :ticket, :start_place, :passed, :group_id, :user_id
+  attr_accessor :title, :destination, :departure_day, :return_day, :hotel, :hotel_memo, :transportation_id, :ticket, :start_place, :passed, :group_id, :user_id, :candidate_id
+
 
   def save
     plan = Plan.create(
@@ -14,7 +15,8 @@ class DayHowPlans
       ticket: ticket,
       start_place: start_place,
       group_id: group_id,
-      user_id: user_id
+      user_id: user_id,
+      candidate_id: candidate_id
     )
     DayHow.create(
       passed: 1, 

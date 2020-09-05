@@ -1,17 +1,21 @@
 class PlansController < ApplicationController
-  before_action :find_group,       only: [:index,:new, :create, :edit, :destroy, :update]
+  before_action :find_group,       only: [:index,:create, :update]
   before_action :find_candidate,   only: [:index,:new]
-  before_action :find_plan,        only: [:edit, :update, :destroy]
+  before_action :find_plan,        only: [:edit, :update]
   
   def new
-    @candidate = Candidate.find_by(id: params[:format])
+    @group = Group.find_by(id: params[:group_id]) 
+    @candidate = Candidate.find_by(id: params[:candidate_id])
+    @candidate_id = @candidate.id
     @plan = Plan.new()
   end
 
   def create
-    plan = DayHowPlans.new(plan_params)
-    if plan.valid?
-      plan.save
+    # day_howモデルとのformオブジェクトで一括登録
+    @plan = DayHowPlans.new(create_plan)
+    @group = Group.find_by(id: create_plan[:group_id])
+    if @plan.valid?
+      @plan.save
       redirect_to group_plans_path(@group, @plan)
     else
       render :new
@@ -24,6 +28,7 @@ class PlansController < ApplicationController
   end
 
   def edit
+    @group = Group.find_by(id: params[:group_id])
   end
 
   def update
@@ -35,13 +40,19 @@ class PlansController < ApplicationController
   end
 
   def destroy
+    @plan = Plan.find_by(id: params[:id])
+    @group = Plan.find_by(id: params[:group_id])
     @plan.destroy
     redirect_to group_plans_path(@group, @plan)
   end
 
   private 
   def plan_params
-    params.permit(:title, :destination, :departure_day, :return_day, :hotel, :hotel_memo, :transportation_id, :ticket, :start_place).merge(group_id: params[:group_id], user_id: current_user.id)
+    params.permit(:title, :destination, :departure_day, :return_day, :hotel, :hotel_memo, :transportation_id, :ticket, :start_place, :candidate_id).merge(group_id: params[:group_id], user_id: current_user.id)
+  end
+ 
+  def create_plan
+    params.permit(:title, :destination, :departure_day, :return_day, :hotel, :hotel_memo, :transportation_id, :ticket, :start_place, :group_id, :candidate_id).merge(user_id: current_user.id)
   end
 
   def find_group
