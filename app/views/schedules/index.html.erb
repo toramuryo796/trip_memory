@@ -8,7 +8,7 @@
   <ul class="other-days-list">
     <% @other_days.each do |other| %>
       <li class="day-list">
-        <%= link_to schedules_path(day_how_id: other.id, plan_id: @plan.id),  local: true do %>
+        <%= link_to schedules_path(day_how_passed: other.passed, plan_id: @plan.id),  local: true do %>
           <%= other.passed %>日目
         <% end %>
       </li>

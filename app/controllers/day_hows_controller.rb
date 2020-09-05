@@ -26,7 +26,6 @@ class DayHowsController < ApplicationController
     end
     if count < 1                                                                                 #countに加算されていれば、同じ日付があるということなので、保存できない
       if day_how.save
-        binding.pry
         redirect_to schedules_path(day_how_id: day_how.id, plan_id: plan.id)
       else
         redirect_to new_day_how_path(plan_id: plan.id)
