@@ -10,4 +10,6 @@ class Plan < ApplicationRecord
   # has_one :memory
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :transportation  
+
+  validates :title, :destination, presence: true
 end
