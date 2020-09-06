@@ -26,6 +26,10 @@
         <input name="group[user_ids][]" type="hidden" value=<%= current_user.user_ID %> > <%# 自分の情報も送付 %>
       </div>
     </div>
+     <div class="group-form" id="add-member-box">
+        <input type="button" value="メンバーを追加" id="add-member">
+        <div id="member-max">これ以上追加できません</div>
+      </div>
     <%= f.submit "作成", class: "make-btn" %>
   <% end %>
 </div>

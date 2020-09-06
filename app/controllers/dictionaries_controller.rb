@@ -2,10 +2,10 @@ class DictionariesController < ApplicationController
   before_action :find_dictionary, only: [:edit, :update, :destroy]
 
   def index
-    @dictionaries = Dictionary.all.order("japanese ASC").includes(:plan)
     @dictionary = Dictionary.new
     @group = Group.find(params[:group_id])
     @plan = Plan.find(params[:plan_id])
+    @dictionaries = @plan.dictionaries.order("japanese ASC").includes(:plan)
     if @dictionaries
       @dictionaries.each do |dic|
         @language = dic.language
@@ -18,12 +18,16 @@ class DictionariesController < ApplicationController
     @group = @dictionary.group
     @plan = @dictionary.plan
   end
-
+  
   def edit
+    @plan = @dictionary.plan
+    @group = @plan.group
   end
   
   def update
     @dictionary.update(dictionary_params)
+    @plan = @dictionary.plan
+    @group = @plan.group
   end
   
   def destroy
