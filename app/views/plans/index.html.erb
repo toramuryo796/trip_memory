@@ -1,67 +1,73 @@
 <h2>旅行計画一覧</h2>
 <p>※タイトルをクリックすると詳細ページに移動します </p>
+<% if @plans.present? %>
+  <% @plans.each do |plan| %>
+    <div class="plan-lists">
+      <%# 詳細ページリンク %>
+      <div class="plan-content">
+        <div class="plan-title plan-index">
+          <%= link_to group_plan_path(@group, plan, candidate_id: plan.candidate), local: true do %> 
+            <h1 class="trip-title"><%= plan.title %></h1>
+          <% end %>
+        </div>
+      </div>
 
-<% @plans.each do |plan| %>
-  <div class="paln-lists">
+      <div class="plan-content">
+        <div class="plan-destination-guide plan-guide">
+          行先
+        </div>
+        <div class="plan-destination plan-index">
+          <%= plan.destination %>
+        </div>
+        <div class ="destination-image">  
+          <% if @candidate.present? %>
+            <%= plan.candidate.image %>
+          <% end %>
+        </div>
+      </div>
 
-    <div class="plan-content">
-      <div class="plan-title plan-index">
-        <%= link_to group_plan_path(@group, plan), local: true do %> 
-          <h1 class="trip-title"><%= plan.title %></h1>
+      <div class="plan-content">
+        <div class="plan-date-guide plan-guide">
+          日程
+        </div>
+        <div class="plan-departure-guide plan-index">
+          出発日：<%= plan.departure_day %>
+        </div>
+        <div class="plan-return-guide plan-index">
+          帰着日：<%= plan.return_day %>
+        </div>
+      </div>
+
+      <div class="plan-content">
+        <div class="plan-transportation plan-index">
+          <% if plan.transportation %>
+            交通手段：<%= plan.transportation.name %>
+          <% else %>
+            交通手段：
+          <% end %>
+        </div>
+      </div>
+      <div class="plan-content">
+        <div class="start-guide plan-guide">
+          出発地点
+        </div>
+        <div class="plan-start plan-index">
+          <%= plan.start_place %>
+        </div>
+      </div>
+
+      <div class="reference-image-box">
+        <div class="reference-image candidate-guide">
+          参考写真：
+        </div>
+        <% if plan.candidate.present? %>
+          <%= image_tag plan.candidate.image.variant(resize:'500x500'), class:"candidate-image" if plan.candidate.image.attached?%>
         <% end %>
       </div>
-    </div>
 
-    <div class="plan-content">
-      <div class="plan-destination-guide plan-guide">
-        行先
-      </div>
-      <div class="plan-destination plan-index">
-        <%= plan.destination %>
-      </div>
-      <div class ="destination-image">  
-        <% if @candidate.present? %>
-          <%= plan.candidate.image %>
-        <% end %>
-      </div>
     </div>
-
-    <div class="plan-content">
-      <div class="plan-date-guide plan-guide">
-        日程
-      </div>
-      <div class="plan-departure-guide plan-index">
-        出発日：<%= plan.departure_day %>
-      </div>
-      <div class="plan-return-guide plan-index">
-        帰着日：<%= plan.return_day %>
-      </div>
-    </div>
-
-    <div class="plan-content">
-      <div class="plan-transportation plan-index">
-        <% if plan.transportation %>
-          交通手段：<%= plan.transportation.name %>
-        <% else %>
-          交通手段：
-        <% end %>
-      </div>
-    </div>
-    <div class="plan-content">
-      <div class="start-guide plan-guide">
-        出発地点
-      </div>
-      <div class="plan-start plan-index">
-        <%= plan.start_place %>
-      </div>
-    </div>
-
-    <div class="reference-image-box">
-      <div class="reference-image candidate-guide">
-        参考写真：
-      </div>
-      <%= image_tag plan.candidate.image.variant(resize:'500x500'), class:"candidate-image" if plan.candidate.image.attached?%>
-    </div>
-
-  </div>
+  <% end %>
+<% else %>
+  <h3>計画している旅行はありません</h3>
+  <%= link_to "戻る", group_path(@group), local:true %>
 <% end %>

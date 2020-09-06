@@ -7,35 +7,18 @@
     <div class="index-outside">
       候補<%= @count %>
       <div class="index-large-box">
-        <div class="candidate-header">
-          <%= link_to "編集", edit_group_candidate_path(@group, candidate), local: true %> / <%= link_to "削除", group_candidate_path(@group, candidate), method: :delete, local: true %> 
-        </div>
         <div class="candidate-box">
+          <div class="candidate-show">
+            <%= link_to "詳細", group_candidate_path(@group, candidate), local: true %>
+          </div>
+          <div class="destination-index candidate-guide">
+            行先：<%= candidate.destination %>
+          </div>
           <div class="budget-index candidate-guide">
             予算：<%= candidate.budget.name %>
           </div>
           <div class="night-index candidate-guide">
             日数：<%= candidate.night %>
-          </div>
-          <div class="destination-index candidate-guide">
-            行先：<%= candidate.destination %>
-          </div>
-          <div calss="transportation-index candidate-guide">
-            <% if candidate.transportation %>
-              交通手段：<%= candidate.transportation.name %>
-            <% else %>
-              交通手段：
-            <% end %>
-            <div class="trans-time-box candidate-guide">
-              移動時間：<%= candidate.take_time %>時間
-            </div>
-            <div class="trans-cost-box candidate-guide">
-              交通費(往復の概算)： <%= candidate.trans_cost %>円
-            </div>
-          </div>
-          <div class="reason-index candidate-guide">
-            理由/目的：
-            <div> <%= candidate.reason %> </div>
           </div>
           <div class="reference-image-box">
             <div class="reference-image candidate-guide">

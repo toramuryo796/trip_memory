@@ -50,7 +50,7 @@ class PlansController < ApplicationController
 
   def show
     @group = Group.find_by(id: params[:group_id])
-    @plan = Plan.find(params[:id])
+    @plan = Plan.find_by(id: params[:id])
   end
 
   private 

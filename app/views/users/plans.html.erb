@@ -1,0 +1,40 @@
+<div class="back-to-user-link">
+  <%= link_to "戻る", user_path(@user), class: "back-to-user" %>
+</div>
+
+<div class="user-plans-lists">
+  <ul class="user-plans-list">
+    <% @plans.each do |plan| %>
+      <li class="user-plan">
+        <div class="plan-box">
+          <%# 旅行のタイトル %>
+          <div class="user-plan-title">
+            <%= link_to "#{plan.title}" , group_plan_path(plan.group, plan), local: true %>
+          </div>
+          <%# /旅行のタイトル %>
+
+          <%# 行先 %>
+          <div class="user-plan-destination">
+            <%= plan.destination %>
+          </div>
+          <%# /行先 %>
+
+          <div class="user-plan-depature">
+            <div class="user-plan-depature-guide">
+              出発日：
+            </div>
+            <div class="user-depature-day">
+              <%= plan.departure_day %>
+            </div>
+            <div class="user-plan-return-guide">
+              出発日：
+            </div>
+            <div class="user-return-day">
+              <%= plan.return_day %>
+            </div>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

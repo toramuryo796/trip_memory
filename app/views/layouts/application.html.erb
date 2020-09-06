@@ -12,12 +12,18 @@
 
   <body>
   <% if user_signed_in? %>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "move-to-logout" %>
-    <%= current_user.user_ID %>
-    <%= link_to "トップページ", root_path, class: "move-to-top-page" %>
+    <div class="login-top-link">
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "move-to-logout" %>
+      <%= link_to "トップページ", root_path, class: "move-to-top-page" %>
+    </div>
+    <div class="user-page-link">
+      <%= link_to "#{current_user.user_ID}", user_path(current_user) %>
+    </div>
   <% else %>
-    <%= link_to "新規登録", new_user_registration_path,  class: "move-to-signup"%>
-    <%= link_to "ログイン", new_user_session_path, class: "move-to-login" %>
+    <div class="login-top-link">
+      <%= link_to "新規登録", new_user_registration_path,  class: "move-to-signup"%>
+      <%= link_to "ログイン", new_user_session_path, class: "move-to-login" %>
+    </div>
   <% end %>
     <%= yield %>
   </body>

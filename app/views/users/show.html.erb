@@ -1,0 +1,34 @@
+<h1><%= @user.user_ID %></h2>
+<div class="user-content">
+
+  <%# グループ作成リンク %>
+  <div class="make-group-link">
+    <%= link_to "グループ作成", new_group_path, class:"to-make-group" %>
+  </div>
+  <%# /グループ作成リンク %>
+
+  <%# グループリスト %>
+  <div class="user-groups">
+    <ul class="user-group-list">
+      <% @groups.each do |group| %>
+        <li class="user-group">
+          <%= link_to "#{group.name}", group_path(group) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <%# /グループリスト %>
+
+  <%# 行先候補一覧リンク %>
+  <div class="user-candidates-link">
+    <%= link_to "行先候補一覧", candidates_user_path(@user), class: "user-candidate-link", local: true %>
+  </div>
+  <%# /予定一覧リンク %>
+
+  <%# 旅行計画一覧リンク %>
+  <%# 旅行計画一覧リンク %>
+
+  <%# 思い出一覧 %>
+  <%# /思い出一覧 %>
+
+</div>
