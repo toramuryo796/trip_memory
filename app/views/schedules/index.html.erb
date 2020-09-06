@@ -1,5 +1,13 @@
-<h1> スケジュール作成 <h1>
-<%= link_to "旅行計画に戻る", group_plans_path(@plan, @group), local: true %>
+<h1> スケジュール作成 </h1>
+<%= link_to "旅行計画に戻る", group_plan_path(@plan, @group), local: true %>
+<div class="trip-date">
+  <div class="departure-date">
+    出発日:<%= @plan.departure_day %> 
+  </div>
+  <div class="return-date">
+    帰着予定日:<%= @plan.return_day %>
+  </div>
+</div>
 <div class="day-display">
   <h2> <%= @passed %>日目のスケジュール </h2>
 </div>

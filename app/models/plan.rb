@@ -6,11 +6,11 @@ class Plan < ApplicationRecord
   has_many          :day_hows, dependent: :destroy
   has_one_attached  :image
   has_many          :dictionaries, dependent: :destroy
+  has_one           :memory, dependent: :destroy
   # has_one :Bring
   # has_one :purpose
-  # has_one :memory
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :transportation  
-
+  
   validates :title, :destination, presence: true
 end

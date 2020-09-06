@@ -1,0 +1,112 @@
+<div class="back-to-group">
+  <%= link_to "#{@group.name}", group_path(@group) %>
+</div>
+
+<div class="memory-constents">
+  <% @memories.each do |memory| %>
+    <%# タイトル %>
+    <div class="memory-title">
+      <%= memory.title %>
+    </div>
+    <%# /タイトル %>
+
+    <%# 日程 %>
+    <div class="memory-index date">
+      <div class="memory-guide">
+        日程：
+      </div>
+      <div class="memory-departure-day">
+        <%= plan.departure_day %>
+      </div>
+      ~
+      <div class="memory-return-day">
+        <%= plan.return_day %>
+      </div>
+    </div>
+    <%# /日程 %>
+
+    <%# 移動手段 %>
+    <div class="memory-index ">
+      <div class="memory-guide ">
+        移動手段
+      </div>  
+      <div class="memory-transportation">
+        <%= memory.transportation_name %>
+      </div>
+      <div class="memory-trans_mwmo" >
+        <div class="memory-guide">
+         memo
+        </div>
+        <div class="memory-transportation-mwmo" >
+          <%= memory.trans_memo %> 
+        </div>
+      </div>
+    </div>
+    <%# /移動手段 %>
+
+    <%# ホテル %>
+    <div class="memory-index ">
+      <div class="memory-guide ">
+        ホテル名
+      </div>  
+      <div class="memory-hotel">
+        <%= memory.hotel %>
+      </div>
+      <div class="memory-hotel-mwmo-box" >
+        <div class="memory-guide">
+         memo
+        </div>
+        <div class="memory-hotel_mwmo" >
+          <%= memory.trans_memo %> 
+        </div>
+      </div>
+    </div>
+    <%# /ホテル %>
+
+    <%# ユーザーにしか見れない %>
+    <% if @user == current_user %>
+      <%# 一番面白かったこと %>
+      <div class="memory-best-box">
+        <div class="memory-guide">
+          一番面白かったことは？
+        </div>
+        <div class="memory-best">
+          <%= memory.best %>
+        </div>
+      </div>
+      <%# /一番面白かったこと %>
+    
+      <%# ハプニング %>
+      <div class="memory-happpening-box">
+        <div class="memory-guide">
+          ハプニングは？
+        </div>
+        <div class="memory-happening">
+          <%= memory.happening %>
+        </div>
+      </div>
+      <%# /ハプニング %>
+    
+      <%# またやりたいこと %>
+      <div class="memory-best-box">
+        <div class="memory-again">
+          また行きたい場所/やりたいこと
+        </div>
+        <div class="memory-best">
+          <%= memory.again %>
+        </div>
+      </div>
+      <%# /またやりたいこと %>
+    <% end %>
+    
+    <%# 思い出の写真 %>
+    <% if @memory.images.present? %>
+      <div class="memory-images-box">
+        <%= @memory.images.each do |image| %>
+          <%= image_tag image, class:"image" %>
+        <% end %>
+      </div>
+    <% end %>
+    <%# 思い出の写真 %>
+  <% end %>
+</div>

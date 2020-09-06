@@ -22,4 +22,9 @@
   <li class="contents">
     <%= link_to "旅行計画一覧",  group_plans_path(@group, @plan), local: true %>
   </li>
+  <% if @plans.present? %>
+  <li class="contents">
+    <%= link_to "思い出一覧",  group_memories_path(@group, @memory), local: true %>
+  </li>
+  <%end%>
 </ul>

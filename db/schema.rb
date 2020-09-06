@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_05_231332) do
+ActiveRecord::Schema.define(version: 2020_09_06_090731) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -89,6 +89,24 @@ ActiveRecord::Schema.define(version: 2020_09_05_231332) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "memories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.date "departure_day", null: false
+    t.date "return_day", null: false
+    t.string "title", null: false
+    t.integer "transportation_id"
+    t.text "trans_memo"
+    t.string "hotel"
+    t.text "hotel_memo"
+    t.text "bext"
+    t.text "happening"
+    t.bigint "plan_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["plan_id"], name: "index_memories_on_plan_id"
+    t.index ["user_id"], name: "index_memories_on_user_id"
+  end
+
   create_table "plans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
     t.string "destination", null: false
@@ -153,6 +171,8 @@ ActiveRecord::Schema.define(version: 2020_09_05_231332) do
   add_foreign_key "dictionaries", "users"
   add_foreign_key "goods", "candidates"
   add_foreign_key "goods", "users"
+  add_foreign_key "memories", "plans"
+  add_foreign_key "memories", "users"
   add_foreign_key "plans", "candidates"
   add_foreign_key "plans", "groups"
   add_foreign_key "plans", "users"

@@ -1,0 +1,10 @@
+<h1>思い出を作成</h1>
+<div class="choose">
+  <h2>どの旅行の思い出を記録しますか？</h2>
+  <div class="plan-list">
+    <ul>
+      <% @plans.each do |plan| %>
+        <%= link_to "#{plan.title}", new_group_memory_path(@group, plan_id: plan.id), local: true %>
+      <% end %>
+    </ul>
+  </div>

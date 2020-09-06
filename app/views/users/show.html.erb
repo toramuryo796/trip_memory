@@ -8,27 +8,52 @@
   <%# /グループ作成リンク %>
 
   <%# グループリスト %>
-  <div class="user-groups">
-    <ul class="user-group-list">
-      <% @groups.each do |group| %>
-        <li class="user-group">
-          <%= link_to "#{group.name}", group_path(group) %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
+  <% if @groups.present? %>
+    <div class="user-groups">
+      <ul class="user-group-list">
+        <% @groups.each do |group| %>
+          <li class="user-group">
+            <%= link_to "#{group.name}", group_path(group) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% else %>
+    登録されているグループはありません
+  <% end %>
   <%# /グループリスト %>
 
   <%# 行先候補一覧リンク %>
-  <div class="user-candidates-link">
-    <%= link_to "行先候補一覧", candidates_user_path(@user), class: "user-candidate-link", local: true %>
-  </div>
+  <% if @candidates.present? %>
+    <div class="user-candidates-link">
+      <%= link_to "行先候補一覧", candidates_user_path(@user), class: "user-candidate-link", local: true %>
+    </div>
+  <% else %>
+    行先候補は登録されていません
+  <% end %>
   <%# /予定一覧リンク %>
 
   <%# 旅行計画一覧リンク %>
+  <% if @plans.present? %>
+    <div class="user-plan-link">
+      <%= link_to "旅行計画一覧", plans_user_path(@user), class: "user-plans-link", local: true %>
+    </div>
+  <% else %>
+    旅行計画は登録されていません
+  <% end %>
   <%# 旅行計画一覧リンク %>
 
   <%# 思い出一覧 %>
+  <% if @memories.present? %>
+    <div class="user-memories-link">
+      <%= link_to "思い出一覧", group_memories_path(@group), local: true %>
+    </div>
+  <% else %>
+    思い出は登録されていません
+  <% end %>
+  <div class="new-memory">
+    <%= link_to "思い出を作成する", journal_user_path(@user), local: true %>
+  </div>
   <%# /思い出一覧 %>
 
 </div>

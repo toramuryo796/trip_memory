@@ -41,6 +41,16 @@
     </div>
     <%= f.collection_select(:transportation_id, Transportation.all, :id, :name, {include_blank:"---"}, {class:"transportation-form"}) %>
   </div>
+  <div class="plain">
+  <a href="https://www.expedia.co.jp/Destinations-In-Japan.d89.Flight-Destinations" target="_blank" rel="noopener">
+    参考 ( 航空券予約サイト )
+  </a>
+  </div>
+  <div class="train">
+  <a href="https://www.navitime.co.jp/transfer/" target="_blank" rel="noopener">
+    参考 ( 電車乗換検索サイト ) 
+  </a> 
+  </div>
   <%# 交通時間フォーム %>
   <div class="candidate-form">
     <div class="form_guide">

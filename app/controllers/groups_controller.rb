@@ -57,6 +57,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find_by(id: params[:id])
+    @plans = @group.plans
   end
 
   def destroy
