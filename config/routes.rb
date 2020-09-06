@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'day_hows/new'
-  get 'plans/create'
-  get 'candidates/new'
   devise_for :users
   root "groups#index"
   resources :schedules,     only: [:index, :new, :create, :update, :destroy, :edit]
@@ -11,6 +8,8 @@ Rails.application.routes.draw do
     resources :candidates, only: [:index, :new, :create, :edit, :update, :destroy ] do
       resources :goods,    only: [:create,:destroy]
     end
-    resources :plans
+    resources :plans do
+      resources :dictionaries, only: [:index, :create, :update, :edit, :destroy ]
+    end
   end
 end

@@ -1,0 +1,33 @@
+<%= form_with(model:[@group, @plan, @dictionary], id: "dictionary-form" ) do |f| %>
+  <div class="form-dictionary">
+    <div class="form-guide">
+      言語
+    </div>
+    <div class="form-box">
+      <%= f.text_field :language, class:"language-form fil" %>
+    </div>
+  </div>
+
+  <div class="form-dictionary">
+    <div class="form-guide">
+      日本語
+    </div>
+    <div class="form-box">
+      <%= f.text_area :japanese, class:"jaoanese-form fill" %>
+    </div>
+  </div>
+  
+  <div class="form-dictionary">
+    <div class="form-guide">
+      外国語
+    </div>
+    <div class="form-box">
+      <%= f.text_area :translation, class:"translation-form fill" %>
+    </div>
+  </div>
+
+  <div class="form-box">
+    <%= f.submit "登録" %>
+  </div>
+
+<% end %>

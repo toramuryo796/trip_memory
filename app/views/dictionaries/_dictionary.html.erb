@@ -1,0 +1,13 @@
+<tr class="dictionary-list" id="dictionary-list-<%= dictionary.id %>">
+  <td class="japanese dictionary-content">
+    <%= dictionary.japanese %>
+  </td>
+
+  <td class="translation dictionary-content">
+    <%= dictionary.translation %>
+  </td>
+
+  <td class="dictionary-update">
+    <%= link_to "編集", edit_group_plan_dictionary_path(@group, @plan, dictionary), data:{remote: true} %>
+  </td>
+</tr>

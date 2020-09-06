@@ -43,7 +43,7 @@ class SchedulesController < ApplicationController
   end
   
   def update
-    @schedule = Schedule.find_by(id: params[:id])       #formatをしようしているため、←の書き方
+    @schedule = Schedule.find_by(id: params[:id])       
     @schedule.update(schedule_params)
     plan = @schedule.plan                              
     @plan_id = plan.id

@@ -5,6 +5,7 @@ class Plan < ApplicationRecord
   has_many          :schedules, dependent: :destroy
   has_many          :day_hows, dependent: :destroy
   has_one_attached  :image
+  has_many          :dictionaries, dependent: :destroy
   # has_one :Bring
   # has_one :purpose
   # has_one :memory

@@ -1,0 +1,3 @@
+document.getElementById('dictionary-list-<%= dictionary.id %>').innerHTML = '<%= j(render @dictionary) %>'
+var form = document.getElementById('dictionary-form')
+form.outerHTML = '<%= j(render "form", dictionary: Dictionary.new, value: "追加") %>'

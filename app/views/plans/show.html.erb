@@ -6,7 +6,11 @@
 </div>
 
 <div class="mova-to-shcedule">
-    <%= link_to "スケジュールを作成/確認する", schedules_path(plan_id: @plan.id), local: true %>
+  <%= link_to "スケジュールを作成/確認する", schedules_path(plan_id: @plan.id), local: true %>
+</div>
+
+<div class="to_dictionary">
+  <%= link_to "単語帳", group_plan_dictionaries_path(@group, @plan), local: true %>
 </div>
 
 <div class="plan-content">
