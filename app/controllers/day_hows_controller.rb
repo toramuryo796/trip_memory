@@ -16,7 +16,6 @@ class DayHowsController < ApplicationController
       plan_id: create_day_how[:plan_id],
       user_id: create_day_how[:user_id]
     )
-    binding.pry
     exsist_day_hows = DayHow.where(plan_id: plan.id).select(:plan_id, :passed).distinct
     count = 0
     # すでに取得している日程じゃないか確認して保存
