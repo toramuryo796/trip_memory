@@ -4,6 +4,12 @@
 
 <div class="memory-constents">
   <% @memories.each do |memory| %>
+    <%# 詳細リンク %>
+    <div class="memory-edit">
+      <%= link_to "詳細", group_memory_path(@group, memory), local: true %> 
+    </div>
+    <%# /詳細リンク %>
+
     <%# タイトル %>
     <div class="memory-title">
       <%= memory.title %>
@@ -100,15 +106,5 @@
       </div>
       <%# /またやりたいこと %>
     <% end %>
-    
-    <%# 思い出の写真 %>
-    <% if memory.images.present? %>
-      <div class="memory-images-box">
-        <% memory.images.each do |image| %>
-          <%= image_tag image, class:"memory-image" %>
-        <% end %>
-      </div>
-    <% end %>
-    <%# 思い出の写真 %>
   <% end %>
 </div>

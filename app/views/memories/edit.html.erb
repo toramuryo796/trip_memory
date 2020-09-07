@@ -2,11 +2,7 @@
   <%= link_to "#{@group.name}", group_path(@group) %>
 </div>
 <div class="memories-form-large-box">
-  <%= form_with(model: [@group, @memory], url: group_memories_path(@group, @memory), method: :post, local: true ) do |f| %>
-    <%# plan_id %>
-    <div class="hidden">
-      <%= f.text_field :plan_id, value: "#{@plan.id}" %>
-    </div>
+  <%= form_with(model: [@group, @memory], url: group_memory_path(@group, @memory), method: :put, local: true ) do |f| %>
 
     <%# タイトル %>
     <div class="memory-form-box">
@@ -15,11 +11,7 @@
       </div>
       <div class="memory-title-form, memory-form">
       <%# 旅行計画ですでに書いていたら継承 %>  
-        <% if @plan.title.present? %>
-          <%= f.text_field :title, class:"memory-title-fill", value: "#{@plan.title}" %>
-        <% else %>
-          <%= f.text_field :title, class:"memory-title-fill", placeholder: "タイトルを記入してください" %>
-        <% end %>    
+        <%= f.text_field :title, class:"memory-title-fill", placeholder: "タイトルを記入してください" %>
       </div>
      </div>
     <%# /タイトル %>
@@ -31,21 +23,12 @@
       </div>
       <div class="memory-date-form">
       <%# 旅行計画ですでに書いていたら継承 %>  
-      <% if @plan.departure_day.present? && @plan.return_day.present? %>
-        <div class="memory-departure-form memory-form">
-          出発日:<%= f.date_field :departure_day, class:"memory-departure-fill",  value: "#{@plan.departure_day}" %>
-        </div>
-        <div class="memory-return-form memory-form">
-          帰着日:<%= f.date_field :return_day, class:"memory-return-fill", value: "#{@plan.return_day}" %>
-        </div>
-      <% else %>
-        <div class="memory-departure-form memory-form">
-          出発日:<%= f.date_field :departure_day, class:"memory-departure-fill" %>
-        </div>
-        <div class="memory-return-form memory-form">
-          帰着日:<%= f.date_field :return_day, class:"memory-return-fill" %>
-        </div>
-      <% end %>
+      <div class="memory-departure-form memory-form">
+        出発日:<%= f.date_field :departure_day, class:"memory-departure-fill" %>
+      </div>
+      <div class="memory-return-form memory-form">
+        帰着日:<%= f.date_field :return_day, class:"memory-return-fill" %>
+      </div>
     </div>
     <%# /日程 %>
     
@@ -68,18 +51,12 @@
     
     <%# ホテル %>
     <div class="memory-form-box">
-        <div class="memory-hotel-guide memory-form-guide">
-          ホテル名
-        </div>
-      <% if @plan.hotel.present? %>
-        <div class="memory-hotel-form memory-form">
-          <%= f.text_field :hotel, class: "hotel-fill", value: "#{@plan.hotel}"%>
-        </div>
-      <% else %>
-        <div class="memory-hotel-form memory-form">
-          <%= f.text_field :hotel, class: "hotel-fill", placeholder: "ホテル名を記入してください" %>
-        </div>
-      <% end %>
+      <div class="memory-hotel-guide memory-form-guide">
+        ホテル名
+      </div>
+      <div class="memory-hotel-form memory-form">
+        <%= f.text_field :hotel, class: "hotel-fill", placeholder: "ホテル名を記入してください" %>
+      </div>
       <div class="memory-hotel-memo-guide memory-form-guide">
         memo
       </div>
@@ -128,26 +105,9 @@
         思い出の写真 (最大5枚)
         <input type="button" class="add-image hidden" id="add-image" value="追加">        <%# 追加ボタン %>
       </div>
-      <%# 画像選択 %>
-      <div class="image-choose"  data-num="1">
-        <%= f.file_field :images, name: "memory[images][]", class: "image-fill", id:"image-fill-1", data:{num:1}%>  
-        <input type="button" id="delete-image-1"  class="delete-image hidden"  value="削除" data-num="1">  <%# 削除ボタン %>
-      </div>
-    </div>
-    <%# /思い出の写真 %>
-    
-    <%# previewさせる箇所 %>
-    <div class="memory-preview" id="memory-preview"></div>
-    <%# preview %>
     
     <div class="memory-form-box">
       <%= f.submit "登録" %>
     </div>
   <% end %>
-  
-  <div class="preview">
-    <% @memory.images.each do |image| %>
-      <%= image_tag image, class:"memory-image" %>
-    <% end %>
-  </div>
 </div>

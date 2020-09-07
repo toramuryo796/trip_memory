@@ -4,37 +4,39 @@
 
 <div class="user-plans-lists">
   <ul class="user-plans-list">
-    <% @plans.each do |plan| %>
-      <li class="user-plan">
-        <div class="plan-box">
-          <%# 旅行のタイトル %>
-          <div class="user-plan-title">
-            <%= link_to "#{plan.title}" , group_plan_path(plan.group, plan), local: true %>
-          </div>
-          <%# /旅行のタイトル %>
+    <% groups.each do |group| %>
+      <% group.plans.each do |plan| %>
+        <li class="user-plan">
+          <div class="plan-box">
+            <%# 旅行のタイトル %>
+            <div class="user-plan-title">
+              <%= link_to "#{plan.title}" , group_plan_path(plan.group, plan), local: true %>
+            </div>
+            <%# /旅行のタイトル %>
 
-          <%# 行先 %>
-          <div class="user-plan-destination">
-            <%= plan.destination %>
-          </div>
-          <%# /行先 %>
+            <%# 行先 %>
+            <div class="user-plan-destination">
+              <%= plan.destination %>
+            </div>
+            <%# /行先 %>
 
-          <div class="user-plan-depature">
-            <div class="user-plan-depature-guide">
-              出発日：
-            </div>
-            <div class="user-depature-day">
-              <%= plan.departure_day %>
-            </div>
-            <div class="user-plan-return-guide">
-              出発日：
-            </div>
-            <div class="user-return-day">
-              <%= plan.return_day %>
+            <div class="user-plan-depature">
+              <div class="user-plan-depature-guide">
+                出発日：
+              </div>
+              <div class="user-depature-day">
+                <%= plan.departure_day %>
+              </div>
+              <div class="user-plan-return-guide">
+                出発日：
+              </div>
+              <div class="user-return-day">
+                <%= plan.return_day %>
+              </div>
             </div>
           </div>
-        </div>
-      </li>
+        </li>
+      <% end %>
     <% end %>
   </ul>
 </div>

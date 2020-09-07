@@ -4,10 +4,12 @@
 
 <div class="user-candidates-lists">
   <ul class="user-candidates-list">
-    <% @candidates.each do |candidate| %>
-      <li class="user-candidate">
-        <%= link_to "#{candidate.destination}" , group_candidate_path(candidate.group, candidate), local: true %>
-      </li>
+    <% @groups.each do |group| %>
+      <% group.candidates.each do |candidate|%>
+        <li class="user-candidate">
+          <%= link_to candidate.destination , group_candidate_path(candidate.group, candidate), local: true %>
+        </li>
+      <% end %>
     <% end %>
   </ul>
 </div>
