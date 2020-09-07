@@ -15,7 +15,6 @@ class MemoriesController < ApplicationController
   def create
     memory = Memory.create(memory_params)
     plan = memory.plan
-    binding.pry
     group = plan.group
     if memory.save
       redirect_to group_memories_path(plan_id: plan.id)
@@ -29,6 +28,6 @@ class MemoriesController < ApplicationController
 
   private
   def memory_params
-    params.require(:memory).permit(:title, :departure_day, :return_day, :transportaion_id, :trans_memo, :hotel, :hotel_memo, :best, :happening, :again, :plan_id, images:[]).merge(user_id: current_user.id, group_id: params[:group_id])
+    params.require(:memory).permit(:title, :departure_day, :return_day, :transportaion_id, :trans_memo, :hotel, :hotel_memo, :best, :happening, :again, :plan_id, images: []).merge(user_id: current_user.id, group_id: params[:group_id])
   end
 end

@@ -51,6 +51,9 @@ class PlansController < ApplicationController
   def show
     @group = Group.find_by(id: params[:group_id])
     @plan = Plan.find_by(id: params[:id])
+    unless @group.present?
+      @group = @plan.group
+    end
   end
 
   private 
