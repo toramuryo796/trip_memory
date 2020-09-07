@@ -15,8 +15,8 @@ class UsersController < ApplicationController
 
   def candidates
     @user = current_user
-    @candidates = @user.candidates
     @groups = @user.groups
+    @candidates = @user.candidates
   end
   
   def plans

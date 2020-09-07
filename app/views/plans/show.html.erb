@@ -2,7 +2,8 @@
   <%= link_to "#{@group.name}" , group_path(@group), local: true %>
 </div>
 <div class="candidate-header">
-  <%= link_to "編集", edit_group_plan_path(@group, @plan), local: true %> / <%= link_to "削除", group_plan_path(@group, @plan), method: :delete, local: true %>
+  <%= link_to "編集", edit_group_plan_path(@group, @plan), local: true %> / <%= link_to "削除", group_plan_path(@group, @plan), method: :delete, local: true %> / <%= link_to "思い出を記録する", new_group_memory_path(@group, plan_id: @plan.id), local: true %>
+
 </div>
 
 <div class="mova-to-shcedule">
