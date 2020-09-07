@@ -8,9 +8,9 @@
     帰着予定日:<%= @plan.return_day %>
   </div>
 </div>
-<div class="day-display">
-  <h2> <%= @passed %>日目のスケジュール </h2>
-</div>
+  <div class="day-display">
+    <h2> <%= @passed %>日目のスケジュール </h2>
+  </div>
 <%# ↑以外の日のスケジュール %>
 <div class="other-days">
   <ul class="other-days-list">
@@ -47,4 +47,5 @@
     </tbody>
   </table>
   <%# /schedule表%>
+<%# ajaxのform %>
 </div>

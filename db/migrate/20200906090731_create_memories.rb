@@ -13,6 +13,7 @@ class CreateMemories < ActiveRecord::Migration[6.0]
       t.text       :again
       t.references :plan,              null:false, foreign_key: true
       t.references :user,              null:false, foreign_key: true
+      t.references :group,             null:false, foreign_key: true
       t.timestamps
     end
   end

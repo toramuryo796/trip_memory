@@ -1,12 +1,11 @@
 class MemoriesController < ApplicationController
   def index
-    @plan = Plan.find_by(id: params[:plan_id])
     @group = Group.find_by(id: params[:group_id])
-    @memories = @plan.memories
+    @memories = @group.memories
   end
 
   def new
-    @plan = Plan.find(params[:plan_id]) 
+    @plan = Plan.find_by(id: params[:plan_id]) 
     @group = @plan.group
     @candidate = @plan.candidate
     @user = current_user
@@ -14,7 +13,15 @@ class MemoriesController < ApplicationController
   end
 
   def create
-    @memory = Memory.find(params[:id])
+    memory = Memory.create(memory_params)
+    plan = memory.plan
+    binding.pry
+    group = plan.group
+    if memory.save
+      redirect_to group_memories_path(plan_id: plan.id)
+    else
+      redirect_to new_group_memory_path(group, memory, plan_id: plan.id)
+    end
   end
 
   def update
@@ -22,6 +29,6 @@ class MemoriesController < ApplicationController
 
   private
   def memory_params
-    params.require(:group, :memory).permit(:title, :departure_day, :return_day, :transportaion_id, :trans_memo, :hotel, :hotel_memo, :best, :happening, :again, images:[]).merge(paln_id: params[:plan_id], user_id: current_user.id)
+    params.require(:memory).permit(:title, :departure_day, :return_day, :transportaion_id, :trans_memo, :hotel, :hotel_memo, :best, :happening, :again, :plan_id, images:[]).merge(user_id: current_user.id, group_id: params[:group_id])
   end
 end

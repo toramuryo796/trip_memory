@@ -8,6 +8,9 @@ class UsersController < ApplicationController
     @dictionaries = @user.dictionaries
     @candidates = @user.candidates
     @memories = @user.memories
+    @plans.each do |plan|
+      @group = plan.group
+    end     
   end
 
   def candidates
@@ -27,6 +30,7 @@ class UsersController < ApplicationController
     @user = current_user
     @plans = @user.plans
     @group = @user.groups
+    @memories = @user.memories
   end
 
   private

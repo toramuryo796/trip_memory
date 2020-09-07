@@ -16,11 +16,11 @@
         日程：
       </div>
       <div class="memory-departure-day">
-        <%= plan.departure_day %>
+        <%= memory.plan.departure_day %>
       </div>
       ~
       <div class="memory-return-day">
-        <%= plan.return_day %>
+        <%= memory.plan.return_day %>
       </div>
     </div>
     <%# /日程 %>
@@ -30,8 +30,10 @@
       <div class="memory-guide ">
         移動手段
       </div>  
-      <div class="memory-transportation">
-        <%= memory.transportation_name %>
+      <div class="memory-transportation">     
+      <% if memory.transportation_id.present? %>
+        <%= memory.transportation.name %>
+      <% end %>
       </div>
       <div class="memory-trans_mwmo" >
         <div class="memory-guide">
@@ -100,9 +102,9 @@
     <% end %>
     
     <%# 思い出の写真 %>
-    <% if @memory.images.present? %>
+    <% if memory.images.present? %>
       <div class="memory-images-box">
-        <%= @memory.images.each do |image| %>
+        <%= memory.images.each do |image| %>
           <%= image_tag image, class:"image" %>
         <% end %>
       </div>

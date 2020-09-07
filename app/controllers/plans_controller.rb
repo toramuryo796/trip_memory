@@ -25,8 +25,8 @@ class PlansController < ApplicationController
   end
 
   def index
-    @group = Group.find_by(params[:group_id])
-    @plans = Plan.includes(:user).order('created_at DESC')
+    @group = Group.find_by(id: params[:group_id])
+    @plans = Plan.where(group_id: @group.id).order('created_at DESC')
   end
 
   def edit

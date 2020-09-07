@@ -4,7 +4,13 @@
   <div class="plan-list">
     <ul>
       <% @plans.each do |plan| %>
-        <%= link_to "#{plan.title}", new_group_memory_path(@group, plan_id: plan.id), local: true %>
+        <li class="memory-check-list">
+          <% unless plan.memory.present? %>
+            <%= link_to "#{plan.title}", new_group_memory_path(@group, plan_id: plan.id), local: true %>
+          <% else %>
+            <%= plan.title %> : すでに登録されています
+          <% end %>
+        </li>
       <% end %>
     </ul>
   </div>
