@@ -123,18 +123,31 @@
     <%# /またやりたいこと %>
     
     <%# 思い出の写真 %>
-    <div class="memory-form-box">
+    <div class="memory-form-box" id="memory-form-box">
       <div class="memory-images-guide memory-form-guide">
         思い出の写真 (最大5枚)
+        <input type="button" class="add-image hidden" id="add-image" value="追加">        <%# 追加ボタン %>
       </div>
-      <div class="memory-ageain">
-        <%= f.file_field :images, name: "memory[images][]", class: "image-fill"%>
+      <%# 画像選択 %>
+      <div class="image-choose"  data-num="1">
+        <%= f.file_field :images, name: "memory[images][]", class: "image-fill", id:"image-fill-1", data:{num:1}%>  
+        <input type="button" id="delete-image-1"  class="delete-image hidden"  value="削除" data-num="1">  <%# 削除ボタン %>
       </div>
     </div>
-
-    <%# 思い出の写真 %>
+    <%# /思い出の写真 %>
+    
+    <%# previewさせる箇所 %>
+    <div class="memory-preview" id="memory-preview"></div>
+    <%# preview %>
+    
     <div class="memory-form-box">
       <%= f.submit "登録" %>
     </div>
   <% end %>
+  
+    <div class="preview">
+      <% @memory.images.each do |image| %>
+        <%= image_tag image, class:"memory-image" %>
+      <% end %>
+    </div>
 </div>

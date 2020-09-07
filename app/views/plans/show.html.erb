@@ -86,7 +86,7 @@
     参考写真：
   </div>
   <% if @plan.candidate.present? %>
-    <%= image_tag @plan.candidate.image.variant(resize:'500x500'), class:"candidate-image" if @plan.candidate.image.attached?%>
+    <%= image_tag @plan.candidate.image.variant(resize:'500x500'), class:"candidate-image" if @plan.candidate.image.attached? %>
   <% end %>
 </div>
 <div class="back_page">

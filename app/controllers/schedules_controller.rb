@@ -23,7 +23,6 @@ class SchedulesController < ApplicationController
       @schedules = Schedule.where(plan_id: @plan_id, day_how_id: @day_how_first.id)  # 日程に該当するのスケジュールを特定
       @passed = @day_how_first.passed
     end
-    binding.pry
     
     @other_days = DayHow.where(plan_id: @plan.id).select(:plan_id, :passed).distinct.order("passed ASC")        # palnのday_howを特定
     @other_days.each do |day_how|                        # 日にち毎の各カラム値を取得する

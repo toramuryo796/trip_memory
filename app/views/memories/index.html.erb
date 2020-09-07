@@ -104,8 +104,8 @@
     <%# 思い出の写真 %>
     <% if memory.images.present? %>
       <div class="memory-images-box">
-        <%= memory.images.each do |image| %>
-          <%= image_tag image, class:"image" %>
+        <% memory.images.each do |image| %>
+          <%= image_tag image, class:"memory-image" %>
         <% end %>
       </div>
     <% end %>
