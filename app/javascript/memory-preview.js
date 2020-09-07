@@ -4,13 +4,17 @@ document.addEventListener('DOMContentLoaded', function () {
   const addBtn = document.getElementById("add-image")                      // 追加ボタン
   
   // 選択した画像を表示する
-  const createImageHTML = (blob) => {
+  const createImageHTML = (blob, btnNum) => {
     const imageCount = document.querySelectorAll(".memory-image").length  // 表示されている画像数
     addBtn.className = "add-image";                                      // 追加ボタン(hidden状態)のクラス名変更
     let deleteBtn = document.getElementById("delete-image-1");         // 削除ボタン取得(hidden状態)
     deleteBtn.className = "delete-image";                                // 削除ボタンのクラス名変更
-    const fills = document.querySelectorAll(".image-fill");
-    fills.className = "image-fill exist"
+    const fills = document.querySelectorAll(".memory-preview-box");
+    fills.forEach(function(fill){
+      if (fill.dataset.num === btnNum){
+        fill.remove()
+      }
+    });
 
     
     // 画像を表示させる記述
@@ -19,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <img src="${blob}" class="memory-image" id="memory-image-${imageCount+1}"  data-num="${imageCount+1}">
     ` ;
     imageList.insertAdjacentHTML("beforeend", HTML);
-    fillBtn = document.querySelectorAll(".image-fill")
+    resetNum()
     // /画像を表示させる記述
   }
   // /選択した画像を表示する
@@ -27,9 +31,10 @@ document.addEventListener('DOMContentLoaded', function () {
   let fillBtn = document.querySelectorAll(".image-fill")
   fillBtn.forEach(function (btn) {
     btn.addEventListener("change", (e) => {
+      let btnNum = btn.dataset.num
       const file = e.target.files[0] ;                               // 画像情報をfileに格納
       const blob = window.URL.createObjectURL(file)                  // 画像URLを生成
-      createImageHTML(blob)                                          // createImageHTML関数を実行
+      createImageHTML(blob, btnNum)                                          // createImageHTML関数を実行
     });
   });
   
@@ -50,9 +55,10 @@ document.addEventListener('DOMContentLoaded', function () {
     // 追加された選択ボタンも発火可能に
     imageChooses.forEach(function(btn){
       btn.addEventListener("change", (e) => {
+        let btnNum = btn.dataset.num
         const file = e.target.files[0] ;                               // 画像情報をfileに格納
         const blob = window.URL.createObjectURL(file)                  // 画像URLを生成
-        createImageHTML(blob)                                          // createImageHTML関数を実行
+        createImageHTML(blob, btnNum);                                          // createImageHTML関数を実行
       });
     })
     
@@ -143,26 +149,3 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // ======画像変更=========================
-const changeImage = (fillNum, blob) => {
-  existImages = document.querySelectorAll(".image-fill");
-  existImages.forEach(function (image){
-    if (image.dataset.num === fillNum){
-      let previewBox = document.getElementById(`memory-preview-box-${fillNum}`);
-      image.remove();
-      HTML = `
-      <img src="${blob}" class="memory-image" id="memory-image-${fillNum}"  data-num="${fillNum}">
-      `
-      previewBox.insertAdjacentHTML("beforeend", HTML);
-    }
-  })
-}
-
-let existImages = document.querySelectorAll(".image-fill");   //画像選択ボタン
-existImages.forEach(function (fill) {
-  fill.addEventListener("change", (e) => {                    // 画像が変更された時に発火
-    let fillNum = fill.dataset.num;
-    const file = e.target.files[0] ;                               // 画像情報をfileに格納
-    const blob = window.URL.createObjectURL(file)                  // 画像URLを生成
-    changeImage(fillNum, blob);
-  })
-})
