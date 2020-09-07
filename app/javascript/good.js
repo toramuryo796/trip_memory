@@ -11,12 +11,11 @@ function goodBtn() {
 
       XHR.onload = () => {
         if (XHR.status != 200) {
-          debugger
           alert(`Error ${XHR.status}: ${XHR.statusText}`);
           return null;          
         }
         const disBtn = XHR.response.post;
-        debugger
+      
         if (disBtn){
           // 新たににお気に入りされた場合
           const appResetBtn = document.getElementById(`hidden-reset-good-${btnId}`);
@@ -25,10 +24,8 @@ function goodBtn() {
           disSetBtn.className = "hidden-set-good good-btn"
           appResetBtn.removeAttribute("class");
           appResetBtn.className = "good-btn reset-good"
-          debugger
         }else{
           // お気に入りが解除された場合
-          debugger
           const appSetBtn = document.getElementById(`hidden-set-good-${btnId}`);
           const disResetBtn = document.getElementById(`reset-good-${btnId}`);
           disResetBtn.removeAttribute("class");
