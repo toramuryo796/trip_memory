@@ -9,11 +9,14 @@ document.addEventListener('DOMContentLoaded', function () {
     addBtn.className = "add-image";                                      // 追加ボタン(hidden状態)のクラス名変更
     let deleteBtn = document.getElementById("delete-image-1");         // 削除ボタン取得(hidden状態)
     deleteBtn.className = "delete-image";                                // 削除ボタンのクラス名変更
+    const fills = document.querySelectorAll(".image-fill");
+    fills.className = "image-fill exist"
+
     
     // 画像を表示させる記述
     const HTML = `                                                       
     <div class="memory-preview-box" id="memory-preview-box-${imageCount+1}" data-num="${imageCount+1}">
-    <img src="${blob}" class="memory-image">
+    <img src="${blob}" class="memory-image" id="memory-image-${imageCount+1}"  data-num="${imageCount+1}">
     ` ;
     imageList.insertAdjacentHTML("beforeend", HTML);
     fillBtn = document.querySelectorAll(".image-fill")
@@ -93,14 +96,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // deleteした際に、data-numの値をリセットする
   const resetNum = () => {
-    let chooseBtns = document.querySelectorAll(".image-choose");
-    let fillBoxes = document.querySelectorAll(".image-fill");
-    let deleteButtons = document.querySelectorAll(".delete-image");
-    let imagePlaces = document.querySelectorAll(".memory-preview-box");
+    let chooseBtns = document.querySelectorAll(".image-choose");                // 画像選択formの箱
+    let fillBoxes = document.querySelectorAll(".image-fill");                   // 選択ボタン
+    let deleteButtons = document.querySelectorAll(".delete-image");             // 削除ボタン
+    let imagePlaces = document.querySelectorAll(".memory-preview-box");         // 画像外側
+    let images = document.querySelectorAll(".memory-image");                     // 画像
     let count = 0;
     let fillCount = 0;
     let deleteCount = 0;
     let imageCount = 0;
+    let imgCount = 0;
     chooseBtns.forEach(function(btn){                  // 画像formの箱をリセット
       count += 1
       btn.dataset.num = count;
@@ -115,12 +120,16 @@ document.addEventListener('DOMContentLoaded', function () {
       del.dataset.num = deleteCount;
       del.id = `delete-image-${deleteCount}`
     });
-    imagePlaces.forEach(function (img){                    // 画像リセット
+    imagePlaces.forEach(function (img){                    // 画像外側リセット
       imageCount += 1;
       img.dataset.num = imageCount;
       img.id = `memory-preview-box-${imageCount}`;
     });
-    
+    images.forEach(function (img){                    // 画像リセット
+      imgCount += 1;
+      img.dataset.num = imgCount;
+      img.id = `memory-image-${imgCount}`
+    });
   }
 
   let imageDeletes = document.querySelectorAll(".delete-image")             // 削除できるように
@@ -132,3 +141,28 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   // /削除処理
 });
+
+// ======画像変更=========================
+const changeImage = (fillNum, blob) => {
+  existImages = document.querySelectorAll(".image-fill");
+  existImages.forEach(function (image){
+    if (image.dataset.num === fillNum){
+      let previewBox = document.getElementById(`memory-preview-box-${fillNum}`);
+      image.remove();
+      HTML = `
+      <img src="${blob}" class="memory-image" id="memory-image-${fillNum}"  data-num="${fillNum}">
+      `
+      previewBox.insertAdjacentHTML("beforeend", HTML);
+    }
+  })
+}
+
+let existImages = document.querySelectorAll(".image-fill");   //画像選択ボタン
+existImages.forEach(function (fill) {
+  fill.addEventListener("change", (e) => {                    // 画像が変更された時に発火
+    let fillNum = fill.dataset.num;
+    const file = e.target.files[0] ;                               // 画像情報をfileに格納
+    const blob = window.URL.createObjectURL(file)                  // 画像URLを生成
+    changeImage(fillNum, blob);
+  })
+})
