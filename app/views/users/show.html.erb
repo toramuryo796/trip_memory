@@ -1,10 +1,14 @@
 <h1><%= @user.user_ID %></h2>
 <div class="user-content">
 
+<%= render partial: "userImage", locals: {user: @user, count: @count} %>
+
   <%# グループ作成リンク %>
-  <div class="make-group-link">
-    <%= link_to "グループ作成", new_group_path, class:"to-make-group" %>
-  </div>
+  <% if @user.memories.present? %>
+    <div class="make-group-link">
+      <%= link_to "グループ作成", new_group_path, class:"to-make-group" %>
+    </div>
+  <% end %>
   <%# /グループ作成リンク %>
 
   <%# グループリスト %>
@@ -24,22 +28,26 @@
   <%# /グループリスト %>
 
   <%# 行先候補一覧リンク %>
-  <% if @candidates.present? %>
-    <div class="user-candidates-link">
-      <%= link_to "行先候補一覧", candidates_user_path(@user), class: "user-candidate-link", local: true %>
-    </div>
-  <% else %>
+  <% @groups.each do |group| %>
+    <% if group.candidates.present? %>
+      <div class="user-candidates-link">
+        <%= link_to "行先候補一覧", candidates_user_path(@user), class: "user-candidate-link", local: true %>
+      </div>
+    <% else %>
     行先候補は登録されていません
+    <% end %>
   <% end %>
   <%# /予定一覧リンク %>
 
   <%# 旅行計画一覧リンク %>
-  <% if @plans.present? %>
-    <div class="user-plan-link">
-      <%= link_to "旅行計画一覧", plans_user_path(@user), class: "user-plans-link", local: true %>
-    </div>
-  <% else %>
+  <% @groups.each do |group| %>
+    <% if group.plans.present? %>
+      <div class="user-plan-link">
+        <%= link_to "旅行計画一覧", plans_user_path(@user), class: "user-plans-link", local: true %>
+      </div>
+    <% else %>
     旅行計画は登録されていません
+    <% end %>
   <% end %>
   <%# 旅行計画一覧リンク %>
 
@@ -55,5 +63,5 @@
     <%= link_to "思い出を作成する", journal_user_path(@user), local: true %>
   </div>
   <%# /思い出一覧 %>
-
+  <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 </div>

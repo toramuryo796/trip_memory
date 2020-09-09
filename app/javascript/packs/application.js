@@ -3,6 +3,7 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+//= require jquery3
 require("@rails/ujs").start()
 // require("turbolinks").start()
 require("@rails/activestorage").start()
@@ -11,7 +12,8 @@ require("jquery")
 require("../members")
 require("../candidate_preview")
 require("../good")
-require("../memory-preview")
+require("../user-swiper")
+
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -20,6 +22,5 @@ require("../memory-preview")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-//= require jquery3
 //= require popper
-//= require bootstrap-sprockets
+

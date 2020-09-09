@@ -105,13 +105,7 @@
   <%# /またやりたいこと %>
 
   <%# 思い出の写真 %>
-  <% if @memory.images.present? %>
-    <div class="memory-pic">
-      <% @memory.images.each do |image| %>
-        <%= image_tag image, class:"memory-image" %>
-      <% end %>
-    </div>
-  <% end %>
+  <%= render  partial: "memory_image", locals: {memory: @memory} %>
   <%# /思い出の写真 %>
 </div>
 

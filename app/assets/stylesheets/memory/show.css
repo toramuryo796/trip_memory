@@ -1,0 +1,15 @@
+.memory-image-show{
+  object-fit: contain;
+  width: 400px;
+  height: 400px;
+}
+
+.memory-image-large-box{
+  display: flex;
+}
+
+.memory-image-box{
+  width: 400px;
+  height: 400px;
+  margin-left: 5px;
+}

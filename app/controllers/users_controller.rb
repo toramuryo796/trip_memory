@@ -10,7 +10,8 @@ class UsersController < ApplicationController
     @memories = @user.memories
     @plans.each do |plan|
       @group = plan.group
-    end     
+    end 
+    @count = 1
   end
 
   def candidates
@@ -25,7 +26,7 @@ class UsersController < ApplicationController
     @groups = @user.groups
     @plans = @user.plans
   end
-
+ 
   def journal
     @user = current_user
     @plans = @user.plans
