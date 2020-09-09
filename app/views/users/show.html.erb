@@ -1,8 +1,9 @@
 <h1><%= @user.user_ID %></h2>
 <div class="user-content">
 
-<%= render partial: "userImage", locals: {user: @user, count: @count} %>
-
+<% if @user.memories.present? %>
+  <%= render partial: "userImage", locals: {user: @user} %>
+<% end %>
   <%# グループ作成リンク %>
   <% if @user.memories.present? %>
     <div class="make-group-link">
