@@ -1,6 +1,7 @@
 class CandidatesController < ApplicationController
-before_action :find_group, only: [:index, :new, :create, :edit, :update, :destroy]
+before_action :find_group
 before_action :find_candidate, only: [:index, :edit,:update, :destroy, :show]
+before_action :for_header, only: [:index, :new, :edit, :show]
 
   def index
     @candidates = @group.candidates.includes(:user).order("created_at ASC")
@@ -10,7 +11,7 @@ before_action :find_candidate, only: [:index, :edit,:update, :destroy, :show]
       @good = Good.new
     end
   end
-
+  
   def new 
     @candidate = Candidate.new
   end
@@ -23,7 +24,7 @@ before_action :find_candidate, only: [:index, :edit,:update, :destroy, :show]
       render :new
     end
   end
-
+  
   def edit
   end
   
@@ -43,7 +44,7 @@ before_action :find_candidate, only: [:index, :edit,:update, :destroy, :show]
   def show
     @group = @candidate.group
   end
-
+  
   private
   def candidate_params
     params.permit(:budget_id, :night, :destination, :reason, :transportation_id, :take_time, :trans_cost, :image).merge(user_id: current_user.id, group_id: params[:group_id])
@@ -60,5 +61,17 @@ before_action :find_candidate, only: [:index, :edit,:update, :destroy, :show]
   def find_candidate
     @candidate = Candidate.find_by(id: params[:id])
   end
-
+  
+  def for_header  
+    #hewder用
+    @plans = @group.plans
+    @plans.each do |plan|
+      @plan = plan
+    end
+    @memories = @group.memories
+    @memories.each do |memory|
+      @pmemory = memory
+    end
+    @candidates = @group.candidates
+  end
 end

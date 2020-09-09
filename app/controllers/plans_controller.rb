@@ -16,6 +16,7 @@ class PlansController < ApplicationController
     # day_howモデルとのformオブジェクトで一括登録
     @plan = DayHowPlans.new(create_plan)
     @group = Group.find_by(id: create_plan[:group_id])
+
     if @plan.valid?
       @plan.save
       redirect_to group_plans_path(@group, @plan)
@@ -49,11 +50,8 @@ class PlansController < ApplicationController
   end
 
   def show
-    @group = Group.find_by(id: params[:group_id])
     @plan = Plan.find_by(id: params[:id])
-    unless @group.present?
-      @group = @plan.group
-    end
+    @group = @plan.group
   end
 
   private 

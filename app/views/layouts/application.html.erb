@@ -4,27 +4,30 @@
     <title>TripMemory</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %> 
+    <%= javascript_pack_tag 'application' %>
     <%= include_gon %>
   </head>
 
   <body>
-  <% if user_signed_in? %>
-    <div class="login-top-link">
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "move-to-logout" %>
-      <%= link_to "トップページ", root_path, class: "move-to-top-page" %>
-    </div>
-    <div class="user-page-link">
-      <%= link_to "#{current_user.user_ID}", user_path(current_user) %>
-    </div>
-  <% else %>
-    <div class="login-top-link">
-      <%= link_to "新規登録", new_user_registration_path,  class: "move-to-signup"%>
-      <%= link_to "ログイン", new_user_session_path, class: "move-to-login" %>
-    </div>
-  <% end %>
+    <header>
+      <% if user_signed_in? %>
+        <div class="login-top-link">
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "move-to-logout" %>
+          <%= link_to "トップページ", root_path, class: "move-to-top-page" %>
+        </div>
+        <div class="user-page-link">
+          <%= link_to "#{current_user.user_ID}", user_path(current_user) %>
+        </div>
+      <% else %>
+        <div class="login-top-link">
+          <%= link_to "新規登録", new_user_registration_path,  class: "move-to-signup"%>
+          <%= link_to "ログイン", new_user_session_path, class: "move-to-login" %>
+        </div>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>

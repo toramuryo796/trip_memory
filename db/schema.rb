@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2020_09_06_090731) do
   end
 
   create_table "dictionaries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "language", null: false
+    t.string "language"
     t.string "japanese", null: false
     t.string "translation", null: false
     t.bigint "plan_id", null: false

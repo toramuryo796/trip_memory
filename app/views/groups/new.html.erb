@@ -1,5 +1,12 @@
+<%# header %>
+<div class="main-header">
+  <div class="header-content">
+    <%= link_to "グループ一覧", groups_path, local:true %>
+  </div>
+</div>
+<%# /header %>
+
 <h1>グループ作成</h1>
-<%= link_to "グループ一覧", groups_path, local:true %>
 <div class="making-group">
   <%= form_with model:@group, local:true do |f| %>
     <%# グループ名を作成 %>

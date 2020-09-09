@@ -1,10 +1,28 @@
+<%# header %>
+<div class="main-header">
+  <div class="header-content">
+    <%= link_to "#{@group.name}", group_path(@group), local: true%>  <%# グループ詳細 %>
+  </div>
+  <div class="header-content">
+    <% if @candidates.present? %> 
+      <%= link_to "候補一覧", group_candidates_path(@group, @candidate), local: true%> 
+    <% end %>
+  </div>
+  <div class="header-content">
+    <% if @plans.present? %> 
+      <%= link_to "計画一覧", group_plans_path(@group, @plan), local: true%> 
+    <% end %>
+  </div>
+  <div class="header-content">
+    <% if @memories.present? %>
+      <%= link_to "思い出一覧", group_memories_path(@group, @memoryn), local: true%> 
+    <% end %>
+  </div>
+</div>
+<%# /header %>
+
 <%#= link_to @group.name, group_path(@group), local: true %>
 <h1>行先候補を作成</h1>
-<%# グループ詳細ページに戻る %>
-<div class="back-page">
-  <%= link_to "#{@group.name}", group_path(@group), local: true%>
-</div>
-<%# /グループ詳細ページに戻る %>
 <%= form_with url: group_candidates_path(@group, @candidate), method: :post, local: true do |f| %>
   <%# 予算フォーム %>
   <div class="candidate-form">

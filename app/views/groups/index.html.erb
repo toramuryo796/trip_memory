@@ -1,14 +1,13 @@
+<%# header %>
+<div class="main-header">
+  <div class="header-content">
+    <%= link_to "グループを作成", new_group_path, local:true %>
+  </div>
+</div>
+<%# /header %>
+
 <h1>グループ一覧<h1>
 <div class="group-box">
-  <div class="group-box-header">
-    <div class="search-box">
-      <%# form_with search do |f|%>
-      <%# f.submit "検索" %>
-    </div>
-    <div class="make-group">
-      <%= link_to "グループを作成", new_group_path, local:true %>
-    </div>
-  </div>
   <div class="group-box-main">
     <ul class="group-list">
     <%# グループを一つずつ表示 %>
