@@ -12,6 +12,7 @@ require("jquery")
 require("../members")
 require("../candidate_preview")
 require("../good")
+require("../memory-preview")
 require("../user-swiper")
 
 
