@@ -5,11 +5,18 @@
 <div class="user-candidates-lists">
   <ul class="user-candidates-list">
     <% @groups.each do |group| %>
-      <% group.candidates.each do |candidate|%>
-        <li class="user-candidate">
-          <%= link_to candidate.destination , group_candidate_path(candidate.group, candidate), local: true %>
-        </li>
-      <% end %>
+      <div class="group-candidates">
+        <%= group.name %>:
+        <% if group.candidates.present? %>
+          <li class="user-candidate">
+           <% group.candidates.each do |candidate|%>
+              <%= link_to candidate.destination , group_candidate_path(candidate.group, candidate) %>
+          <% end %>
+        <% else %>
+            行先候補はありません
+          </li>
+        <% end %>
+      </div>
     <% end %>
   </ul>
 </div>

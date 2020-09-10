@@ -8,8 +8,8 @@ class UsersController < ApplicationController
     @dictionaries = @user.dictionaries
     @candidates = @user.candidates
     @memories = @user.memories
-    @plans.each do |plan|
-      @group = plan.group
+    @groups.each do |group|
+      @group = group
     end 
     @count = 1
   end
