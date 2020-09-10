@@ -3,19 +3,19 @@
 </div>
 
 <div class="group-page">
-  <%= link_to "#{@group.name}" , group_path(@group), local: true %>
+  <%= link_to "#{@group.name}" , group_path(@group) %>
 </div>
 <div class="candidate-header">
-  <%= link_to "編集", edit_group_plan_path(@group, @plan), local: true %> / <%= link_to "削除", group_plan_path(@group, @plan), method: :delete, local: true %> / <%= link_to "思い出を記録する", new_group_memory_path(@group, plan_id: @plan.id), local: true %>
+  <%= link_to "編集", edit_group_plan_path(@group, @plan) %> / <%= link_to "削除", group_plan_path(@group, @plan), method: :delete %> / <%= link_to "思い出を記録する", new_group_memory_path(@group, plan_id: @plan.id) %>
 
 </div>
 
 <div class="mova-to-shcedule">
-  <%= link_to "スケジュールを作成/確認する", schedules_path(plan_id: @plan.id), local: true %>
+  <%= link_to "スケジュールを作成/確認する", schedules_path(plan_id: @plan.id) %>
 </div>
 
 <div class="to_dictionary">
-  <%= link_to "単語帳", group_plan_dictionaries_path(@group, @plan, @dictionary), local: true %>
+  <%= link_to "単語帳", group_plan_dictionaries_path(@group, @plan, @dictionary) %>
 </div>
 
 <div class="plan-content">
@@ -95,5 +95,5 @@
   <% end %>
 </div>
 <div class="back_page">
-  <%= link_to "戻る", group_plans_path(@group, @plan), local: true %>
+  <%= link_to "戻る", group_plans_path(@group, @plan),  %>
 </div>

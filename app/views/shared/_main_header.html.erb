@@ -6,22 +6,22 @@
 
   <%# 行先候補一覧リンク %>
     <div class="user-candidates-link header-content">
-      <%= link_to "行先候補一覧", candidates_user_path(user), class: "user-candidate-link", local: true %>
+      <%= link_to "行先候補一覧", candidates_user_path(user), class: "user-candidate-link" %>
     </div>
     <%# /予定一覧リンク %>
 
     <%# 旅行計画一覧リンク %>
     <div class="user-plan-link header-content">
-      <%= link_to "旅行計画一覧", plans_user_path(user), class: "user-plans-link", local: true %>
+      <%= link_to "旅行計画一覧", plans_user_path(user), class: "user-plans-link" %>
     </div>
     <%# 旅行計画一覧リンク %>
 
     <%# 思い出一覧 %>
     <div class="user-memories-link header-content">
-      <%= link_to "思い出一覧", group_memories_path(group), local: true %>
+      <%= link_to "思い出一覧", group_memories_path(group) %>
     </div>
 
     <div class="new-memory header-content">
-      <%= link_to "思い出を作成する", journal_user_path(user), local: true %>
+      <%= link_to "思い出を作成する", journal_user_path(user) %>
     </div>
     <%# /思い出一覧 %>

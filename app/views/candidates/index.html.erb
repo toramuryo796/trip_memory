@@ -14,7 +14,7 @@
       <div class="index-large-box">
         <div class="candidate-box">
           <div class="candidate-show">
-            <%= link_to "詳細", group_candidate_path(@group, candidate), local: true %>
+            <%= link_to "詳細", group_candidate_path(@group, candidate) %>
           </div>
           <div class="destination-index candidate-guide">
             行先：<%= candidate.destination %>
@@ -49,7 +49,7 @@
           </div>
            
           <div class="decide-btn">
-            <%= link_to "決定！！", new_group_plan_path(@group,@plan, candidate_id: candidate.id), local: true %>
+            <%= link_to "決定！！", new_group_plan_path(@group,@plan, candidate_id: candidate.id) %>
           </div>
         </div>
         <div class="created_date">
@@ -62,7 +62,7 @@
 <% else %>
 <%# 行先候補がない場合は作成画面のリンクを表示 %>
   <p>行先候補がありません</p>
-  <%= link_to  new_group_candidate_path(@group, @candidate), local: true do %>
+  <%= link_to  new_group_candidate_path(@group, @candidate) do %>
     <h1> 行先候補を作成する </h1>
   <% end %>
 <% end %>

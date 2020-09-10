@@ -8,13 +8,13 @@
 
   <%# 行先候補一覧リンク %>
     <div class="user-candidates-link header-content">
-      <%= link_to "行先候補一覧", candidates_user_path(@user), class: "user-candidate-link", local: true %>
+      <%= link_to "行先候補一覧", candidates_user_path(@user), class: "user-candidate-link" %>
     </div>
     <%# /予定一覧リンク %>
 
     <%# 旅行計画一覧リンク %>
     <div class="user-plan-link header-content">
-      <%= link_to "旅行計画一覧", plans_user_path(@user), class: "user-plans-link", local: true %>
+      <%= link_to "旅行計画一覧", plans_user_path(@user), class: "user-plans-link" %>
     </div>
     <%# 旅行計画一覧リンク %>
 </div>
@@ -31,9 +31,9 @@
     <%# グループを一つずつ表示 %>
       <% if user_signed_in? %>
         <% current_user.groups.each do |group| %>
-          <%= link_to group_path(group), local: true do%>
+          <%= link_to group_path(group) do%>
             <li>
-              <%= link_to "#{group.name}", group_path(group),  local: true %>
+              <%= link_to "#{group.name}", group_path(group) %>
             </li>
           <% end %>
         <% end %>

@@ -4,7 +4,7 @@
 
 <h1> スケジュール作成 </h1>
 <%# 旅行計画に戻る %>
-<%= link_to "旅行計画に戻る", group_plan_path(@group, @plan), local: true %>
+<%= link_to "旅行計画に戻る", group_plan_path(@group, @plan)  %>
 <%# /旅行計画に戻る %>
 <div class="trip-date">
   <div class="departure-date">
@@ -22,13 +22,13 @@
   <ul class="other-days-list">
     <% @other_days.each do |other| %>
       <li class="day-list">
-        <%= link_to schedules_path(day_how_passed: other.passed, plan_id: @plan.id),  local: true do %>
+        <%= link_to schedules_path(day_how_passed: other.passed, plan_id: @plan.id) do %>
           <%= other.passed %>日目
         <% end %>
       </li>
     <% end %>
     <li>
-      <%= link_to  "その他の日程を作成する", new_day_how_path(plan_id: @plan_id), local: true %>
+      <%= link_to  "その他の日程を作成する", new_day_how_path(plan_id: @plan_id) %>
     </li>
   </ul>
 </div>
