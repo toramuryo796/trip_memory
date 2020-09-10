@@ -2,6 +2,7 @@ class CreateMemories < ActiveRecord::Migration[6.0]
   def change
     create_table :memories do |t|
       t.string     :title,            null:false
+      t.string     :destination,      null:false
       t.date       :departure_day,    null:false
       t.date       :return_day,       null:false
       t.integer    :transportation_id
