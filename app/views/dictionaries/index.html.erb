@@ -1,3 +1,7 @@
+<div class="main-header">
+  <%= render partial: "shared/main_header", locals: { user: @user, group: @group} %>
+</div>
+
 <h1> 単語帳作成 <h1>
 <%= link_to "旅行計画に戻る", group_plan_path(@group, @plan), local: true %>
 

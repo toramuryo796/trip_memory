@@ -1,3 +1,6 @@
+<div class="main-header">
+  <%= render partial: "shared/main_header", locals: { user: @user, group: @group} %>
+</div>
 <%= @group.name %>
 <h1>スケジュール作成</h1>
 <h2>何日目のスケジュールを確認/編集しますか？</h2>

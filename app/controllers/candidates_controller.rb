@@ -1,5 +1,5 @@
 class CandidatesController < ApplicationController
-before_action :find_group
+before_action :find_user_group
 before_action :find_candidate, only: [:index, :edit,:update, :destroy, :show]
 before_action :for_header, only: [:index, :new, :edit, :show]
 
@@ -54,7 +54,8 @@ before_action :for_header, only: [:index, :new, :edit, :show]
     params.require(:group).permit(:budget_id, :night, :destination, :reason, :transportation_id, :take_time, :trans_cost, :image).merge(user_id: current_user.id, group_id: params[:group_id])
   end
   
-  def find_group
+  def find_user_group
+    @user = current_user
     @group = Group.find_by(id: params[:group_id])
   end
   

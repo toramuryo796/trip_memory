@@ -1,3 +1,7 @@
+<div class="main-header">
+  <%= render partial: "shared/main_header", locals: { user: @user, group: @group} %>
+</div>
+
 <h2>旅行計画一覧</h2>
 <%= link_to "#{@group.name}", group_path(@group), local:true %>
 <p>※タイトルをクリックすると詳細ページに移動します </p>
@@ -50,11 +54,8 @@
           </div>
         </div>
         <div class="plan-content">
-          <div class="start-guide plan-guide">
-            出発地点
-          </div>
-          <div class="plan-start plan-index">
-            <%= plan.start_place %>
+          <div class="start-guide plan-index">
+            出発地点：<%= plan.start_place %>
           </div>
         </div>
 

@@ -4,6 +4,7 @@ class DictionariesController < ApplicationController
   def index
     @dictionary = Dictionary.new
     @group = Group.find(params[:group_id])
+    @user = current_user
     @plan = Plan.find(params[:plan_id])
     @dictionaries = @plan.dictionaries.order("japanese ASC").includes(:plan)
     if @dictionaries

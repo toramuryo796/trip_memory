@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_action :move_to_index
+  before_action :find_user
 
   def index
     @group = Group.new
@@ -76,5 +77,9 @@ class GroupsController < ApplicationController
     if user_signed_in? == false
       redirect_to new_user_session_path
     end
+  end
+
+  def find_user
+    @user = current_user
   end
 end

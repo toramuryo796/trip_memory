@@ -1,11 +1,6 @@
 <%# hewder %>
 <div class="main-header">
-  <div class="make-group header-content">
-    <%= link_to "グループ一覧", groups_path, local:true %>
-  </div>
-  <div class="make-group header-content">
-    <%= link_to "グループを作成", new_group_path, local:true %>
-  </div>
+  <%= render partial: "shared/main_header", locals: { user: @user, group: @group} %>
 </div>
 <%# /hewder %>
 

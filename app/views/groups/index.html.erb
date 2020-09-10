@@ -1,12 +1,30 @@
 <%# header %>
 <div class="main-header">
-  <div class="header-content">
-    <%= link_to "グループを作成", new_group_path, local:true %>
-  </div>
+  <%# グループ一覧リンク%>
+    <div class="user-groups header-content">
+      <%= link_to "グループ一覧", groups_path %>
+    </div>
+  <%# /グループ一覧リンク%>
+
+  <%# 行先候補一覧リンク %>
+    <div class="user-candidates-link header-content">
+      <%= link_to "行先候補一覧", candidates_user_path(@user), class: "user-candidate-link", local: true %>
+    </div>
+    <%# /予定一覧リンク %>
+
+    <%# 旅行計画一覧リンク %>
+    <div class="user-plan-link header-content">
+      <%= link_to "旅行計画一覧", plans_user_path(@user), class: "user-plans-link", local: true %>
+    </div>
+    <%# 旅行計画一覧リンク %>
 </div>
 <%# /header %>
 
-<h1>グループ一覧<h1>
+<div class="to_group_new">
+  <h1><%= link_to "グループ作成", new_group_path %></h1>
+<div>
+
+<h1>グループ一覧</h1>
 <div class="group-box">
   <div class="group-box-main">
     <ul class="group-list">

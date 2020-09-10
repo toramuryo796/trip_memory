@@ -1,3 +1,7 @@
+<div class="main-header">
+  <%= render partial: "shared/main_header", locals: { user: @user, group: @group} %>
+</div>
+
 <div class="back-to-group@">
   <%= link_to "#{@group.name}", group_path(@group) %>
 </div>
@@ -23,6 +27,24 @@
       </div>
      </div>
     <%# /タイトル %>
+    
+    <%# タイトル %>
+    <div class="memory-form-box">
+      <div class="memory-destination-guide memory-form-guide">
+        行先
+      </div>
+      <div class="memory-destination-form, memory-form">
+      <%# 旅行計画ですでに書いていたら継承 %>  
+        <% if @plan.destination.present? %>
+          <%= f.text_field :destination, class:"memory-destination-fill", value: "#{@plan.destination}" %>
+        <% else %>
+          <%= f.text_field :destination, class:"memory-title-fill", placeholder: "タイトルを記入してください" %>
+        <% end %>    
+      </div>
+     </div>
+    <%# /タイトル %>
+
+    
     
     <%# 日程 %>
     <div class=" memory-form-box">
@@ -61,7 +83,7 @@
         memo
       </div>
       <div class="memory-transportation-mwmo-form memory-form" >
-        <%= f.text_area :trans_memo, class: "trans_memo_fill", placeholder: "便名、搭乗時間など、ご自由に記入してください"%> 
+        <%= f.text_area :trans_memo, class: "trans_memo_fill", value: "#{@plan.ticket}" %> 
       </div>
     </div>
     <%# /移動手段 %>
@@ -77,7 +99,7 @@
         </div>
       <% else %>
         <div class="memory-hotel-form memory-form">
-          <%= f.text_field :hotel, class: "hotel-fill", placeholder: "ホテル名を記入してください" %>
+          <%= f.text_field :hotel, class: "hotel-fill", value: "#{@plan.hotel_memo}" %>
         </div>
       <% end %>
       <div class="memory-hotel-memo-guide memory-form-guide">
@@ -128,6 +150,7 @@
         思い出の写真 (最大5枚)
         <input type="button" class="add-image hidden" id="add-image" value="追加">        <%# 追加ボタン %>
       </div>
+      
       <%# 画像選択 %>
       <div class="image-choose"  data-num="1">
         <%= f.file_field :images, name: "memory[images][]", class: "image-fill", id:"image-fill-1", data:{num:1}%>  
@@ -137,7 +160,8 @@
     <%# /思い出の写真 %>
     
     <%# previewさせる箇所 %>
-    <div class="memory-preview" id="memory-preview"></div>
+    <div class="memory-preview" id="memory-preview">
+    </div>
     <%# preview %>
     
     <div class="memory-form-box">

@@ -1,7 +1,7 @@
 class MemoriesController < ApplicationController
   before_action :find_memory, only: [:show, :edit, :update, :destroy]
+  before_action :find_group_user
   def index
-    @group = Group.find_by(id: params[:group_id])
     @memories = @group.memories
   end
   
@@ -26,10 +26,10 @@ class MemoriesController < ApplicationController
   
   def show
   end
-
+  
   def edit
   end
-
+  
   def update
     if @memory.update(memory_params)
       redirect_to group_memory_path(@group, @memory)
@@ -45,11 +45,16 @@ class MemoriesController < ApplicationController
   
   private
   def memory_params
-    params.require(:memory).permit(:title, :departure_day, :return_day, :transportaion_id, :trans_memo, :hotel, :hotel_memo, :best, :happening, :again, :plan_id, images: []).merge(user_id: current_user.id, group_id: params[:group_id])
+    params.require(:memory).permit(:title, :departure_day, :return_day, :transportaion_id, :trans_memo, :hotel, :hotel_memo, :best, :happening, :again, :plan_id, :destination, images: []).merge(user_id: current_user.id, group_id: params[:group_id])
   end
   
   def find_memory
     @memory = Memory.find(params[:id])
     @group = @memory.group
+  end
+  
+  def find_group_user
+    @group = Group.find_by(id: params[:group_id])
+    @user = current_user
   end
 end

@@ -1,0 +1,12 @@
+.group-plans{
+  margin-bottom: 10px;
+  margin-top: 10px;
+  border: dotted 2px #dcdcdc
+}
+
+.main-header{
+  display: flex;
+  justify-content: space-around;
+  border-bottom: solid 2px #f5f5f5;
+}
+
