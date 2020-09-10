@@ -1,23 +1,35 @@
+<% if schedule.id.present? %>
   <tr class="table-list" id="table-list-<%= schedule.id %>">
-    <td class="schedule-list time-list">
-      <%= schedule.hour.name %>:<%= schedule.minute.name %>
-    </td>
+    <% if schedule.minute.present? %>
+      <td class="schedule-list time-list">
+        <%= schedule.hour.name %>:<%= schedule.minute.name %>
+      </td>
+    <% end %>
 
-    <td class="schedule-list category-list">
-      <%= render partial: 'case' ,locals: {schedule: schedule} %>
-    </td>
+    <% if schedule.present? %>
+      <td class="schedule-list category-list">
+        <%= render partial: 'case' ,locals: {schedule: schedule} %>
+      </td>
+    <% end %>
 
-    <td class="schedule-list program-list">
-      <%= schedule.program %>
-    </td>
+    <% if schedule.present? %>
+      <td class="schedule-list program-list">
+        <%= schedule.program %>
+      </td>
+    <% end %>
 
-    <td class="update">
-      <%= link_to '編集', edit_schedule_path(schedule.id), data: { remote: true } %>
-    </td>
+    <% if schedule.id.present? %>
+      <td class="update">
+        <%= link_to '編集', edit_schedule_path(schedule), data: { remote: true } %>
+      </td>
+    <% end %>
     
-    <td class="delete">
-      <%= link_to '削除',schedule_path(schedule), 
-                  method: :delete,
-                  data: { remote: true } %>
-    </td>
+    <% if schedule.id.present? %>
+      <td class="delete">
+        <%= link_to '削除',schedule_path(schedule), 
+                    method: :delete,
+                    data: { remote: true } %>
+      </td>
+    <% end %>
   </tr>
+<% end %>
