@@ -36,7 +36,7 @@
 <div class="day-schedule-large-box">
   <%# ajaxのform %>
   <div id="schedule-form">
-    <%= render partial: "form", locals:{plan_id: @plan_id, schedule: Schedule.new, value: "作成" , passed: @passed} %>
+    <%= render partial: "form", locals:{plan_id: @plan_id, schedule: Schedule.new, value: "作成" , day_how: @day_how } %>
   </div>
   <%# /ajaxのform %>
   <%# schedule表%>

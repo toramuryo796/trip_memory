@@ -10,7 +10,9 @@
         <% if group.candidates.present? %>
           <li class="user-candidate">
            <% group.candidates.each do |candidate|%>
+            <% unless candidate.plan.present? %>
               <%= link_to candidate.destination , group_candidate_path(candidate.group, candidate) %>
+            <% end %>
           <% end %>
         <% else %>
             行先候補はありません

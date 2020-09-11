@@ -9,38 +9,40 @@
         <h2><%= group.name %></h2>
         <% if group.plans.present? %>
           <% group.plans.each do |plan| %>
-            <div class="plan-box">
-              <%# 旅行のタイトル %>
-              <div class="user-plan-title">
-                <h2><%= link_to "#{plan.title}" , group_plan_path(group, plan)%></h2>
-              </div>
-              <%# /旅行のタイトル %>
+            <% unless plan.memory.present? %>
+              <div class="plan-box">
+                <%# 旅行のタイトル %>
+                <div class="user-plan-title">
+                  <h2><%= link_to "#{plan.title}" , group_plan_path(group, plan)%></h2>
+                </div>
+                <%# /旅行のタイトル %>
 
-              <%# 行先 %>
-              <dt class="desination-guide">
-                行先
-              </dt>
-              <dd class="user-plan-destination">
-                <%= plan.destination %>
-              </dd>
-              
-              <%# /行先 %>
+                <%# 行先 %>
+                <dt class="desination-guide">
+                  行先
+                </dt>
+                <dd class="user-plan-destination">
+                  <%= plan.destination %>
+                </dd>
+                
+                <%# /行先 %>
 
-              <div class="user-plan-depature">
-                <dt class="user-plan-depature-guide">
-                  出発日：
-                </dt>
-                <dd class="user-depature-day">
-                  <%= plan.departure_day %>
-                </dd>
-                <dt class="user-plan-return-guide">
-                  出発日：
-                </dt>
-                <dd class="user-return-day">
-                  <%= plan.return_day %>
-                </dd>
+                <div class="user-plan-depature">
+                  <dt class="user-plan-depature-guide">
+                    出発日：
+                  </dt>
+                  <dd class="user-depature-day">
+                    <%= plan.departure_day %>
+                  </dd>
+                  <dt class="user-plan-return-guide">
+                    出発日：
+                  </dt>
+                  <dd class="user-return-day">
+                    <%= plan.return_day %>
+                  </dd>
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
         <% else %>
           旅行計画はありません
