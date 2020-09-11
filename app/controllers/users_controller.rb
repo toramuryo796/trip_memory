@@ -12,6 +12,7 @@ class UsersController < ApplicationController
       @group = group
     end 
     @count = 1
+    @favorite_candidates = @user.favorite_candidates
   end
 
   def candidates

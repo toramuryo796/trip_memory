@@ -5,21 +5,16 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :user_groups
-  has_many :groups, through: :user_groups, dependent: :destroy
+  has_many :groups,      through: :user_groups, dependent: :destroy
   has_many :candidates
   has_many :plans
-  has_many :goods
+  has_many :favorites
+  has_many :favorite_candidates, through: :favorites, source: :candidate
   has_many :schedules 
   has_many :day_hows 
   has_many :dictionaries
   has_many :memories
   # has_many :memories
-
-  def already_good?(candidate)
-    self.goods.exists?(candidate_id: candidate.id)
-  end
-
-
   
   all_characters = /\A[0-9a-zA-Zぁ-んァ-ンー-龥]+\Z/
   with_options presence: true do

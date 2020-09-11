@@ -6,8 +6,21 @@
   </div>
 
 
-<% if @user.memories.present? %>
-  <%= render partial: "userImage", locals: {user: @user} %>
-<% end %>
+  <% if @user.memories.present? %>
+    <%= render partial: "userImage", locals: {user: @user} %>
+  <% end %>
+
+  <div class="fav-candidates-box">
+    <p>お気に入りした旅行候補</p>
+    <%= @favorite_candidates.each do |candidate| %>
+      <div class="fav-candidate">
+        <%= link_to "#{candidate.destination}", group_candidate(candiadte.group, canidate) %>
+        <% if caniddate.image.present? %>
+          <%= candidate.image %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  
   <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 </div>
