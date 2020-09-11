@@ -1,0 +1,13 @@
+<div class="favorite">
+  <% if candidate.favorite_by?(current_user) %>
+    <p> 
+      <%= link_to "いいね解除", group_candidate_favorite_path(group, candidate), method: :delete, remote: true %> 
+      <%= candidate.favorites.count %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to "いいね", group_candidate_favorites_path(group, candidate), method: :post, remote: true %>
+      <%= @candidate.favorites.count %>
+    </p>
+  <% end %>
+</div>

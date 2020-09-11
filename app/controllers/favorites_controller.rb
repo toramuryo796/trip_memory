@@ -3,13 +3,11 @@ class FavoritesController < ApplicationController
   def create
     favorite = current_user.favorites.build(candidate_id: params[:candidate_id])
     favorite.save
-    redirect_to group_candidate_path(@group, @candidate)
   end
   
   def destroy
     favorite = Favorite.find_by(user_id: current_user.id, candidate_id: params[:candidate_id])
     favorite.destroy
-    redirect_to group_candidate_path(@group, @candidate)
   end
   
   private 
