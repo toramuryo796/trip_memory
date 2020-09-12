@@ -1,0 +1,3 @@
+document.getElementById('bring-list-<%= @bring.id %>').innerHTML = '<%= j(render @bring) %>'
+let formUp = document.getElementById("bring-form")
+formUp.outerHTML = '<%= j(render "form", bring: Bring.new, value:"追加") %>'

@@ -18,6 +18,7 @@ class DictionariesController < ApplicationController
     @dictionary = Dictionary.create(dictionary_params)
     @group = @dictionary.group
     @plan = @dictionary.plan
+    binding.pry
   end
   
   def edit

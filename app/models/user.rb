@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :day_hows 
   has_many :dictionaries
   has_many :memories
+  has_many :brings
   # has_many :memories
   
   all_characters = /\A[0-9a-zA-Zぁ-んァ-ンー-龥]+\Z/
