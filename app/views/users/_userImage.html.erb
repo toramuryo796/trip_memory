@@ -1,10 +1,12 @@
 <div class="swiper-container user-swiper-container">
   <div class="swiper-wrapper user-swiper-wrapper">
     <% user.memories.each do |memory|%>
-      <% memory.images.each do |image| %>
-        <div class="swiper-slide user-swiper-slide">
-          <%= image_tag image, class:"user-image image" %>
-        </div>
+      <% if memory.present? %>
+        <% memory.images.each do |image| %>
+          <div class="swiper-slide user-swiper-slide">
+            <%= image_tag image, class:"user-image image" %>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
   </div>

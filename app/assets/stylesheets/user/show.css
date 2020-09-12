@@ -20,3 +20,21 @@
   padding-top: 50px;
   padding-bottom: 50px;
 }
+
+.user-candidate-fav-image{
+  width:200px;
+  height: 160px;
+}
+
+.user-fav-image{
+  width: 200px;
+  object-fit: contain;
+}
+
+.fav-candidates{
+  display: flex;
+}
+
+.fav-candidate{
+  margin-right: 10px;
+}
