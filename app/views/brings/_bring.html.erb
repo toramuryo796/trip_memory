@@ -1,0 +1,5 @@
+<li class="bring-list" id="bring-list-<%= bring.id %>">
+  <% if (bring.user == current_user) %>
+    <%= render partial: "check", locals:{group: @group, plan: @plan, bring: bring}%>
+  <% end %>
+</li>

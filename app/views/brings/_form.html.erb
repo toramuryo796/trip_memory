@@ -1,0 +1,8 @@
+<%= form_with(model: [@group, @plan, bring], id: "bring-form") do |f|%>
+  <div class="add-thing" id="add-things">
+    <%= f.text_field :thing, class:"thing-form", id: "thing-form",  placeholder: "追加したい持ち物を入力" %>
+  </div>
+  <div class="submit">
+    <%= f.submit "#{value}" %>
+  </div>
+<% end %>

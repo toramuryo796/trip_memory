@@ -1,0 +1,16 @@
+<%# header %>
+<div class="main-header">
+  <%= render partial: "shared/main_header", locals: { user: @user, group: @group} %>
+</div>
+<%= link_to "旅行計画に戻る", group_plan_path(@group, @plan) %>
+<%# /header %>
+
+<h1>持ち物リスト</h1>
+<div class="bring-form_box">
+  <%= render partial: "form", locals:{bring: Bring.new, value: "追加"} %>
+</div>
+<div class="bring-lists-box"> 
+  <ul class="bring-lists" id="bring-lists">
+    <%= render @brings %>
+  </ul>
+</div>

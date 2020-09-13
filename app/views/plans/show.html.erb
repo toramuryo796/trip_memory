@@ -14,8 +14,12 @@
   <%= link_to "スケジュールを作成/確認する", schedules_path(plan_id: @plan.id) %>
 </div>
 
-<div class="to_dictionary">
+<div class="to-dictionary">
   <%= link_to "単語帳", group_plan_dictionaries_path(@group, @plan, @dictionary) %>
+</div>
+
+<div class="to-bring">
+  <%= link_to "持ち物リスト", group_plan_brings_path(@group, @plan, @bring) %>
 </div>
 
 <div class="plan-content">
@@ -94,6 +98,9 @@
     <%= image_tag @plan.candidate.image.variant(resize:'500x500'), class:"candidate-image" if @plan.candidate.image.attached? %>
   <% end %>
 </div>
-<div class="back_page">
-  <%= link_to "戻る", group_plans_path(@group, @plan),  %>
+
+<div class="show-footer">
+  <div class="back_page">
+    <%= link_to "戻る", group_plans_path(@group, @plan) %>
+  </div>
 </div>
