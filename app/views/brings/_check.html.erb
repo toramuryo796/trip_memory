@@ -1,0 +1,16 @@
+<div id="check-box-<%= bring.id %>">
+  <% if bring.check.present? %>
+    <%= link_to group_plan_bring_check_path(@group, @plan, bring, bring.check),method: :delete, data: {remote: true} do %>    <%# チェックされてるとき %>
+      <input type="checkbox" checked="checked">
+    <% end %>
+    <%= bring.thing %>    
+    <%= link_to "編集", edit_group_plan_bring_path(@group, @plan, bring), data:{remote: true} %>
+    <%= link_to "削除", group_plan_bring_path(@group, @plan, bring), method: :delete, data:{remote: true} %>                                  
+  <% else %>
+    <%= link_to group_plan_bring_checks_path(@group, @plan, bring, bring.check), method: :post, data: {remote: true} do %>    <%# チェックされてないとき %>
+      <input type="checkbox" >
+    <% end %>
+      <%= bring.thing %>  
+      <%= link_to "編集", edit_group_plan_bring_path(@group, @plan, bring), data:{remote: true} %>
+      <%= link_to "削除", group_plan_bring_path(@group, @plan, bring), method: :delete, data:{remote: true} %>                                   
+  <% end %>
