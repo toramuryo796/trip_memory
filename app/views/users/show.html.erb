@@ -5,21 +5,26 @@
     <%= render partial: "shared/main_header", locals: { user: @user, group: @group} %>
   </div>
 
-
   <% if @user.memories.present? %>
     <%= render partial: "userImage", locals: {user: @user} %>
   <% end %>
 
   <div class="fav-candidates-box">
     <p>お気に入りした旅行候補</p>
-    <%= @favorite_candidates.each do |candidate| %>
-      <div class="fav-candidate">
-        <%= link_to "#{candidate.destination}", group_candidate(candiadte.group, canidate) %>
-        <% if caniddate.image.present? %>
-          <%= candidate.image %>
+    <div class="fav-candidates">
+      <% @favorite_candidates.each do |candidate| %>
+        <% unless candidate.plan.present? %>
+          <div class="fav-candidate">
+            <%= link_to "#{candidate.destination}", group_candidate_path(candidate.group, candidate) %>
+            <% if candidate.image.present? %>
+              <div class="user-candidate-fav-image">
+                <%= image_tag candidate.image, class:"user-fav-image" %> 
+              </div>
+            <% end %>
+          </div>
         <% end %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
   
   <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
