@@ -9,10 +9,14 @@ Rails.application.routes.draw do
 
     resources :candidates do
       resources :goods,          only: [:create,:destroy]
+      resources :favorites,      only: [:create, :destroy]
     end
 
     resources :plans do
       resources :dictionaries,   only: [:index, :create, :update, :edit, :destroy ]
+      resources :brings,         only: [:index, :create, :update, :edit, :destroy ] do
+        resources :checks,        only: [:create, :destroy]
+      end
     end
     
     resources :memories

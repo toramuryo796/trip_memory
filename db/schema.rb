@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_06_090731) do
+ActiveRecord::Schema.define(version: 2020_09_12_042812) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -33,6 +33,18 @@ ActiveRecord::Schema.define(version: 2020_09_06_090731) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "brings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "thing", null: false
+    t.bigint "group_id", null: false
+    t.bigint "plan_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_brings_on_group_id"
+    t.index ["plan_id"], name: "index_brings_on_plan_id"
+    t.index ["user_id"], name: "index_brings_on_user_id"
+  end
+
   create_table "candidates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "budget_id", null: false
     t.string "night", null: false
@@ -48,6 +60,15 @@ ActiveRecord::Schema.define(version: 2020_09_06_090731) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["group_id"], name: "index_candidates_on_group_id"
     t.index ["user_id"], name: "index_candidates_on_user_id"
+  end
+
+  create_table "checks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "bring_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bring_id"], name: "index_checks_on_bring_id"
+    t.index ["user_id"], name: "index_checks_on_user_id"
   end
 
   create_table "day_hows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -74,6 +95,15 @@ ActiveRecord::Schema.define(version: 2020_09_06_090731) do
     t.index ["user_id"], name: "index_dictionaries_on_user_id"
   end
 
+  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "candidate_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["candidate_id"], name: "index_favorites_on_candidate_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
   create_table "goods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "candidate_id", null: false
     t.bigint "user_id", null: false
@@ -91,6 +121,7 @@ ActiveRecord::Schema.define(version: 2020_09_06_090731) do
 
   create_table "memories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
+    t.string "destination", null: false
     t.date "departure_day", null: false
     t.date "return_day", null: false
     t.integer "transportation_id"
@@ -165,13 +196,20 @@ ActiveRecord::Schema.define(version: 2020_09_06_090731) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "brings", "groups"
+  add_foreign_key "brings", "plans"
+  add_foreign_key "brings", "users"
   add_foreign_key "candidates", "groups"
   add_foreign_key "candidates", "users"
+  add_foreign_key "checks", "brings"
+  add_foreign_key "checks", "users"
   add_foreign_key "day_hows", "plans"
   add_foreign_key "day_hows", "users"
   add_foreign_key "dictionaries", "groups"
   add_foreign_key "dictionaries", "plans"
   add_foreign_key "dictionaries", "users"
+  add_foreign_key "favorites", "candidates"
+  add_foreign_key "favorites", "users"
   add_foreign_key "goods", "candidates"
   add_foreign_key "goods", "users"
   add_foreign_key "memories", "groups"
