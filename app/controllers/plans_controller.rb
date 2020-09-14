@@ -1,7 +1,7 @@
 class PlansController < ApplicationController
   before_action :find_group
   before_action :find_candidate,   only: [:index,:new]
-  before_action :find_plan,        only: [:edit, :update]
+  before_action :find_plan,        only: [:edit, :update, :show, :does]
   
   def new
     @group = Group.find_by(id: params[:group_id]) 
@@ -49,7 +49,6 @@ class PlansController < ApplicationController
   end
   
   def show
-    @plan = Plan.find_by(id: params[:id])
     @group = @plan.group
   end
   

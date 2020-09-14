@@ -1,0 +1,17 @@
+<tr class="program-list" id="program-list-<%= want.id %>">
+  <td class="priority-td">
+    <%= want.priority.name %>
+  </td>
+
+  <td class="program-td">
+    <%= want.program %>
+  </td>
+
+  <td>
+    <%= link_to  "編集",  edit_group_plan_want_path(@group, @plan, want), data: {remote: true} %>
+  </td>
+
+  <td>
+    <%= link_to "削除", group_plan_want_path(@group, @plan, want), method: :delete, data: {remote: true} %>
+  </td>
+</tr>

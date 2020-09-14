@@ -7,10 +7,9 @@ class Plan < ApplicationRecord
   has_one_attached  :image,          dependent: :destroy
   has_many          :dictionaries,   dependent: :destroy
   has_many          :brings,         dependent: :destroy
+  has_many          :wants,           dependent: :destroy
   has_one           :memory,         dependent: :destroy
 
-  # has_one :Bring
-  # has_one :purpose
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :transportation  
   

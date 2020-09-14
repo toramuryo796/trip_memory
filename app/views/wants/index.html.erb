@@ -1,0 +1,25 @@
+<div class="main-header">
+  <%= render partial: "shared/main_header", locals: { user: @user, group: @group} %>
+</div>
+
+<div class="wants-large-box">
+  <div class="want-form-box">
+    <%= render partial: "form", locals: {want: Want.new, value: "追加"} %>
+  </div>
+</div>
+
+<div class="program-large-box">
+  <table id="want-table">
+    <tbody id="want-tbody">
+      <tr>
+        <th>
+          優先度
+        </th>
+        <th>
+          やりたいこと
+        </th>
+      <tr>
+      <%= render @wants %>
+    </tbody>
+  </table>
+</div>

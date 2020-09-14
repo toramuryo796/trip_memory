@@ -1,0 +1,27 @@
+<%= form_with(model:[@group, @plan, want],  id: "want-form") do |f| %>
+  <div class="priority-form">
+    <div class="priority-guide">
+      優先度
+    </div>
+    <div class="want-form">
+      <%= f.collection_select(:priority_id, Priority.all, :id, :name, {include_blank:"---"}, {id: "priority-form"} ) %>
+    </div>
+  </div>
+
+  <div class="program-form">
+    <div class="program-guide">
+      やりたいこと
+    </div>
+    <div class="want-form">
+      <%= f.text_field :program, id: "program-form" %>
+    </div>
+  </div>
+
+  <%= f.submit value %>
+
+  <% if value == "更新" %>
+    <%= link_to new_group_plan_want_path(@group, @plan, id: want.id), data: {remote: true}  do%>
+      <input type="button" class="back-botton" value="取り消し">
+    <% end %>
+  <% end %>
+<% end %>

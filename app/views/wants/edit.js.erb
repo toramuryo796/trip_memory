@@ -1,0 +1,2 @@
+var form = document.getElementById("want-form")
+form.outerHTML = '<%= j(render "form", want: @want, value: "更新") %>'

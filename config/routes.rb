@@ -13,10 +13,11 @@ Rails.application.routes.draw do
     end
 
     resources :plans do
-      resources :dictionaries,   only: [:index, :create, :update, :edit, :destroy ]
-      resources :brings,         only: [:index, :create, :update, :edit, :destroy ] do
+      resources :dictionaries,   only: [:new, :index, :create, :update, :edit, :destroy ]
+      resources :brings,         only: [:index, :new,  :create, :update, :edit, :destroy ] do
         resources :checks,        only: [:create, :destroy]
       end
+      resources :wants,           only: [:index, :new, :create, :update, :edit, :destroy ]
     end
     
     resources :memories

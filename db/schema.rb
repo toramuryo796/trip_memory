@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_12_042812) do
+ActiveRecord::Schema.define(version: 2020_09_14_083337) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -195,6 +195,15 @@ ActiveRecord::Schema.define(version: 2020_09_12_042812) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wants", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "priority_id", null: false
+    t.string "program", null: false
+    t.bigint "plan_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["plan_id"], name: "index_wants_on_plan_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "brings", "groups"
   add_foreign_key "brings", "plans"
@@ -220,4 +229,5 @@ ActiveRecord::Schema.define(version: 2020_09_12_042812) do
   add_foreign_key "plans", "users"
   add_foreign_key "user_groups", "groups"
   add_foreign_key "user_groups", "users"
+  add_foreign_key "wants", "plans"
 end
