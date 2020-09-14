@@ -1,2 +1,2 @@
 var form = document.getElementById("schedule-form") 
-form.outerHTML= '<%= j(render "form", schedule: Schedule.new,  value:"作成", plan_id: @plan_id, day: @schedule.day_how_id ) %>'
+form.outerHTML= '<%= j(render "form", schedule: Schedule.new,  value:"作成", plan_id: @plan_id, day_how: @schedule.day_how_id ) %>'
