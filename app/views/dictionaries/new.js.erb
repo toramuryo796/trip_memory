@@ -1,0 +1,5 @@
+var form = document.getElementById("dictionary-form")
+form.outerHTML = '<%= j(render "form", dictionary: Dictionary.new, value: "追加") %>'
+document.getElementById('language-form').value = ""
+document.getElementById('japanese-form').value = ""
+document.getElementById('translation-form').value = ""
