@@ -1,0 +1,3 @@
+var form = document.getElementById("bring-form")
+form.outerHTML = '<%= j(render "form", bring: Bring.new, value: "追加") %>'
+document.getElementById("thing-form").value = ""

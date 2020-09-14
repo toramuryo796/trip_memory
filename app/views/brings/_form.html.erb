@@ -5,4 +5,10 @@
   <div class="submit">
     <%= f.submit "#{value}" %>
   </div>
+
+  <% if value == "更新" %>
+    <%= link_to new_group_plan_bring_path(@group, @plan, id: bring.id), data: {remote: true}  do%>
+      <input type="button" class="back-botton" value="取り消し">
+    <% end %>
+  <% end %>
 <% end %>

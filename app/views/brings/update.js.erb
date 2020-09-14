@@ -1,3 +1,6 @@
 document.getElementById('bring-list-<%= @bring.id %>').innerHTML = '<%= j(render @bring) %>'
 var formUp = document.getElementById("bring-form")
 formUp.outerHTML = '<%= j(render "form", bring: Bring.new, value:"追加") %>'
+
+document.getElementById("thing-form").value = ""
+

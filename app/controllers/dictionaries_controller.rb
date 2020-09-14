@@ -14,11 +14,16 @@ class DictionariesController < ApplicationController
     end
   end
 
+  def new
+    @dictionary = Dictionary.find_by(id: params[:id])
+    @group = @dictionary.group
+    @plan = @dictionary.plan
+  end
+
   def create
     @dictionary = Dictionary.create(dictionary_params)
     @group = @dictionary.group
     @plan = @dictionary.plan
-    binding.pry
   end
   
   def edit

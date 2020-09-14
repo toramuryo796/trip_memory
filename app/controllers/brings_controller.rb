@@ -5,6 +5,7 @@ class BringsController < ApplicationController
   end
   
   def new
+    @bring = Bring.find_by(id: params[:id])
   end
   
   def create
