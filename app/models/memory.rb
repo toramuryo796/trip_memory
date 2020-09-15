@@ -10,15 +10,16 @@ class Memory < ApplicationRecord
 
   length = { maximum: 400, message: "は400字以内で記入してください" } 
   houndred = { maximum: 100, message: "は400字以内で記入してください" } 
+  string = { maximum: 40, message: "は40字以内で記入してください" } 
 
   with_options presence:true do
-    validates :title
-    validates :destination
+    validates :title, length: string
+    validates :destination, length: string
     validates :departure_day
     validates :return_day
     validates :transportation_id
     validates :trans_memo, length: length
-    validates :hotel
+    validates :hotel, length: string
     validates :hotel_memo, length: length
     validates :best, length: houndred
     validates :happening, length: houndred
