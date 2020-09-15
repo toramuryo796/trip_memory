@@ -1,13 +1,13 @@
 class FavoritesController < ApplicationController
   before_action :find_group_candidate, only: [:create, :destroy]
   def create
-    favorite = current_user.favorites.build(candidate_id: params[:candidate_id])
-    favorite.save
+    @favorite = current_user.favorites.build(candidate_id: params[:candidate_id])
+    @favorite.save
   end
   
   def destroy
-    favorite = Favorite.find_by(user_id: current_user.id, candidate_id: params[:candidate_id])
-    favorite.destroy
+    @favorite = Favorite.find_by(user_id: current_user.id, candidate_id: params[:candidate_id])
+    @favorite.destroy
   end
   
   private 

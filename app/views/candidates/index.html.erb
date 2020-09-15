@@ -36,19 +36,7 @@
 
           <div class="index-footer">
             <div class="favorite">
-              <% if candidate.favorite_by?(current_user) %>
-                <p> 
-                  <%= link_to "いいね解除", group_candidate_favorite_path(candidate.group, candidate), method: :delete %> 
-                  <%= candidate.favorites.count %>
-                </p>
-              <% else %>
-                <p>
-                  <%= link_to "いいね", group_candidate_favorites_path(candidate.group, candidate), method: :post %>
-                  <%= candidate.favorites.count %>
-                </p>
-              <% end %>
-            </div>
-
+              <%= render "favorite", locals: {group: @group, candidate: candidate} %>
             <div class="decide-btn">
               <%= link_to "決定！！", new_group_plan_path(@group,@plan, candidate_id: candidate.id) %>
             </div>
