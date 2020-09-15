@@ -15,7 +15,11 @@
   <h2> 旅行計画の詳細を記入してください </h2>
 </div>
 <div class="plan-form-box">
-  <%= form_with url: group_plans_path(@group, @plan), method: :post, local: true do |f| %>
+  <%= form_with( model:[@group, @plan] , url: group_plans_path(@group, @plan), method: :post, local: true) do |f| %>
+
+    <%# エラー表示 %>
+    <%= render partial: 'shared/error_messages', locals: { model: @plan } %>
+    <%# /エラー表示%>
   
   <%#= candidateのid %>
   <% if @candidate %>

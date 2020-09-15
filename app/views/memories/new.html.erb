@@ -7,6 +7,11 @@
 </div>
 <div class="memories-form-large-box">
   <%= form_with(model: [@group, @memory], url: group_memories_path(@group, @memory), method: :post, local: true ) do |f| %>
+
+    <%# エラー表示 %>
+    <%= render partial: 'shared/error_messages', locals: { model: @memory } %>
+    <%# /エラー表示%>
+
     <%# plan_id %>
     <div class="hidden">
       <%= f.text_field :plan_id, value: "#{@plan.id}" %>
@@ -117,7 +122,7 @@
         一番面白かったことは？
       </div>
       <div class="memory-best">
-        <%= f.text_area :best, class: "best-fill" %>
+        <%= f.text_area :best, class: "best-fill", placeholder: "100文字以内で記入"%>
       </div>
     </div>
     <%# /一番面白かったこと %>
@@ -128,7 +133,7 @@
         一番のハプニングは？
       </div>
       <div class="memory-happening">
-        <%= f.text_area :happening, class:"happening-fill" %>
+        <%= f.text_area :happening, class:"happening-fill", placeholder: "100文字以内で記入" %>
       </div>
     </div>
     <%# /ハプニング %>
@@ -139,7 +144,7 @@
         また行きたい場所/やりたいこと
       </div>
       <div class="memory-ageain">
-        <%= f.text_area :again, class:"again-fill" %>
+        <%= f.text_area :again, class:"again-fill", placeholder: "100文字以内で記入" %>
       </div>
     </div>
     <%# /またやりたいこと %>

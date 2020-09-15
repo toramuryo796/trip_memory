@@ -18,10 +18,9 @@ class User < ApplicationRecord
   has_many :checks
   has_many :diaries
   
-  all_characters = /\A[0-9a-zA-Zぁ-んァ-ンー-龥]+\Z/
   with_options presence: true do
-    validates :user_ID, format: {with: all_characters}, length: {maximum: 40, message: "is invalid. Input within 40 characters"}
+    validates :user_ID, format: {with: /\A[a-zA-Z0-9]+\z/, message: "は半角英数字で入力してください"}, length: {maximum: 40, message: "は40文字以内で入力してください"}
+    validates :password, format: {with: /(?=.*\d+.*)(?=.*[a-zA-Z]+.*)+/, message: "は半角英数字を混合させて入力してください"}
+    validates :email,    format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, message: "は@を入れて半角で入力してください"}
   end
-  validates :password, format: {with: /(?=.*\d+.*)(?=.*[a-zA-Z]+.*)+/, message: "is invalid.Input half_width characters and number."}
-  validates :email,    format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, message: "is invalid. Include half_characters with '@'"}
 end

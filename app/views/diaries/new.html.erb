@@ -1,6 +1,11 @@
 <%= render partial: "memory_header", locals: {user: @user, group: @group, memory: @memory} %>
 
 <%= form_with(model:[@group, @memory, @diary], url: group_memory_diaries_path(@group, @memory, @diary), method: :post, local: true) do |f| %>
+
+  <%# エラー表示 %>
+  <%= render partial: 'shared/error_messages', locals: { model: @diary } %>
+  <%# /エラー表示%>
+
   <div class="when-box diary-box">
     <div class="when-guide diary-guide">
       何日目？

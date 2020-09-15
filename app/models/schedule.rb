@@ -8,6 +8,8 @@ class Schedule < ApplicationRecord
   belongs_to_active_hash :hour
   belongs_to_active_hash :minute
 
-  validates  :hour_id, :minute_id, presence: true
+  with_options presence: true do
+    validates :program, length:{ maximum: 100, message: "は100字以内で記入してください"}
+  end
 
 end

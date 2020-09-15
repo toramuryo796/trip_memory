@@ -1,4 +1,7 @@
 <%= form_with model: schedule, id:"schedule-form"  do |f| %>
+  <%# エラー表示 %>
+  <%= render partial: 'shared/error_messages', locals: { model: schedule } %>
+  <%# /エラー表示%>
   <div class="hidden">
     <%= f.text_field :day_how_id, value: day_how, class: "how-day "%>
     <%= f.text_field :plan_id, value: plan_id, class: "plan-id hidden"%>

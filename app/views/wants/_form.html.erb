@@ -1,4 +1,9 @@
 <%= form_with(model:[@group, @plan, want],  id: "want-form") do |f| %>
+
+  <%# エラー表示 %>
+  <%= render partial: 'shared/error_messages', locals: { model: want } %>
+  <%# /エラー表示%>
+
   <div class="priority-form">
     <div class="priority-guide">
       優先度

@@ -1,4 +1,59 @@
 ja:
   time:
     format:
-      default:%Y/%m/%d %H:%M:%S
+      default:%Y/%m/%d %H:%M:%Sz
+  activerecord:   
+    attributes: 
+      user: 
+        user_ID: ユーザーID
+      group: 
+        name: グループ名
+      candidate: 
+        budget_id: 予算
+        night: 日数
+        destination: 行先
+        reason: 理由
+        take_time: 移動時間
+        trans_cost: 交通費
+      plan:
+        title: タイトル
+        destination: 行先
+        hotel_memo: ホテル情報
+        ticket: 交通機関情報
+      schedule:
+        program: 予定
+      day_how: 
+        passed: 日
+      dictionary:
+        language: 言語
+        japanese: 日本語
+        translation: 外国語
+      memory: 
+        title: タイトル
+        destination: 行先
+        departure_day: 出発日
+        return_day: 帰着日
+        transportation_id: 移動手段
+        trans_memo: 交通機関情報
+        hotel: ホテル名
+        hotel_memo: ホテル情報
+        best: 面白かったこと
+        happening: ハプニング
+        again: また行きたい・やりたいこと
+      bring: 
+        thing: 持ち物
+      want: 
+        program: やりたいこと
+        priority_id: 優先度
+      diary:
+        specific: 日
+        title: タイトル
+        content: 内容
+  activemodel:
+    attributes:
+      day_how_plans:
+        title: タイトル
+        destination: 行先
+        hotel_memo: ホテル情報
+        ticket: 交通機関情報
+

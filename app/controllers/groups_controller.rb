@@ -4,6 +4,7 @@ class GroupsController < ApplicationController
 
   def index
     @group = Group.new
+    
   end
 
   def new
@@ -39,7 +40,7 @@ class GroupsController < ApplicationController
       end
     end
     #重複していないユーザーが2人以上いるときに保存する
-    if count >= 2 # グループのメンバーが2人以上いるとき
+    # if count >= 2 # グループのメンバーが2人以上いるとき
       @group = Group.new(name: group_params[:name])                             # グループを生成
       if @group.save # グループが保存できたとき
         user_ids.each do |user_id| # user_ids配列の中身を1つずつ見ていく
@@ -49,11 +50,11 @@ class GroupsController < ApplicationController
         end
         redirect_to group_path(@group)
       else
-        redirect_to new_group_path
+        render :new
       end
-    else
-      redirect_to new_group_path
-    end
+    # else
+      # redirect_to new_group_path
+    # end
   end
 
   def show

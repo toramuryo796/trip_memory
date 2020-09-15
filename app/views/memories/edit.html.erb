@@ -8,6 +8,10 @@
 <div class="memories-form-large-box">
   <%= form_with(model: [@group, @memory], url: group_memory_path(@group, @memory), method: :put, local: true ) do |f| %>
 
+    <%# エラー表示 %>
+    <%= render partial: 'shared/error_messages', locals: { model: @memory } %>
+    <%# /エラー表示%>
+
     <%# タイトル %>
     <div class="memory-form-box">
       <div class="memory-title-guide memory-form-guide">

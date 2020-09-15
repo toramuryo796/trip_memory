@@ -29,7 +29,7 @@
           移動時間：<%= @candidate.take_time %>時間
         </div>
         <div class="trans-cost-box candidate-guide">
-          交通費(往復の概算)： <%= @candidate.trans_cost %>円
+          交通費(往復の概算)： <%= @candidate.trans_cost.to_s(:delimited) %>円
         </div>
       </div>
       <div class="reason-index candidate-guide">

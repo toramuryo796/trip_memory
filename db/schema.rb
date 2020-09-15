@@ -52,8 +52,7 @@ ActiveRecord::Schema.define(version: 2020_09_14_170558) do
     t.text "reason"
     t.integer "transportation_id"
     t.integer "take_time"
-    t.string "trans_cost"
-    t.boolean "decision"
+    t.integer "trans_cost"
     t.bigint "user_id", null: false
     t.bigint "group_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -94,7 +93,7 @@ ActiveRecord::Schema.define(version: 2020_09_14_170558) do
   end
 
   create_table "dictionaries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "language"
+    t.string "language", null: false
     t.string "japanese", null: false
     t.string "translation", null: false
     t.bigint "plan_id", null: false
@@ -136,13 +135,13 @@ ActiveRecord::Schema.define(version: 2020_09_14_170558) do
     t.string "destination", null: false
     t.date "departure_day", null: false
     t.date "return_day", null: false
-    t.integer "transportation_id"
-    t.text "trans_memo"
-    t.string "hotel"
-    t.text "hotel_memo"
-    t.text "best"
-    t.text "happening"
-    t.text "again"
+    t.integer "transportation_id", null: false
+    t.text "trans_memo", null: false
+    t.string "hotel", null: false
+    t.text "hotel_memo", null: false
+    t.text "best", null: false
+    t.text "happening", null: false
+    t.text "again", null: false
     t.bigint "plan_id", null: false
     t.bigint "user_id", null: false
     t.bigint "group_id", null: false

@@ -10,6 +10,9 @@
 </div>
 <div class="plan-form-box">
   <%= form_with model: [@group, @plan], url: group_plan_path(@group, @plan), method: :patch, local: true do |f| %>
+    <%# エラー表示 %>
+    <%= render partial: 'shared/error_messages', locals: { model: @plan } %>
+    <%# /エラー表示%>
 
     <div class="plan_form">
       <div class="form-guide">

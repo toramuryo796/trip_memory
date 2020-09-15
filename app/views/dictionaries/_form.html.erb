@@ -1,4 +1,9 @@
 <%= form_with(model:[@group, @plan, @dictionary], id: "dictionary-form" ) do |f| %>
+
+  <%# エラー表示 %>
+  <%= render partial: 'shared/error_messages', locals: { model: @dictionary } %>
+  <%# /エラー表示%>
+
   <div class="form-dictionary">
     <div class="form-guide">
       言語
