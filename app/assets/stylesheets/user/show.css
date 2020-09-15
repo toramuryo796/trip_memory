@@ -1,6 +1,7 @@
 .user-swiper-container{
   width: 600px;
   height: 450px;
+  margin: 0 auto;
 }
 
 .user-swiper-slide{
@@ -37,4 +38,10 @@
 
 .fav-candidate{
   margin-right: 10px;
+}
+
+.fav-candidates-box{
+  padding-top: 70px;
+  width: 80vw;
+  margin: 0 auto;
 }

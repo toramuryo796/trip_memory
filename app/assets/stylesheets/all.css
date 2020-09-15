@@ -1,3 +1,69 @@
+/* header */
+header{
+  /* position: absolute; */
+}
+
+.header{
+  display: flex;
+  align-items: center;
+  height: 60px;
+  width: 100vw;
+  background-color: aliceblue;
+  /* position: fixed;  */
+  top: 0;
+}
+
+header h1{
+  margin: 0;
+}
+
+.login-top-link{
+  margin-left: 10px;
+}
+
+.main-header{
+  background-color: aliceblue;
+  width: 100vw;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: solid 2px #dcdcdc;
+  /* position: fixed; */
+  top: 50px
+}
+
+.header-content{
+  width: 20%;
+}
+
+.main-header a{
+  display: block;
+}
+
+.user-plan-link{
+  border-left: solid 2px #dcdcdc;
+  border-right: solid 2px #dcdcdc;
+}
+
+.user-candidates-link{
+  border-left: solid 2px #dcdcdc;
+}
+
+.user-memories-link{
+  border-right: solid 2px #dcdcdc;
+}
+/* /header */
+
+/* 固定してる分の高さ足す */
+
+/* /固定してる分の高さ足す */
+
 ul{
   list-style: none;
 }
+
+.link{
+  text-decoration: none;
+}
+
+
