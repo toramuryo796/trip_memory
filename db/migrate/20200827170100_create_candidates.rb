@@ -6,8 +6,8 @@ class CreateCandidates < ActiveRecord::Migration[6.0]
       t.string      :destination,         null: false
       t.text        :reason             
       t.integer     :transportation_id
-      t.integer     :take_time        
-      t.integer     :trans_cost    
+      t.integer     :take_time,           default: ""
+      t.integer     :trans_cost,          default: ""
       t.references  :user,                null: false, foreign_key: true 
       t.references  :group,               null: false, foreign_key: true 
       t.timestamps
