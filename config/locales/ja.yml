@@ -18,8 +18,10 @@ ja:
       plan:
         title: タイトル
         destination: 行先
+        hotel: ホテル名
         hotel_memo: ホテル情報
         ticket: 交通機関情報
+        start_place: 出発地
       schedule:
         program: 予定
       day_how: 
@@ -54,6 +56,8 @@ ja:
       day_how_plans:
         title: タイトル
         destination: 行先
+        hotel: ホテル名
         hotel_memo: ホテル情報
         ticket: 交通機関情報
+        start_place: 出発地
 
