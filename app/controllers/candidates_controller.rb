@@ -10,6 +10,7 @@ before_action :for_header, only: [:index, :new, :edit, :show]
     if @candidate
       @good = Good.new
     end
+    @favorite = Favorite.find_by(params[:favorite_id])
   end
   
   def new 
