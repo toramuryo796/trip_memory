@@ -7,7 +7,7 @@
   <% else %>
     <p>
       <%= link_to "いいね", group_candidate_favorites_path(group, candidate), method: :post, remote: true %>
-      <%= @candidate.favorites.count %>
+      <%= candidate.favorites.count %>
     </p>
   <% end %>
 </div>
