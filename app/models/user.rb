@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_many :memories
   has_many :brings
   has_many :checks
-  # has_many :memories
+  has_many :diaries
   
   all_characters = /\A[0-9a-zA-Zぁ-んァ-ンー-龥]+\Z/
   with_options presence: true do

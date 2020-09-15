@@ -1,0 +1,32 @@
+<%= render partial: "memory_header", locals: {user: @user, group: @group, memory: @memory} %>
+
+<%= form_with(model:[@group, @memory, @diary], url: group_memory_diaries_path(@group, @memory, @diary), method: :post, local: true) do |f| %>
+  <div class="when-box diary-box">
+    <div class="when-guide diary-guide">
+      何日目？
+    </div>
+    <div class="when-form-box diary-form">
+      <%= f.text_field :specific, class: "when-form", placeholder: "1" %>日目
+    </div>
+  </div>
+
+  <div class="title-box diary-box">
+    <div class="title-guide diary-guide">
+      タイトル
+    </div>
+    <div class="title-form-box diary-form">
+      <%= f.text_field :title, class: "title-form", placeholder: "タイトル" %>
+    </div>
+  </div>
+  
+  <div class="content-box diary-box">
+    <div class="content-guide diary-guide" >
+      内容(1,000字以内)
+    </div>
+    <div class="content-form-box diary-form">
+      <%= f.text_area :content, class: "content-form", placeholder: "日記の内容を記入" %>
+    </div>
+  </div>
+
+  <%= f.submit "作成" %>
+<% end %>

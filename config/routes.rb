@@ -20,7 +20,9 @@ Rails.application.routes.draw do
       resources :wants,           only: [:index, :new, :create, :update, :edit, :destroy ]
     end
     
-    resources :memories
+    resources :memories do
+      resources :diaries
+    end
   end
   
   resources :users,              only: :show do

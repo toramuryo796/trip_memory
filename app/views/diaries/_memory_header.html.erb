@@ -1,0 +1,11 @@
+<%# header %>
+<div class="main-header">
+  <%= render partial: "shared/main_header", locals: { user: user, group: group} %>
+</div>
+<%# /header %>
+<%= link_to "思い出に戻る", group_memory_path(group, memory) %>
+
+<h1>日記</h1>
+<div class="trip-date">                                                <%# 出発日〜到着日 %>
+  <%= @memory.departure_day %> 〜 <%= memory.return_day %>
+</div>

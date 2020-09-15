@@ -1,0 +1,23 @@
+<%= render partial: "memory_header", locals: {user: @user, group: @group, memory: @memory} %>
+
+<div class="to-diary-index">
+  <%= link_to "日記一覧", group_memory_diaries_path(@group, @memory) %>
+<div>
+
+<div class="to-edit-destory"> 
+  <%= link_to "編集", edit_group_memory_diary_path(@group, @memory, @diary) %> ／ <%= link_to "削除", group_memory_diary_path(@group, @memory, @diary), method: :delete %>
+</div>
+
+<div class="diary-show-box">
+  <div class="diary-show-title">
+    <%= @diary.title %>
+  </div>
+
+  <div class="diary-show-when">
+    <%= @diary.specific %>日目
+  </div>
+
+  <div class="diary_show_content">  
+    <%= @diary.content %>
+  </div>
+</div>

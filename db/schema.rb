@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_14_083337) do
+ActiveRecord::Schema.define(version: 2020_09_14_170558) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -79,6 +79,18 @@ ActiveRecord::Schema.define(version: 2020_09_14_083337) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["plan_id"], name: "index_day_hows_on_plan_id"
     t.index ["user_id"], name: "index_day_hows_on_user_id"
+  end
+
+  create_table "diaries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "specific", null: false
+    t.string "title", null: false
+    t.text "content", null: false
+    t.bigint "memory_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["memory_id"], name: "index_diaries_on_memory_id"
+    t.index ["user_id"], name: "index_diaries_on_user_id"
   end
 
   create_table "dictionaries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
