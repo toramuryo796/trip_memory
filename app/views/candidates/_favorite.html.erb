@@ -2,12 +2,12 @@
   <% if candidate.favorite_by?(current_user) %>
     <p> 
     <% favorite = Favorite.find_by(user_id: current_user.id, candidate_id: candidate.id) %>
-    <%= link_to "いいね解除", group_candidate_favorite_path(group, candidate, favorite), method: :delete, data:{remote: true} %> 
+    <%= link_to "いいね解除", group_candidate_favorite_path(group, candidate, favorite),class: "link", method: :delete, data:{remote: true} %> 
     <%= candidate.favorites.count %>
     </p>
   <% else %>
     <p>
-      <%= link_to "いいね", group_candidate_favorites_path(group, candidate), method: :post, data:{remote: true} %>
+      <%= link_to "いいね", group_candidate_favorites_path(group, candidate), class: "link", method: :post, data:{remote: true} %>
       <%= candidate.favorites.count %>
     </p>
   <% end %>

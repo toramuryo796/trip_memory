@@ -3,7 +3,7 @@
   <%= render partial: "shared/main_header", locals: { user: user, group: group} %>
 </div>
 <%# /header %>
-<%= link_to "思い出に戻る", group_memory_path(group, memory) %>
+<%= link_to "思い出に戻る", group_memory_path(group, memory), class: "link" %>
 
 <h1>日記</h1>
 <div class="trip-date">                                                <%# 出発日〜到着日 %>

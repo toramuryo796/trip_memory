@@ -2,19 +2,19 @@
 <div class="main-header">
 <%# グループ一覧リンク%>
   <div class="user-groups header-content">
-    <%= link_to "グループ一覧", groups_path %>
+    <%= link_to "グループ一覧", groups_path , class: "link"%>
   </div>
 <%# /グループ一覧リンク%>
 
 <%# 行先候補一覧リンク %>
   <div class="user-candidates-link header-content">
-    <%= link_to "行先候補一覧", candidates_user_path(@user), class: "user-candidate-link" %>
+    <%= link_to "行先候補一覧", candidates_user_path(@user), class: "user-candidate-link link" %>
   </div>
   <%# /予定一覧リンク %>
 
   <%# 旅行計画一覧リンク %>
   <div class="user-plan-link header-content">
-    <%= link_to "旅行計画一覧", plans_user_path(@user), class: "user-plans-link" %>
+    <%= link_to "旅行計画一覧", plans_user_path(@user), class: "user-plans-link link" %>
   </div>
   <%# 旅行計画一覧リンク %>
 </div>

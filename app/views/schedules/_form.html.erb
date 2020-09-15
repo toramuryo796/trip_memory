@@ -41,7 +41,7 @@
 
   <div class="back-new"> 
     <% if value == "更新" %>
-      <%= link_to new_schedule_path(id: schedule.id), data: { remote: true } do %>
+      <%= link_to new_schedule_path(id: schedule.id), class: "link", data: { remote: true } do %>
         <input type="button" class="back-botton" value="取消">
       <% end %>
     <% end %>

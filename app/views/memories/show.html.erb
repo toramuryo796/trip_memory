@@ -3,16 +3,16 @@
 </div>
 
 <div class="back-to-group">
-  <%= link_to "#{@group.name}", group_path(@group) %>
+  <%= link_to "#{@group.name}", group_path(@group), class: "link" %>
 </div>
 <%# 編集・削除リンク %>
 <div class="memory-edit">
-  <%= link_to "編集", edit_group_memory_path(@group, @memory) %> / <%= link_to "削除", group_memory_path(@group, @memory) %> 
+  <%= link_to "編集", edit_group_memory_path(@group, @memory), class: "link" %> / <%= link_to "削除", group_memory_path(@group, @memory), class: "link" %> 
 </div>
 <%# /編集・削除リンク %>
 
 <div class="to-diary-link">
-  <%= link_to "日記", group_memory_diaries_path(@group, @memory) %>
+  <%= link_to "日記", group_memory_diaries_path(@group, @memory), class: "link" %>
 </div>
 
 <div class="memory-sho-box">

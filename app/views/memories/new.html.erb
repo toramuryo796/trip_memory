@@ -3,7 +3,7 @@
 </div>
 
 <div class="back-to-group@">
-  <%= link_to "#{@group.name}", group_path(@group) %>
+  <%= link_to "#{@group.name}", group_path(@group), class: "link" %>
 </div>
 <div class="memories-form-large-box">
   <%= form_with(model: [@group, @memory], url: group_memories_path(@group, @memory), method: :post, local: true ) do |f| %>

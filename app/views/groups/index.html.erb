@@ -2,26 +2,26 @@
 <div class="main-header">
   <%# グループ一覧リンク%>
     <div class="user-groups header-content">
-      <%= link_to "グループ一覧", groups_path %>
+      <%= link_to "グループ一覧", groups_path, class: "link" %>
     </div>
   <%# /グループ一覧リンク%>
 
   <%# 行先候補一覧リンク %>
     <div class="user-candidates-link header-content">
-      <%= link_to "行先候補一覧", candidates_user_path(@user), class: "user-candidate-link" %>
+      <%= link_to "行先候補一覧", candidates_user_path(@user), class: "user-candidate-link link" %>
     </div>
     <%# /予定一覧リンク %>
 
     <%# 旅行計画一覧リンク %>
     <div class="user-plan-link header-content">
-      <%= link_to "旅行計画一覧", plans_user_path(@user), class: "user-plans-link" %>
+      <%= link_to "旅行計画一覧", plans_user_path(@user), class: "user-plans-link link" %>
     </div>
     <%# 旅行計画一覧リンク %>
 </div>
 <%# /header %>
 
 <div class="to_group_new">
-  <h1><%= link_to "グループ作成", new_group_path %></h1>
+  <h1><%= link_to "グループ作成", new_group_path , class: "link" %></h1>
 <div>
 
 <h1>グループ一覧</h1>
@@ -31,9 +31,9 @@
     <%# グループを一つずつ表示 %>
       <% if user_signed_in? %>
         <% current_user.groups.each do |group| %>
-          <%= link_to group_path(group) do%>
+          <%= link_to group_path(group) ,class: "link" do%>
             <li>
-              <%= link_to "#{group.name}", group_path(group) %>
+              <%= link_to "#{group.name}", group_path(group), class: "link" %>
             </li>
           <% end %>
         <% end %>

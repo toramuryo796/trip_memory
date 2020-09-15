@@ -1,5 +1,5 @@
 <div class="back-to-user-link">
-  <%= link_to "戻る", user_path(@user), class: "back-to-user" %>
+  <%= link_to "戻る", user_path(@user), class: "back-to-user link" %>
 </div>
 
 <div class="user-plans-lists">
@@ -13,7 +13,7 @@
               <div class="plan-box">
                 <%# 旅行のタイトル %>
                 <div class="user-plan-title">
-                  <h2><%= link_to "#{plan.title}" , group_plan_path(group, plan)%></h2>
+                  <h2><%= link_to "#{plan.title}" , group_plan_path(group, plan), class: "link" %></h2>
                 </div>
                 <%# /旅行のタイトル %>
 

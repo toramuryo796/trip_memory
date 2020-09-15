@@ -36,7 +36,7 @@
   </div>
 
   <% if value == "更新" %>
-    <%= link_to new_group_plan_dictionary_path(@group, @plan, id: @dictionary.id), data: {remote: true} do %>
+    <%= link_to new_group_plan_dictionary_path(@group, @plan, id: @dictionary.id), class: "link", data: {remote: true} do %>
       <input type="button" class="back-botton" value="取り消し">
     <% end %>
   <% end %>

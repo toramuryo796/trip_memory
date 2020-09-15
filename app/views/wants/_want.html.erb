@@ -8,10 +8,10 @@
   </td>
 
   <td>
-    <%= link_to  "編集",  edit_group_plan_want_path(@group, @plan, want), data: {remote: true} %>
+    <%= link_to  "編集",  edit_group_plan_want_path(@group, @plan, want), class: "link", data: {remote: true} %>
   </td>
 
   <td>
-    <%= link_to "削除", group_plan_want_path(@group, @plan, want), method: :delete, data: {remote: true} %>
+    <%= link_to "削除", group_plan_want_path(@group, @plan, want), class: "link", method: :delete, data: {remote: true} %>
   </td>
 </tr>

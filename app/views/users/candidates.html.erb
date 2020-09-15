@@ -1,5 +1,5 @@
 <div class="back-to-user-link">
-  <%= link_to "戻る", user_path(@user), class: "back-to-user" %>
+  <%= link_to "戻る", user_path(@user), class: "back-to-user link" %>
 </div>
 
 <div class="user-candidates-lists">
@@ -11,7 +11,7 @@
           <li class="user-candidate">
            <% group.candidates.each do |candidate|%>
             <% unless candidate.plan.present? %>
-              <%= link_to candidate.destination , group_candidate_path(candidate.group, candidate) %>
+              <%= link_to candidate.destination , group_candidate_path(candidate.group, candidate),class: "link" %>
             <% end %>
           <% end %>
         <% else %>

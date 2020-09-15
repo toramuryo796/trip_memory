@@ -20,13 +20,14 @@
 
     <% if schedule.id.present? %>
       <td class="update">
-        <%= link_to '編集', edit_schedule_path(schedule), data: { remote: true } %>
+        <%= link_to '編集', edit_schedule_path(schedule),class: "link",  data: { remote: true } %>
       </td>
     <% end %>
     
     <% if schedule.id.present? %>
       <td class="delete">
         <%= link_to '削除',schedule_path(schedule), 
+                    class: "link", 
                     method: :delete,
                     data: { remote: true } %>
       </td>

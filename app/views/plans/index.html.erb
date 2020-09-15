@@ -3,7 +3,7 @@
 </div>
 
 <h2>旅行計画一覧</h2>
-<%= link_to "#{@group.name}", group_path(@group) %>
+<%= link_to "#{@group.name}", group_path(@group), class: "link" %>
 <p>※タイトルをクリックすると詳細ページに移動します </p>
 <% if @plans.present? %>
   <% @plans.each do |plan| %>
@@ -12,7 +12,7 @@
         <%# 詳細ページリンク %>
         <div class="plan-content">
           <div class="plan-title plan-index">
-            <%= link_to group_plan_path(@group, plan, candidate_id: plan.candidate) do %> 
+            <%= link_to group_plan_path(@group, plan, candidate_id: plan.candidate), class: "link" do %> 
               <h1 class="trip-title"><%= plan.title %></h1>
             <% end %>
           </div>
@@ -76,5 +76,5 @@
   <% end %>
 <% else %>
   <h3>計画している旅行はありません</h3>
-  <%= link_to "戻る", group_path(@group), local:true %>
+  <%= link_to "戻る", group_path(@group), class: "link" %>
 <% end %>

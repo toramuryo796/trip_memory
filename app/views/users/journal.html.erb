@@ -6,7 +6,7 @@
       <% @plans.each do |plan| %>
         <li class="memory-check-list">
           <% unless plan.memory.present? %>
-            <%= link_to "#{plan.title}", new_group_memory_path(@group, plan_id: plan.id) %>
+            <%= link_to "#{plan.title}", new_group_memory_path(@group, plan_id: plan.id), class: "link" %>
           <% else %>
             <%= plan.title %> : すでに登録されています
           <% end %>

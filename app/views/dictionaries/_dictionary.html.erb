@@ -8,11 +8,12 @@
   </td>
  
   <td class="dictionary-update">
-    <%= link_to "編集", edit_group_plan_dictionary_path(@group, @plan, dictionary), data:{remote: true} %>
+    <%= link_to "編集", edit_group_plan_dictionary_path(@group, @plan, dictionary), class: "link", data:{remote: true} %>
   </td>
 
   <td class="dictionary-destroy">
     <%= link_to "削除", group_plan_dictionary_path(@group, @plan, dictionary), 
+      class: "link", 
       method: :delete,
       data:{remote: true} %>
   </td>

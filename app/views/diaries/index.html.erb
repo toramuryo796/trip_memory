@@ -1,13 +1,13 @@
 <%= render partial: "memory_header", locals: {user: @user, group: @group, memory: @memory} %>
 
 <div class="make-diary-link">
-  <%= link_to "日記を作成する", new_group_memory_diary_path(@group, @memory) %>
+  <%= link_to "日記を作成する", new_group_memory_diary_path(@group, @memory), class: "link" %>
 </div>
 
 <% if @diaries.present? %>
   <% @diaries.each do |diary| %>
     <div class="diary-day">
-      <%= link_to group_memory_diary_path(@group, @memory, diary.id) do %>
+      <%= link_to group_memory_diary_path(@group, @memory, diary.id), class: "link" do %>
         <%= diary.specific %>日目: <%= diary.title %>
       <% end %>
     </div>

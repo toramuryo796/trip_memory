@@ -5,53 +5,55 @@
 <%# /header %>
 
 <%# 行先候補がある場合は表示 %>
-<% if @candidates.present? %>
-  <h1>行先候補一覧</h1>
-  <% @candidates.each do |candidate| %>
-    <% unless candidate.plan.present? %>
-      <div class="index-outside">
-        候補<%= @count %>
-        <div class="index-large-box">
-          <div class="candidate-box">
-            <div class="candidate-show">
-              <%= link_to "詳細", group_candidate_path(@group, candidate) %>
-            </div>
-            <div class="destination-index candidate-guide">
-              行先：<%= candidate.destination %>
-            </div>
-            <div class="budget-index candidate-guide">
-              予算：<%= candidate.budget.name %>
-            </div>
-            <div class="night-index candidate-guide">
-              日数：<%= candidate.night %>
-            </div>
-            <div class="reference-image-box">
-              <div class="reference-image candidate-guide">
-                参考写真：
+<div class="candidate-large-box">
+  <% if @candidates.present? %>
+    <h1>行先候補一覧</h1>
+    <% @candidates.each do |candidate| %>
+      <% unless candidate.plan.present? %>
+        <div class="index-outside">
+          候補<%= @count %>
+          <div class="index-large-box">
+            <div class="candidate-box">
+              <div class="candidate-show">
+                <%= link_to "詳細", group_candidate_path(@group, candidate), class: "link" %>
               </div>
-              <%= image_tag candidate.image.variant(resize:'500x500'), class:"candidate-image" if candidate.image.attached?%>
+              <div class="destination-index candidate-guide">
+                行先：<%= candidate.destination %>
+              </div>
+              <div class="budget-index candidate-guide">
+                予算：<%= candidate.budget.name %>
+              </div>
+              <div class="night-index candidate-guide">
+                日数：<%= candidate.night %>
+              </div>
+              <div class="reference-image-box">
+                <div class="reference-image candidate-guide">
+                  参考写真：
+                </div>
+                <%= image_tag candidate.image.variant(resize:'500x500'), class:"candidate-image" if candidate.image.attached?%>
+              </div>
             </div>
-          </div>
 
-          <div class="index-footer">
-            <div class="favorite">
-              <%= render partial: "favorite", locals: {group: @group, candidate: candidate} %>
-            <div class="decide-btn">
-              <%= link_to "決定！！", new_group_plan_path(@group,@plan, candidate_id: candidate.id) %>
+            <div class="index-footer">
+              <div class="favorite">
+                <%= render partial: "favorite", locals: {group: @group, candidate: candidate} %>
+              <div class="decide-btn">
+                <%= link_to "決定！！", new_group_plan_path(@group,@plan, candidate_id: candidate.id),class: "link" %>
+              </div>
             </div>
-          </div>
-          <div class="created_date">
-            <%= candidate.created_at %>
+            <div class="created_date">
+              <%= candidate.created_at %>
+            </div>
           </div>
         </div>
-      </div>
-      <% @count+=1 %>  <%# 候補数の数字 %>
+        <% @count+=1 %>  <%# 候補数の数字 %>
+      <% end %>
+    <% end %>
+  <% else %>
+  <%# 行先候補がない場合は作成画面のリンクを表示 %>
+    <p>行先候補がありません</p>
+    <%= link_to  new_group_candidate_path(@group, @candidate), class: "link" do %>
+      <h1> 行先候補を作成する </h1>
     <% end %>
   <% end %>
-<% else %>
-<%# 行先候補がない場合は作成画面のリンクを表示 %>
-  <p>行先候補がありません</p>
-  <%= link_to  new_group_candidate_path(@group, @candidate) do %>
-    <h1> 行先候補を作成する </h1>
-  <% end %>
-<% end %>
+</div>

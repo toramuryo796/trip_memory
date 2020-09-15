@@ -3,7 +3,7 @@
 </div>
 
 <div class="back-to-group">
-  <%= link_to "#{@group.name}", group_path(@group) %>
+  <%= link_to "#{@group.name}", group_path(@group), class: "link" %>
 </div>
 
 <div class="memory-constents">
@@ -11,8 +11,8 @@
     <% @memories.each do |memory| %>
 
       <%# タイトル %>
-      <div class="memory-title">
-        <%= link_to group_memory_path(@group, memory) do %> 
+      <div class="memory-title"> 
+        <%= link_to group_memory_path(@group, memory) , class: "link" do %> 
           <%= memory.title %>
         <% end %>
       </div>

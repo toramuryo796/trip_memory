@@ -7,10 +7,10 @@
 <h2>何日目のスケジュールを確認/編集しますか？</h2>
 <% if days.present %>
   <% @days.each do |day| %>
-    <%= link_to "#{day.day}日目", schedules_path(day.id) %>
+    <%= link_to "#{day.day}日目", schedules_path(day.id), class: "link" %>
   <% end %>
-  <%= link_to "上記以外の日程のスケジュール作成はこちら", schedules_path %>
+  <%= link_to "上記以外の日程のスケジュール作成はこちら", schedules_path , class: "link"%>
 <% else %>
   <p>作成済みのスケジュールがありません</p> 
-  <%= link_to "スケジュールを作成する", schedules_path %>
+  <%= link_to "スケジュールを作成する", schedules_path, class: "link" %>
 <% end %>

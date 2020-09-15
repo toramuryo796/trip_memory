@@ -3,27 +3,27 @@
 </div>
 
 <div class="group-page">
-  <%= link_to "#{@group.name}" , group_path(@group) %>
+  <%= link_to "#{@group.name}" , group_path(@group), class: "link" %>
 </div>
 <div class="candidate-header">
-  <%= link_to "編集", edit_group_plan_path(@group, @plan) %> / <%= link_to "削除", group_plan_path(@group, @plan), method: :delete %> / <%= link_to "思い出を記録する", new_group_memory_path(@group, plan_id: @plan.id) %>
+  <%= link_to "編集", edit_group_plan_path(@group, @plan), class: "link" %> / <%= link_to "削除", group_plan_path(@group, @plan), class: "link", method: :delete %> / <%= link_to "思い出を記録する", new_group_memory_path(@group, plan_id: @plan.id) , class: "link"%>
 
 </div>
 
 <div class="mova-to-shcedule">
-  <%= link_to "スケジュールを作成/確認する", schedules_path(plan_id: @plan.id) %>
+  <%= link_to "スケジュールを作成/確認する", schedules_path(plan_id: @plan.id), class: "link" %>
 </div>
 
 <div class="to-dictionary">
-  <%= link_to "単語帳", group_plan_dictionaries_path(@group, @plan, @dictionary) %>
+  <%= link_to "単語帳", group_plan_dictionaries_path(@group, @plan, @dictionary), class: "link" %>
 </div>
 
 <div class="to-bring">
-  <%= link_to "持ち物リスト", group_plan_brings_path(@group, @plan, @bring) %>
+  <%= link_to "持ち物リスト", group_plan_brings_path(@group, @plan, @bring), class: "link" %>
 </div>
 
 <div class="to-do-list">
-  <%= link_to "やりたい事リスト", group_plan_wants_path(@group, @plan) %>
+  <%= link_to "やりたい事リスト", group_plan_wants_path(@group, @plan), class: "link" %>
 </div>
 
 <div class="plan-content">
@@ -105,6 +105,6 @@
 
 <div class="show-footer">
   <div class="back_page">
-    <%= link_to "戻る", group_plans_path(@group, @plan) %>
+    <%= link_to "戻る", group_plans_path(@group, @plan), class: "link" %>
   </div>
 </div>
