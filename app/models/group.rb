@@ -7,5 +7,7 @@ class Group < ApplicationRecord
   has_many :brings,              dependent: :destroy
   has_many :memories,            dependent: :destroy
 
-  validates :name , presence: true
+  with_options presence: true do
+    validates :name , uniqueness: true, length: {maximum: 40, message: "は40字以内で記入してください"}
+  end
 end
