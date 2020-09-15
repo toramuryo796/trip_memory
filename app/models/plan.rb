@@ -12,6 +12,17 @@ class Plan < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :transportation  
+
+  string_length = { maximum: 40, message: "は40字以内で記入してください"}
+  text_length = { maximum: 400, message: "は400字以内で記入してください"}
+
+  with_options presence: true do
+    validates :title, length: string_length
+    validates :destination, length: string_length
+  end
   
- 
+  validates :hotel, length: string_length
+  validates :hotel_memo, length: text_length
+  validates :ticket, length: text_length
+  validates :start_place, length: string_length
 end
