@@ -1,46 +1,33 @@
-<%# header %>
 <div class="main-header">
-  <%# グループ一覧リンク%>
-    <div class="user-groups header-content">
-      <%= link_to "グループ一覧", groups_path, class: "link" %>
-    </div>
-  <%# /グループ一覧リンク%>
-
-  <%# 行先候補一覧リンク %>
-    <div class="user-candidates-link header-content">
-      <%= link_to "行先候補一覧", candidates_user_path(@user), class: "user-candidate-link link" %>
-    </div>
-    <%# /予定一覧リンク %>
-
-    <%# 旅行計画一覧リンク %>
-    <div class="user-plan-link header-content">
-      <%= link_to "旅行計画一覧", plans_user_path(@user), class: "user-plans-link link" %>
-    </div>
-    <%# 旅行計画一覧リンク %>
+  <%= render partial: "shared/main_header", locals: { user: @user, group: @group} %>
 </div>
-<%# /header %>
 
-<div class="to_group_new">
-  <h1><%= link_to "グループ作成", new_group_path , class: "link" %></h1>
-<div>
-
-<h1>グループ一覧</h1>
-<div class="group-box">
-  <div class="group-box-main">
-    <ul class="group-list">
-    <%# グループを一つずつ表示 %>
-      <% if user_signed_in? %>
-        <% current_user.groups.each do |group| %>
-          <%= link_to group_path(group) ,class: "link" do%>
-            <li>
-              <%= link_to "#{group.name}", group_path(group), class: "link" %>
-            </li>
+<div class="group-index-largebox">
+  <div class="group-index">
+    <div class="group-index-header">
+      <h1>グループ一覧</h1>
+    </div>
+    <div class="group-box">
+      <div class="group-box-main">
+        <ul class="group-list">
+        <%# グループを一つずつ表示 %>
+          <% if user_signed_in? %>
+            <% current_user.groups.each do |group| %>
+              <%= link_to group_path(group) ,class: "link" do%>
+                <li>
+                  <h3><%= group.name %></h3>
+                </li>
+              <% end %>
+            <% end %>
+          <% else %>
+            <p>ログインしてください</p>
           <% end %>
-        <% end %>
-      <% else %>
-        <p>ログインしてください</p>
-      <% end %>
-    <%# グループを一つずつ表示 %>
-    </ul>
+        <%# グループを一つずつ表示 %>
+        </ul>
+      </div>
+    </div>
+    <div class="to_group_new">
+      <h2><%= link_to "グループ作成", new_group_path , class: "link group-new-link" %></h2>
+    </div>
   </div>
 </div>

@@ -11,15 +11,13 @@
     <% @groups.each do |group| %>
       <div class="group-candidates">
         <%= group.name %>:
-        <% if group.candidates.present? %>
-          <li class="user-candidate">
-           <% group.candidates.each do |candidate|%>
-            <% unless candidate.plan.present? %>
-              <%= link_to candidate.destination , group_candidate_path(candidate.group, candidate),class: "link" %>
-            <% end %>
+        <% if group.memories.present? %>
+          <li class="user-memories">
+          <% group.memories.each do |memory|%>
+            <%= link_to memory.destination , group_memory_path(memory.group, memory),class: "link" %>
           <% end %>
         <% else %>
-            行先候補はありません
+            思い出はありません
           </li>
         <% end %>
       </div>

@@ -39,5 +39,9 @@ Rails.application.routes.draw do
       get 'journal'
     end
 
+    member do
+      get 'memories'
+    end
+
   end
 end

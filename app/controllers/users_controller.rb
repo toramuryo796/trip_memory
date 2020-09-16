@@ -28,6 +28,13 @@ class UsersController < ApplicationController
     @plans = @user.plans
   end
  
+  def memories
+    @user = current_user
+    @candidates = @user.candidates
+    @groups = @user.groups
+    @plans = @user.plans
+  end
+
   def journal
     @user = current_user
     @plans = @user.plans
