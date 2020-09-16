@@ -1,0 +1,39 @@
+.group-new-box{
+  width: 70%;
+  margin: 0 auto;
+}
+
+.group-new-title{
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 5%;
+}
+
+.making-group{
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  border: solid 2px navy;
+  border-radius: 20px/20px;
+  margin-top: 10%;
+  background-color: white;
+}
+
+.group-making-content{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.group-member-label{
+  margin-top: 10px;
+}
+
+.group-form{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.make-btn{
+  position: relative;
+  left: 30%;
+}
