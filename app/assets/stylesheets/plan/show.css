@@ -1,0 +1,65 @@
+.plan-contents-options{
+  display: flex;
+}
+
+.plan-show-box{
+  width: 60%;
+  margin: 0 auto;
+  border: 2px solid navy;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.45);
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.plan-show-title{
+  margin:0 auto;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.plan-contents{
+  margin-left: 100px;
+  width: 60%;
+  margin-bottom: 10px;
+}
+
+.plan-ticket, .hotel-memo-guide{
+  width: 80%;
+  overflow: scroll;
+}
+
+.options-box{
+  position: relative;
+  width: 100%
+}
+
+.options{
+  position: absolute;
+  bottom: 0;
+  left: 150px;
+}
+
+.plan-show-link{
+  margin-right: 20px;
+  border: solid 1px royalblue;
+  background-color: #fff;
+  border-radius: 5px;
+  width: 150px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.plan-show-link a{
+  display: block;
+}
+
+.plan-show-image-box{
+  margin: 0 auto;
+  text-align: center;
+}
+
+.reference-image{
+  text-align: start;
+  padding-left: 100px;
+}

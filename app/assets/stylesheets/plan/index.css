@@ -7,3 +7,33 @@
   position: relative;
   right: 100px;
 }
+
+.plan-large-box{
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.plan-lists{
+  width: 70%;
+  margin: 0 auto;
+  border: 2px solid navy;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.45);
+  margin-bottom: 10px;
+}
+
+.plan-index-title, .index-guide{
+  text-align: center;
+}
+
+.plan-content{
+  margin-bottom: 10px;
+  position: relative;
+  left: 18%;
+}
+
+.reference-image-box{
+  position: relative;
+  left: 18%;
+}

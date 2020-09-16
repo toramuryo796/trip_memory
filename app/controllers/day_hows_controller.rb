@@ -1,4 +1,5 @@
 class DayHowsController < ApplicationController
+  before_action :find_user, only: :new
   def index
     @group = Group.find(params[:id])
     @days = DayHow.all.includes(:group)
@@ -42,5 +43,9 @@ class DayHowsController < ApplicationController
   
   def create_day_how
     params.require(:day_how).permit(:passed, :plan_id).merge(user_id: current_user.id)
+  end
+
+  def find_user
+    @user = current_user
   end
 end

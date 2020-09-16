@@ -2,109 +2,134 @@
   <%= render partial: "shared/main_header", locals: { user: @user, group: @group} %>
 </div>
 
-<div class="group-page">
-  <%= link_to "#{@group.name}" , group_path(@group), class: "link" %>
-</div>
-<div class="candidate-header">
-  <%= link_to "編集", edit_group_plan_path(@group, @plan), class: "link" %> / <%= link_to "削除", group_plan_path(@group, @plan), class: "link", method: :delete %> / <%= link_to "思い出を記録する", new_group_memory_path(@group, plan_id: @plan.id) , class: "link"%>
+<div class="plan-back">
+    
+  <div class="plan-show-title">
+    <h1>旅行計画詳細</h1>
+  </div>
 
-</div>
+  <div class="plan-show-box">
+    <div class="plan-contents-options">
+      <div class="plan-contents">
+        <div class="group-page">
+          <%= link_to "#{@group.name}" , group_path(@group), class: "link" %>
+        </div>
 
-<div class="mova-to-shcedule">
-  <%= link_to "スケジュールを作成/確認する", schedules_path(plan_id: @plan.id), class: "link" %>
-</div>
+        <div class="plan-show-content">
+          <div class="plan-destination-guide plan-guide">
+            行先
+            <%= @plan.destination %>
+          </div>
+        </div>
 
-<div class="to-dictionary">
-  <%= link_to "単語帳", group_plan_dictionaries_path(@group, @plan, @dictionary), class: "link" %>
-</div>
+        <div class="plan-show-content">
+          <div class="plan-date-guide plan-guide">
+            日程
+          </div>
+          <div class="plan-departure-guide plan-index">
+            出発日：<%= @plan.departure_day %>
+          </div>
+          <div class="plan-return-guide plan-index">
+            帰着日：<%= @plan.return_day %>
+          </div>
+        </div>
 
-<div class="to-bring">
-  <%= link_to "持ち物リスト", group_plan_brings_path(@group, @plan, @bring), class: "link" %>
-</div>
+        <div class="plan-show-content">
+          <div class="transportaion-guide plan-guide">
+            移動手段
+          </div>
+          <div class="plan-transportation plan-index">
+            <% if @plan.transportation %>
+              交通手段：<%= @plan.transportation.name %>
+            <% else %>
+              交通手段：
+            <% end %>
+          </div>
+        </div>
+        <div class="plan-show-content">
+          <div class="start-guide plan-guide">
+            出発地点
+          </div>
+          <div class="plan-start plan-index">
+            <%= @plan.start_place %>
+          </div>
+        </div>
+        <div class="plan-show-content">
+          <div class="ticket-guide plan-guide">
+            移動手段に関するメモ
+          </div>
+          <div class="plan-ticket plan-index">
+            <%= @plan.ticket %>
+          </div>
+        </div>
 
-<div class="to-do-list">
-  <%= link_to "やりたい事リスト", group_plan_wants_path(@group, @plan), class: "link" %>
-</div>
+        <div class="plan-show-content">
+          <div class="hotel-guide plan-guide">
+            ホテル名
+          </div>
+          <div class="plan-hotel plan-index">
+            <%= @plan.hotel %>
+          </div>
+        </div>
 
-<div class="plan-content">
-  <div class="plan-destination-guide plan-guide">
-    行先
-  </div>
-  <div class="plan-destination plan-index">
-    <%= @plan.destination %>
-  </div>
-</div>
+        <div class="plan-show-content">
+          <div class="hotel-memo-guide plan-guide">
+            ホテルに関するメモ
+          </div>
+          <div class="plan-hotel-memo plan-index">
+            <%= @plan.hotel_memo %>
+          </div>
+        </div>
+      </div>
 
-<div class="plan-content">
-  <div class="plan-date-guide plan-guide">
-    日程
-  </div>
-  <div class="plan-departure-guide plan-index">
-    出発日：<%= @plan.departure_day %>
-  </div>
-  <div class="plan-return-guide plan-index">
-    帰着日：<%= @plan.return_day %>
-  </div>
-</div>
+      <div class="options-box">
+        <div class="options">
 
-<div class="plan-content">
-  <div class="transportaion-guide plan-guide">
-    移動手段
-  </div>
-  <div class="plan-transportation plan-index">
-    <% if @plan.transportation %>
-      交通手段：<%= @plan.transportation.name %>
-    <% else %>
-      交通手段：
-    <% end %>
-  </div>
-</div>
-<div class="plan-content">
-  <div class="start-guide plan-guide">
-    出発地点
-  </div>
-  <div class="plan-start plan-index">
-    <%= @plan.start_place %>
-  </div>
-</div>
-<div class="plan-content">
-  <div class="ticket-guide plan-guide">
-    移動手段に関するメモ
-  </div>
-  <div class="plan-ticket plan-index">
-    <%= @plan.ticket %>
-  </div>
-</div>
+          <div class="plan-show-link">
+            <%= link_to "編集", edit_group_plan_path(@group, @plan), class: "link show-link" %> 
+          </div>
 
-<div class="plan-content">
-  <div class="hotel-guide plan-guide">
-    ホテル名
-  </div>
-  <div class="plan-hotel plan-index">
-    <%= @plan.hotel %>
-  </div>
-</div>
+          <div class="plan-show-link">
+            <%= link_to "削除", group_plan_path(@group, @plan), class: "link show-link", method: :delete %> 
+          </div>
+          
+          <div class="plan-show-link">
+             <%= link_to "思い出を記録", new_group_memory_path(@group, plan_id: @plan.id) , class: "link show-link"%>
+          </div>
 
-<div class="plan-content">
-  <div class="hotel-memo-guide plan-guide">
-    ホテルに関するメモ
-  </div>
-  <div class="plan-hotel-memo plan-index">
-    <%= @plan.hotel_memo %>
-  </div>
-</div>
+          <div class="option-link plan-show-link">
+              <%= link_to "スケジュール", schedules_path(plan_id: @plan.id), class: "link show-link" %>
+          </div>
 
-<div class="reference-image-box">
-  <div class="reference-image candidate-guide">
-    参考写真：
-  </div>
-  <% if @plan.candidate.present? %>
-    <%= image_tag @plan.candidate.image.variant(resize:'500x500'), class:"candidate-image" if @plan.candidate.image.attached? %>
-  <% end %>
-</div>
+          <div class="to-dictionary plan-show-link">
+            <%= link_to "単語帳", group_plan_dictionaries_path(@group, @plan, @dictionary), class: "link show-link" %>
+          </div>
 
-<div class="show-footer">
-  <div class="back_page">
-    <%= link_to "戻る", group_plans_path(@group, @plan), class: "link" %>
+          <div class="to-bring plan-show-link">
+            <%= link_to "持ち物リスト", group_plan_brings_path(@group, @plan, @bring), class: "link show-link" %>
+          </div>
+
+          <div class="to-do-list plan-show-link">
+            <%= link_to "やりたい事リスト", group_plan_wants_path(@group, @plan), class: "link show-link" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="plan-show-image-box">
+      <div class="reference-image plan-guide">
+        参考写真：
+      </div>
+      <% if @plan.candidate.present? %>
+        <%= image_tag @plan.candidate.image.variant(resize:'500x500'), class:"candidate-image" if @plan.candidate.image.attached? %>
+      <% end %>
+    </div>
+
+    <div class="show-footer">
+      <div class="back_page">
+        <%= link_to "戻る", group_plans_path(@group, @plan), class: "link" %>
+      </div>
+    </div>
+
   </div>
 </div>

@@ -15,7 +15,7 @@
     </div>
     <%# /グループ詳細に戻る %>
 
-      <%# 両校詳細の記入 %>
+      <%# 旅行詳細の記入 %>
     <div class="plan-form-box">
       <%= form_with( model:[@group, @plan] , url: group_plans_path(@group, @plan), method: :post, local: true) do |f| %>
 
@@ -119,6 +119,7 @@
                   <%= f.text_area :hotel_memo, class: "hotel-memo-form", placeholder:"ホテルに関するメモとしてホテル情報を記入してください。 (例) 13:00 チェックイン、朝食あり" %>
                 </div>
               </div>
+              
               <div class="plan_form plan-make-submit">
                 <%= f.submit "作成" , class:"plan-submit"%>
               </div>

@@ -2,31 +2,39 @@
   <%= render partial: "shared/main_header", locals: { user: @user, group: @group} %>
 </div>
 
-<h1> 単語帳作成 <h1>
-<%= link_to "旅行計画に戻る", group_plan_path(@group, @plan), class: "link" %>
+<div class="plan-back">
+  <div class="dictionary-make-largebox">
+    
+    <div class="dictionary-title">
+      <h1> 単語帳 </h1>
+    </div>
 
-<h1>単語帳</h1>
+    <div class="back-page">
+      <%= link_to "旅行計画に戻る", group_plan_path(@group, @plan), class: "link" %>
+    </div>
 
-<div class="dictionary-form">
-  <div class="dictionary-add">
-    <%= render partial: "form", locals:{dictionary: Dictionary.new, value: "追加"} %>  
+    <div class="dictionary-form-box">
+      <div class="dictionary-add">
+        <%= render partial: "form", locals:{dictionary: Dictionary.new, value: "追加"} %>  
+      </div>
+    </div>
+
+    <div class="dictionary-large-box">
+      <table id="dictionary-table">
+        <tbody id="dictionary-tbody">
+          <tr>
+            <th>日本語</th>
+            <% if @language %>
+              <th>
+                <%= @language %>
+              <th>
+            <% end %>
+          </tr>
+        <%# ajaxで追加 %>
+      <%= render @dictionaries %>
+        <%# /ajaxで追加 %>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
-
-<div class="dictionary-large-box">
-  <table id="dictionary-table">
-    <tbody id="dictionary-tbody">
-      <tr>
-        <th>日本語</th>
-        <% if @language %>
-          <th>
-            <%= @language %>
-          <th>
-        <% end %>
-      </tr>
-    <%# ajaxで追加 %>
-   <%= render @dictionaries %>
-    <%# /ajaxで追加 %>
-    </tbody>
-  </table>
 </div>

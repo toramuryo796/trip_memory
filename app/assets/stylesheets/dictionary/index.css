@@ -1,13 +1,70 @@
+/* 単語帳 リスト */
 #dictionary-table{
   border-collapse: collapse;
   border-spacing: 0;
 }
 
 .dictionary-content{
-  border-bottom: solid 1px #eee;
+  border-bottom: solid 1px grey;
 }
 
 #dictionary-table td{
   text-align: center;
   width: 300px;
 }
+/* / 単語帳 リスト */
+
+/* 大枠 */
+.dictionary-make-largebox{
+  width: 70%;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+/* /大枠 */
+
+/* タイトル */
+.dictionary-title{
+  margin: 0 auto;
+  text-align: center;
+}
+/* /タイトル */
+
+/* フォーム部分 */
+.dictionary-form-box{
+  width: 60%;
+  height: 300px; 
+  border: solid 2px navy;
+  margin: 0 auto;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.45);
+  overflow: scroll;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+#dictionary-form{
+  margin-top: 20px;
+}
+
+.dictionary-submit{
+  position: relative;
+  left: 100px;
+}
+/* /フォーム部分 */
+
+/* 表部分 */
+.dictionary-large-box{
+  border: 1px solid navy;
+  margin: 0 auto;
+  padding:10px;
+  margin-right: 0;
+  background-color: rgba(255,255,255,0.45);
+  height: 300px;
+  overflow: scroll;
+  border-radius: 20px;
+}
+
+.dictionary-list td{
+  padding-top: 10px;
+}
+/* /表部分 */

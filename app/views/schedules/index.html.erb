@@ -2,56 +2,75 @@
   <%= render partial: "shared/main_header", locals: { user: @user, group: @group} %>
 </div>
 
-<h1> スケジュール作成 </h1>
-<%# 旅行計画に戻る %>
-<%= link_to "旅行計画に戻る", group_plan_path(@group, @plan), class: "link"  %>
-<%# /旅行計画に戻る %>
-<div class="trip-date">
-  <div class="departure-date">
-    出発日:<%= @plan.departure_day %> 
+<div class="schedule-back">
+  <div class="schedule-largebox">
+
+    <div class="schedule-title">
+      <h1> スケジュール作成 </h1>
+    </div>  
+
+    <%# 旅行計画に戻る %>
+    <div class="back-show">
+      <%= link_to "旅行計画に戻る", group_plan_path(@group, @plan), class: "link"  %>
+    </div>
+    <%# /旅行計画に戻る %>
+
+    <div class="schedule-date-list">
+      <div class="trip-date">
+        <div class="departure-date">
+          出発日:<%= @plan.departure_day %> 
+        </div>
+        <div class="return-date">
+          帰着予定日:<%= @plan.return_day %>
+        </div>
+      </div>
+        <div class="day-display">
+          <h2> <%= @passed %>日目のスケジュール </h2>
+        </div>
+      <%# ↑以外の日のスケジュール %>
+      <div class="other-days">
+        <ul class="other-days-list">
+          <% @other_days.each do |other| %>
+            <li class="day-list">
+              <%= link_to schedules_path(day_how_passed: other.passed, plan_id: @plan.id), class: "link" do %>
+                <%= other.passed %>日目
+              <% end %>
+            </li>
+          <% end %>
+          <li>
+            <%= link_to  "その他の日程を作成する", new_day_how_path(plan_id: @plan_id), class: "link" %>
+          </li>
+        </ul>
+      </div>
+    </div>
+      <%# /↑以外の日のスケジュール %>
+ 
+    <div class="day-schedule-large-box">
+
+      <%# ajaxのform %>
+      <div id="schedule-form-box">
+        <%= render partial: "form", locals:{plan_id: @plan_id, schedule: Schedule.new, value: "作成" , day_how: @day_how.id } %>
+      </div>
+      <%# /ajaxのform %>
+
+      <%# schedule表%>
+      <table id="day-table" >
+        <tbody id="tbody">
+          <tr>
+            <th>時間</th>
+            <th>カテゴリー</th>
+            <th>予定</th>
+            <th></th>
+            <th></th>
+          </tr>
+          <%# /ajaxでのスケジュール登録%>
+            <%= render @schedules %>
+          <%# /ajaxでのスケジュール登録%>
+        </tbody>
+      </table>
+      <%# /schedule表%>
+    <%# ajaxのform %>
+    </div>
+
   </div>
-  <div class="return-date">
-    帰着予定日:<%= @plan.return_day %>
-  </div>
-</div>
-  <div class="day-display">
-    <h2> <%= @passed %>日目のスケジュール </h2>
-  </div>
-<%# ↑以外の日のスケジュール %>
-<div class="other-days">
-  <ul class="other-days-list">
-    <% @other_days.each do |other| %>
-      <li class="day-list">
-        <%= link_to schedules_path(day_how_passed: other.passed, plan_id: @plan.id), class: "link" do %>
-          <%= other.passed %>日目
-        <% end %>
-      </li>
-    <% end %>
-    <li>
-      <%= link_to  "その他の日程を作成する", new_day_how_path(plan_id: @plan_id), class: "link" %>
-    </li>
-  </ul>
-</div>
-<%# /↑以外の日のスケジュール %>
-<div class="day-schedule-large-box">
-  <%# ajaxのform %>
-  <div id="schedule-form">
-    <%= render partial: "form", locals:{plan_id: @plan_id, schedule: Schedule.new, value: "作成" , day_how: @day_how.id } %>
-  </div>
-  <%# /ajaxのform %>
-  <%# schedule表%>
-  <table id="day-table" border="1">
-    <tbody id="tbody">
-      <tr>
-        <th>時間</th>
-        <th>カテゴリー</th>
-        <th>予定</th>
-      </tr>
-      <%# /ajaxでのスケジュール登録%>
-        <%= render @schedules %>
-      <%# /ajaxでのスケジュール登録%>
-    </tbody>
-  </table>
-  <%# /schedule表%>
-<%# ajaxのform %>
 </div>

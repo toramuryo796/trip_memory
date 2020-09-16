@@ -13,13 +13,13 @@ class SchedulesController < ApplicationController
       @plan = Plan.find_by(id: other_schedule[:plan_id])
       @plan_id = @plan.id                                # plan_idを取得
       @day_how = DayHow.find_by(passed: other_schedule[:day_how_passed], plan_id: @plan.id)
-      @schedules = Schedule.where(plan_id: @plan_id, day_how_id: @day_how.id).order(hour_id: :asc)  # 日程に該当するのスケジュールを特定
+      @schedules = Schedule.where(plan_id: @plan_id, day_how_id: @day_how.id).order(hour_id: :desc)  # 日程に該当するのスケジュールを特定
       @passed = @day_how.passed
     else
       @plan = Plan.find_by(id: first_params[:plan_id])
       @plan_id = @plan.id    # plan_idを取得
       @day_how= DayHow.find_by(passed: 1, plan_id: @plan_id)
-      @schedules = Schedule.where(plan_id: @plan_id, day_how_id: @day_how.id).order(hour_id: :asc)  # 日程に該当するのスケジュールを特定
+      @schedules = Schedule.where(plan_id: @plan_id, day_how_id: @day_how.id).order(hour_id: :desc)  # 日程に該当するのスケジュールを特定
       unless @schedules.present?
         @schedules = Schedule.new(plan_id: @plan_id, day_how_id: @day_how.id)
       end

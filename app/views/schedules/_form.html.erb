@@ -1,13 +1,19 @@
+
 <%= form_with model: schedule, id:"schedule-form"  do |f| %>
+
   <%# エラー表示 %>
   <%= render partial: 'shared/error_messages', locals: { model: schedule } %>
   <%# /エラー表示%>
+
+  <%# 隠し情報を送る %>
   <div class="hidden">
     <%= f.text_field :day_how_id, value: day_how, class: "how-day "%>
     <%= f.text_field :plan_id, value: plan_id, class: "plan-id hidden"%>
   </div>
-  <div class="form-box hidden-form">
-    <div class="from-guide">
+  <%# /隠し情報を送る %>
+
+  <div class="schedule-form-box hidden-form">
+    <div class="shcedule-from-guide">
       時間
     </div>
     <div class="time-box">
@@ -17,8 +23,8 @@
     </div>
   </div>
 
-  <div class="form-box">
-    <div class="from-guide">
+  <div class="schedule-form-box">
+    <div class="schedule-from-guide">
       カテゴリー
     </div>
     <div class="category-box">
@@ -26,8 +32,8 @@
     </div>
   </div>
 
-  <div class="form-box">
-    <div class="from-guide">
+  <div class="schedule-form-box">
+    <div class="schedule-from-guide">
     予定
     </div>
     <div class="program-box">
@@ -35,7 +41,7 @@
     </div>
   </div>
 
-  <div class="make-schedule">
+  <div class="schedule-make-schedule">
     <%= f.submit value, class:"schedule-submit", id: "submit" %>
   </div>
 
