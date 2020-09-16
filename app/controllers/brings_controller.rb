@@ -9,12 +9,7 @@ class BringsController < ApplicationController
   end
   
   def create
-    @bring = Bring.new(bring_params)
-    unless @bring.thing == ""
-      @bring.save
-    else
-      render :index
-    end
+    @bring = Bring.create(bring_params)
   end
   
   def edit
