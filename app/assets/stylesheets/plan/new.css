@@ -1,5 +1,5 @@
 /* 大枠 */
-.candidate-new-largebox{
+.plan-make-largebox{
   width: 70%;
   margin: 0 auto;
   padding-top: 10px;
@@ -7,9 +7,49 @@
 /* /大枠 */
 
 /* contentヘダー部分 */
-.candidate-new-title{
+.plan-title{
   margin: 0 auto;
   text-align: center;
+}
+/* contentヘダー部分 */
+
+/* フォーム部分 */
+.plan-make-box{
+  width: 60%;
+  height: 600px; 
+  border: solid 2px navy;
+  margin: 0 auto;
+  border-radius: 30px;
+  overflow: scroll;
+  margin-top: 20px;
+  background: rgba(255,255,255,0.45);
+}
+
+.plan-make-content{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 20px;
+}
+
+.form-guide{
+  padding-left: 100px;
+}
+
+.plan-make-submit{
+  text-align: end;
+  position: relative;
+  right: 100px;
+}
+
+.form-box{
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.ticket-form, .hotel-memo-form{
+  width: 50%;
+  height: 100px;
 }
 
 .back-page{
@@ -17,52 +57,3 @@
   position: relative;
   right: 100px;
 }
-/* contentヘダー部分 */
-
-/* フォーム部分 */
-.candidate-make-box{
-  width: 60%;
-  height: 600px; 
-  border: solid 2px navy;
-  margin: 0 auto;
-  border-radius: 30px;
-  background: rgba(255,255,255,0.45);
-  overflow: scroll;
-  margin-top: 20px;
-}
-
-.candidate-make-content{
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding: 20px;
-}
-
-.reason-form{
-  width: 350px;
-  height: 150px;
-}
-
-.candidate-form{
-  margin-bottom: 20px;
-}
-
-.form_guide{
-  padding-left: 100px;
-}
-
-.plain, .train{
-  padding-left: 100px;
-  margin-bottom: 20px;
-}
-
-.candidate-form-box{
-  margin: 0 auto;
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.make-submit{
-  position: relative;
-  left: 50%;
-}
-/* /フォーム部分 */

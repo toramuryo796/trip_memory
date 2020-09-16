@@ -1,3 +1,9 @@
 .plan-title{
   font-family: "ヒラギノ丸ゴ ProN","Hiragino Maru Gothic ProN";
 }
+
+.back-page{
+  text-align: end;
+  position: relative;
+  right: 100px;
+}

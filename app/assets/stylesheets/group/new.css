@@ -16,7 +16,7 @@
   border: solid 2px navy;
   border-radius: 20px/20px;
   margin-top: 10%;
-  background-color: white;
+  background: rgba(255,255,255,0.45);
 }
 
 .group-making-content{

@@ -13,6 +13,10 @@
         <h1>行先候補一覧</h1>
       </div>
 
+    <div class="back-page">
+      <%= link_to "#{@group.name}", group_path(@group), class: "link back-link" %>
+    </div>
+
       <% @candidates.each do |candidate| %>
         <% unless candidate.plan.present? %>
             <div class="index-outside">

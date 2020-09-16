@@ -11,6 +11,12 @@
   margin-top: 10px;
   text-align: center;
 }
+
+.back-page{
+  text-align: end;
+  position: relative;
+  right: 100px;
+}
 /* /タイトル */
 
 /* 候補 */

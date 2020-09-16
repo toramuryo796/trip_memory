@@ -3,7 +3,9 @@
 </div>
 
 <h2>旅行計画一覧</h2>
-<%= link_to "#{@group.name}", group_path(@group), class: "link" %>
+<div class="back-page">
+  <%= link_to "#{@group.name}", group_path(@group), class: "link back-link" %>
+</div>
 <p>※タイトルをクリックすると詳細ページに移動します </p>
 <% if @plans.present? %>
   <% @plans.each do |plan| %>

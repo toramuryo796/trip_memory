@@ -2,124 +2,130 @@
   <%= render partial: "shared/main_header", locals: { user: @user, group: @group} %>
 </div>
 
-<div class="plan-article">
-  <h1>旅行計画作成</h1>
-</div>
-<%# グループ詳細に戻る %>
-<div class="back-page">
-  <%= link_to "#{@group.name}", group_path(@group), class: "link" %>
-</div>
-<%# /グループ詳細に戻る %>
-<%# 両校詳細の記入 %>
-<div class="plan-guide">
-  <h2> 旅行計画の詳細を記入してください </h2>
-</div>
-<div class="plan-form-box">
-  <%= form_with( model:[@group, @plan] , url: group_plans_path(@group, @plan), method: :post, local: true) do |f| %>
-
-    <%# エラー表示 %>
-    <%= render partial: 'shared/error_messages', locals: { model: @plan } %>
-    <%# /エラー表示%>
-  
-  <%#= candidateのid %>
-  <% if @candidate %>
-    <div class="candidate-id hidden">
-      <%= f.text_field :candidate_id, value: "#{@candidate_id}" %>
-    </div>
-  <% end %>
-  <%#= /candidateのid %>
-
-    <div class="plan_form">
-      <div class="form-guide">
-        旅行計画のタイトル(必須)
-      </div>
-      <div class="form-box">
-        <%= f.text_field :title, class: "title-form", placeholder:"タイトルを記入してください" %>
-      </div>
+<div class="plan-back">
+  <div class="plan-make-largebox">
+    
+    <div class="plan-title">
+      <h1>旅行計画作成</h1>
     </div>
 
-    <div class="plan_form">
-      <div class="form-guide">
-        行き先(必須)
-      </div>
-      <%# 行先候補からの遷移且つ行先を記入していた場合、継承する %>
-      <% if @candidate %>
-        <% if @candidate.destination %>
-          <div class="form-box">
-              <%= f.text_field :destination, class: "destination-form", placeholder:"行き先を記入してください", value:"#{@candidate.destination}" %>
+    <%# グループ詳細に戻る %>
+    <div class="back-page">
+      <%= link_to "#{@group.name}", group_path(@group), class: "link back-link" %>
+    </div>
+    <%# /グループ詳細に戻る %>
+
+      <%# 両校詳細の記入 %>
+    <div class="plan-form-box">
+      <%= form_with( model:[@group, @plan] , url: group_plans_path(@group, @plan), method: :post, local: true) do |f| %>
+
+        <%# エラー表示 %>
+        <%= render partial: 'shared/error_messages', locals: { model: @plan } %>
+        <%# /エラー表示%>
+
+        <div class="plan-make-box">
+          <div class="plan-make-content">
+            <%#= candidateのid %>
+            <% if @candidate %>
+              <div class="candidate-id hidden">
+                <%= f.text_field :candidate_id, value: "#{@candidate_id}" %>
+              </div>
+            <% end %>
+            <%#= /candidateのid %>
+
+              <div class="plan_form">
+                <div class="form-guide">
+                  旅行計画のタイトル(必須)
+                </div>
+                <div class="form-box">
+                  <%= f.text_field :title, class: "title-form", placeholder:"タイトルを記入してください" %>
+                </div>
+              </div>
+
+              <div class="plan_form">
+                <div class="form-guide">
+                  行き先(必須)
+                </div>
+                <%# 行先候補からの遷移且つ行先を記入していた場合、継承する %>
+                <% if @candidate %>
+                  <% if @candidate.destination %>
+                    <div class="form-box">
+                        <%= f.text_field :destination, class: "destination-form", placeholder:"行き先を記入してください", value:"#{@candidate.destination}" %>
+                    </div>
+                  <% end %>
+                <% else %>
+                    <div class="form-box">
+                        <%= f.text_field :destination, class: "destination-form", placeholder:"行き先を記入してください" %>
+                    </div>
+                  <% end %>
+              </div>
+              
+              <div class="plan_form">
+                <div class="form-guide">
+                  出発日
+                </div>
+                <div class="form-box">
+                  <%= f.date_field :departure_day,  class: "departure_form" %>
+                </div>
+              </div>
+              <div class="plan_form">
+                <div class="form-guide">
+                  帰着日
+                </div>
+                <div class="form-box">
+                  <%= f.date_field :return_day, class: "return_form" %>
+                </div>
+              </div>
+
+              <div class="plan_form">
+                <div class="form-guide">
+                  移動手段
+                </div>
+                <div class="form-box">
+                  <%= f.collection_select(:transportation_id, Transportation.all, :id, :name, {include_blank:"---"}, {class: "transportation-form" })%>
+                </div>
+              </div>
+              <div class="plan_form">
+                <div class="form-guide">
+                  出発地点
+                </div>
+                <div class="form-box">
+                  <%= f.text_field :start_place, class: "start_place-form"%>
+                </div>
+              </div>
+              <div class="plan_form">
+                <div class="form-guide">
+                  移動手段の詳細
+                </div>
+                <div class="form-box">
+                  <%= f.text_area :ticket, class: "ticket-form", placeholder:"交通機関に関する情報を記入してください。(例) BX310便, 12:00フライト" %>
+                </div>
+              </div>
+              
+              <div class="plan_form">
+                <div class="form-guide">
+                  ホテル名
+                </div>
+                <div class="form-box">
+                  <%= f.text_field :hotel, class: "hotel-form", placeholder: "ホテル名を入力してください" %>
+                </div>
+              </div>
+              
+              <div class="plan_form">
+                <div class="form-guide">
+                  ホテル情報(メモ)
+                </div>
+                <div class="form-box">
+                  <%= f.text_area :hotel_memo, class: "hotel-memo-form", placeholder:"ホテルに関するメモとしてホテル情報を記入してください。 (例) 13:00 チェックイン、朝食あり" %>
+                </div>
+              </div>
+              <div class="plan_form plan-make-submit">
+                <%= f.submit "作成" , class:"plan-submit"%>
+              </div>
           </div>
-        <% end %>
-      <% else %>
-          <div class="form-box">
-              <%= f.text_field :destination, class: "destination-form", placeholder:"行き先を記入してください" %>
-          </div>
-        <% end %>
+        </div>
+      <% end %>
+    <%# /旅行詳細の記入 %>
     </div>
-    
-    <div class="plan_form">
-      <div class="form-guide">
-        出発日
-      </div>
-      <div class="form-box">
-        <%= f.date_field :departure_day,  class: "departure_form" %>
-      </div>
-    </div>
-    <div class="plan_form">
-      <div class="form-guide">
-        帰着日
-      </div>
-      <div class="form-box">
-        <%= f.date_field :return_day, class: "return_form" %>
-      </div>
-    </div>
-
-    <div class="plan_form">
-      <div class="form-guide">
-        移動手段
-      </div>
-      <div class="form-box">
-        <%= f.collection_select(:transportation_id, Transportation.all, :id, :name, {include_blank:"---"}, {class: "transportation-form" })%>
-      </div>
-    </div>
-    <div class="plan_form">
-      <div class="form-guide">
-        出発地点
-      </div>
-      <div class="form-box">
-        <%= f.text_field :start_place, class: "start_place-form"%>
-      </div>
-    </div>
-    <div class="plan_form">
-      <div class="form-guide">
-        移動手段の詳細
-      </div>
-      <div class="form-box">
-        <%= f.text_area :ticket, class: "ticket-form", placeholder:"交通手段に関するメモとしてチケット情報などを記入してください" %>
-      </div>
-    </div>
-    
-    <div class="plan_form">
-      <div class="form-guide">
-        ホテル名
-      </div>
-      <div class="form-box">
-        <%= f.text_field :hotel, class: "hotel-form", placeholder: "ホテル名を入力してください" %>
-      </div>
-    </div>
-    
-    <div class="plan_form">
-      <div class="form-guide">
-        ホテル情報(メモ)
-      </div>
-      <div class="form-box">
-        <%= f.text_area :hotel_memo, class: "hotel-memo-form", placeholder:"ホテルに関するメモとしてホテル情報を記入してください" %>
-      </div>
-    </div>
-    <div class="plan_form">
-      <div class="form-box">
-        <%= f.submit "作成" , class:"plan-submit"%>
-      </div>
-    </div>
-  <% end %>
-<%# /旅行詳細の記入 %>
+  </div>
 </div>
