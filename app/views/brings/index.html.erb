@@ -2,15 +2,28 @@
 <div class="main-header">
   <%= render partial: "shared/main_header", locals: { user: @user, group: @group} %>
 </div>
-<%= link_to "旅行計画に戻る", group_plan_path(@group, @plan) ,class: "link"%>
 <%# /header %>
 
-<h1>持ち物リスト</h1>
-<div class="bring-form_box">
-  <%= render partial: "form", locals:{bring: Bring.new, value: "追加"} %>
-</div>
-<div class="bring-lists-box"> 
-  <ul class="bring-lists" id="bring-lists">
-    <%= render @brings %>
-  </ul>
+<div class="plan-back">
+  <div class="brings-make-largebox">
+    <%# タイトル %>
+    <div class="bring-title">
+      <h1>持ち物リスト</h1>
+    </div>
+    <%# /タイトル %>
+    <%# 前ページに戻る %>
+    <div class="back-page">
+      <%= link_to "旅行計画に戻る", group_plan_path(@group, @plan) ,class: "link"%>
+    </div>
+    <%# /前ページに戻る %>
+
+    <div class="bring-form-box">
+      <%= render partial: "form", locals:{bring: Bring.new, value: "追加"} %>
+    </div>
+    <div class="bring-lists-box"> 
+      <ul class="bring-lists" id="bring-lists">
+        <%= render @brings %>
+      </ul>
+    </div>
+  </div>
 </div>

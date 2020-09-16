@@ -1,0 +1,69 @@
+/* 大枠 */
+.bring-make-largebox{
+  width: 70%;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+/* /大枠 */
+/* タイトル */
+.bring-title{
+  margin: 0 auto;
+  text-align: center;
+}
+/* /タイトル */
+/* フォーム部分 */
+.bring-form-box{
+  width: 20%;
+  height: 50px; 
+  border: solid 2px navy;
+  margin: 0 auto;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.45);
+  overflow: scroll;
+  margin-top: 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bring-form-flex{
+  display: flex;
+}
+
+.thing-form{
+  margin-right: 10px;
+}
+/* /フォーム部分 */
+
+/* リスト */
+.bring-lists-box{
+  position: relative
+}
+
+.bring-lists{
+  border: 2px solid navy;
+  padding-left: 10px;
+  background-color:  rgba(255,255,255,0.45);
+  width: 30%;
+  height: 300px;
+  margin: 0 auto;
+  margin-top: 30px;
+  border-radius: 10px;
+  overflow: scroll;
+}
+/* /リスト */
+.bring-check{
+  display: flex;
+  justify-content: space-between;
+}
+
+.bring-content{
+  display: inline-block;
+  width: 70%;
+  height: 20px;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  margin: 0;
+}
