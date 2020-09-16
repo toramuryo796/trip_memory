@@ -1,0 +1,47 @@
+/* 大枠 */
+.candidate-new-largebox{
+  width: 70%;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+/* /大枠 */
+
+/* contentヘダー部分 */
+.candidate-new-title{
+  margin: 0 auto;
+  text-align: center;
+}
+/* contentヘダー部分 */
+
+/* フォーム部分 */
+.candidate-make-box{
+  width: 60%;
+  height: 600px; 
+  border: solid 2px navy;
+  margin: 0 auto;
+  border-radius: 30px;
+  background: aliceblue;
+  overflow: scroll;
+  margin-top: 20px;
+}
+
+.candidate-make-content{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 20px;
+}
+
+.reason-form{
+  width: 350px;
+  height: 150px;
+}
+
+.candidate-form{
+  margin-bottom: 10px;
+}
+
+.make-submit{
+  position: relative;
+  left: 50%;
+}
+/* /フォーム部分 */

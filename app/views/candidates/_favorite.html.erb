@@ -3,7 +3,6 @@
     <p> 
     <% favorite = Favorite.find_by(user_id: current_user.id, candidate_id: candidate.id) %>
     <%= link_to "いいね解除", group_candidate_favorite_path(group, candidate, favorite),class: "link", method: :delete, data:{remote: true} %> 
-    <%= candidate.favorites.count %>
     </p>
   <% else %>
     <p>

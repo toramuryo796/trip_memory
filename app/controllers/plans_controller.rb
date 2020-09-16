@@ -59,7 +59,7 @@ class PlansController < ApplicationController
 
     
   def create_plan
-    params.require(:day_how_plans).permit(:title, :destination, :departure_day, :return_day, :hotel, :hotel_memo, :transportation_id, :ticket, :start_place, :candidate_id).merge(user_id: current_user.id, group_id: params[:group_id])
+    params.require(:plan).permit(:title, :destination, :departure_day, :return_day, :hotel, :hotel_memo, :transportation_id, :ticket, :start_place, :candidate_id).merge(user_id: current_user.id, group_id: params[:group_id])
   end
   
   def find_group

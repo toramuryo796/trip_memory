@@ -4,82 +4,92 @@
 </div>
 <%# /header %>
 
-<%#= link_to @group.name, group_path(@group) %>
-<h1>行先候補を作成</h1>
-<%= form_with url: group_candidates_path(@group, @candidate), method: :post, local: true do |f| %>
+<div class="back-map">
+  <div class="candidate-new-largebox">
+    <%#= link_to @group.name, group_path(@group) %> 
+    <div class="candidate-new-title">
+      <h1>行先候補を作成</h1>
+    </div>
+    <%= form_with url: group_candidates_path(@group, @candidate), method: :post, local: true do |f| %>
 
-  <%# エラー表示 %>
-  <%= render partial: 'shared/error_messages', locals: { model: @candidate } %>
-  <%# /エラー表示%>
+      <%# エラー表示 %>
+      <%= render partial: 'shared/error_messages', locals: { model: @candidate } %>
+      <%# /エラー表示%>
 
-  <%# 予算フォーム %>
-  <div class="candidate-form">
-    <div class="form_guide">
-      予算 (必須)
-    </div>
-    <%= f.collection_select(:budget_id, Budget.all, :id, :name, {include_blank:"---"}, {class:"budget-form"}) %>
+      <div class="candidate-make-box">
+        <div class="candidate-make-content">
+          <%# 予算フォーム %>
+          <div class="candidate-form">
+            <div class="form_guide">
+              予算 (必須)
+            </div>
+            <%= f.collection_select(:budget_id, Budget.all, :id, :name, {include_blank:"---"}, {class:"budget-form"}) %>
+          </div>
+          <%# 泊数フォーム %>
+          <div class="candidate-form">
+            <div class="form_guide">
+              日数
+            </div>
+            <%= f.text_field :night, class: "night-form", placeholder: "２泊3日" %>
+          </div>
+          <%# 行先フォーム %>
+          <div class="candidate-form">
+            <div class="form_guide">
+              行先 (必須)
+            </div>
+            <%= f.text_field :destination, class: "candidate-form", palceholder: "行きたい場所をご記入してください" %>
+          </div>
+          <%# 理由フォーム %>
+          <div class="candidate-form">
+            <div class="form_guide">
+              理由・目的
+            </div>
+            <%= f.text_area :reason, class:"reason-form", placeholder:"行きたい理由、目的、スポットなど400文字以内でご自由にご記入してください"%>
+          </div>
+          <%# 交通手段フォーム %>
+          <div class="candidate-form">
+            <div class="form_guide">
+              移動手段
+            </div>
+            <%= f.collection_select(:transportation_id, Transportation.all, :id, :name, {include_blank:"---"}, {class:"transportation-form"}) %>
+          </div>
+          <div class="plain">
+          <a href="https://www.expedia.co.jp/Destinations-In-Japan.d89.Flight-Destinations" target="_blank" rel="noopener">
+            参考 ( 航空券予約サイト )
+          </a>
+          </div>
+          <div class="train">
+          <a href="https://www.navitime.co.jp/transfer/" target="_blank" rel="noopener">
+            参考 ( 電車乗換検索サイト ) 
+          </a> 
+          </div>
+          <%# 交通時間フォーム %>
+          <div class="candidate-form">
+            <div class="form_guide">
+              移動時間の概算 (片道)
+            </div>
+            <%= f.text_field :take_time, class:"take-time-form", placeholder:"数字を記入"%>時間
+          </div>
+          <%# 交通費フォーム %>
+          <div class="candidate-form">
+            <div class="form_guide">
+              交通費の概算 (往復)
+            </div>
+            <%= f.text_field :trans_cost ,class:"torans-cost-form", placeholder:"往復の交通費の概算" %>円
+          </div>
+          <div class="candidate-form">
+            <div class="form_guide">
+              参考写真(1枚)
+            </div>
+            <%= f.file_field :image ,class:"image-form",id:"image-form", placeholder:"往復の交通費の概算" %>
+            <div class="image-preview" id="image-preview">
+            </div>
+          </div>
+          <div class="candidate-form make-submit">
+            <%= f.submit "作成", class: "make-btn" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
-  <%# 泊数フォーム %>
-  <div class="candidate-form">
-    <div class="form_guide">
-      日数
-    </div>
-    <%= f.text_field :night, class: "night-form", placeholder: "２泊3日" %>
-  </div>
-  <%# 行先フォーム %>
-  <div class="candidate-form">
-    <div class="form_guide">
-      行先 (必須)
-    </div>
-    <%= f.text_field :destination, class: "candidate-form", palceholder: "行きたい場所をご記入してください" %>
-  </div>
-  <%# 理由フォーム %>
-  <div class="candidate-form">
-    <div class="form_guide">
-      理由・目的
-    </div>
-    <%= f.text_area :reason, class:"reason-form", placeholder:"行きたい理由、目的、スポットなど400文字以内でご自由にご記入してください"%>
-  </div>
-  <%# 交通手段フォーム %>
-  <div class="candidate-form">
-    <div class="form_guide">
-      移動手段
-    </div>
-    <%= f.collection_select(:transportation_id, Transportation.all, :id, :name, {include_blank:"---"}, {class:"transportation-form"}) %>
-  </div>
-  <div class="plain">
-  <a href="https://www.expedia.co.jp/Destinations-In-Japan.d89.Flight-Destinations" target="_blank" rel="noopener">
-    参考 ( 航空券予約サイト )
-  </a>
-  </div>
-  <div class="train">
-  <a href="https://www.navitime.co.jp/transfer/" target="_blank" rel="noopener">
-    参考 ( 電車乗換検索サイト ) 
-  </a> 
-  </div>
-  <%# 交通時間フォーム %>
-  <div class="candidate-form">
-    <div class="form_guide">
-      移動時間の概算 (片道)
-    </div>
-    <%= f.text_field :take_time, class:"take-time-form", placeholder:"数字を記入"%>時間
-  </div>
-  <%# 交通費フォーム %>
-  <div class="candidate-form">
-    <div class="form_guide">
-      交通費の概算 (往復)
-    </div>
-    <%= f.text_field :trans_cost ,class:"torans-cost-form", placeholder:"往復の交通費の概算" %>円
-  </div>
-  <div class="candidate-form">
-    <div class="form_guide">
-      参考写真(1枚)
-    </div>
-    <%= f.file_field :image ,class:"image-form",id:"image-form", placeholder:"往復の交通費の概算" %>
-    <div class="image-preview" id="image-preview">
-    </div>
-  </div>
-  <div class="candidate-form">
-    <%= f.submit "作成", class: "make-btn" %>
-  </div>
-<% end %>
+</div>

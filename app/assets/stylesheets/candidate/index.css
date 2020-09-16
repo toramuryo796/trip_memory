@@ -1,21 +1,68 @@
+/* 一覧画面 */
+.candidate-index-box{
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+/* /一覧画面 */
+
+/* タイトル */
+.candidate-index-title{
+  margin-top: 10px;
+  text-align: center;
+}
+/* /タイトル */
+
+/* 候補 */
+.candidate-index-content{
+  width: 70%;
+  margin: 0 auto;
+  border: 2px solid navy;
+  border-radius: 20px;
+  background-color: aliceblue;
+  margin-bottom: 10px;
+}
+
 .index-large-box{
-  border: solid 2px #dcdcdc;
+  padding-left: 100px; 
+  padding-top: 10px;
+}
+
+.candidate-guide{
+  width: 60%;
   margin-top: 5px;
+  border-bottom: 2px dotted #dcdcdc;
+  overflow: scroll;
 }
 
-.index-footer{
-  border-top: solid 2px #dcdcdc;
+.candidate-p{
+  position: relative;
+  left: 100px;
 }
+/* /候補 */
 
+/* 写真 */
 .candidate-image{
   width: 450px;
   height: 300px;
 }
+/* /写真 */
 
-.hidden-set-good{
-  display: none;
+/* フッター */
+.candidate-index-footer{
+  display: flex;
 }
 
-.hidden-reset-good{
-  display: none;
+.index-footer-content{
+  margin-right: 20px;
+  border: solid 1px royalblue;
+  background-color: #fff;
+  border-radius: 5px;
+  width: 80px;
+  text-align: center;
 }
+
+.index-footer-content a{
+  display: block;
+}
+/* /フッター */

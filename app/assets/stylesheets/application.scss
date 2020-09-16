@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
- .back-ground-image, .group-index-largebox, .group-new-largebox{
+ .back-ground-image, .group-index-largebox, .group-new-largebox, .group-large-box{
   width: 100vw;
   height: 100vh;
   object-fit: contain;
@@ -24,4 +24,19 @@
   background-color:rgba(255,255,255,0.8);
   background-blend-mode:lighten;
   background-attachment: fixed;
+  overflow: auto;
+}
+
+.back-map, .candidate-large-box{
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+  background-image: image-url('world-map.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-color:rgba(255,255,255,0.8);
+  background-blend-mode:lighten;
+  background-attachment: fixed;
+  overflow: auto;
 }

@@ -1,0 +1,48 @@
+.candidate-show-box{
+  width: 50%;
+  margin: 0 auto;
+  border: 2px solid navy;
+  border-radius: 20px;
+  background-color: aliceblue;
+  margin-bottom: 10px;
+  margin-top: 100px;
+}
+
+.candidate-index-title{
+  margin-top: 10px;
+  text-align: center;
+}
+
+.candidate-show-content{
+  margin-top: 20px;
+  padding-left: 20%;
+}
+
+.candidate-show-guide{
+  margin-top: 10px;
+}
+
+.index-footer{
+  display: flex;
+}
+
+.candidate-show-footer{
+  margin-right: 20px;
+  border: solid 1px royalblue;
+  background-color: #fff;
+  border-radius: 5px;
+  height: 25px;
+  text-align: center;
+  padding: 0 10px;
+}
+
+.favorite p{
+  display: flex;
+  justify-content: center;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.candidate-show-footer a{
+  display: block;
+}
