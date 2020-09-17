@@ -1,4 +1,4 @@
-.plan-title{
+.plan-title, .memory-title{
   font-family: "ヒラギノ丸ゴ ProN","Hiragino Maru Gothic ProN";
 }
 
@@ -20,7 +20,7 @@
   border: 2px solid navy;
   border-radius: 20px;
   background: rgba(255,255,255,0.45);
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 
 .plan-index-title, .index-guide{

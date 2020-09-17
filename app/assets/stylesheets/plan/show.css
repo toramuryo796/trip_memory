@@ -1,7 +1,5 @@
-.plan-contents-options{
-  display: flex;
-}
 
+/* メイン詳細部分 */
 .plan-show-box{
   width: 60%;
   margin: 0 auto;
@@ -10,12 +8,22 @@
   background: rgba(255,255,255,0.45);
   margin-bottom: 10px;
   margin-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
+/* メイン詳細部分 */
 
+/* タイトル */
 .plan-show-title{
   margin:0 auto;
   text-align: center;
   margin-top: 20px;
+}
+/* /タイトル */
+
+/* 内容とリストの半分分け */
+.plan-contents-options{
+  display: flex;
 }
 
 .plan-contents{
@@ -24,20 +32,43 @@
   margin-bottom: 10px;
 }
 
+.options{
+  position: absolute;
+  bottom: 0;
+  left: 150px;
+}
+/* 内容とリストの半分分け */
+
+
+/* 計画詳細 */
 .plan-ticket, .hotel-memo-guide{
   width: 80%;
   overflow: scroll;
 }
 
+.plan-show-image-box{
+  margin: 0 auto;
+  text-align: center;
+}
+
+.reference-image{
+  text-align: start;
+  padding-left: 100px;
+}
+
+.plan-show-content{
+  margin-bottom: 10px;
+}
+/* /計画詳細 */
+
+/* リンク箇所 */
 .options-box{
   position: relative;
   width: 100%
 }
 
-.options{
-  position: absolute;
-  bottom: 0;
-  left: 150px;
+.plan-show-link a{
+  display: block;
 }
 
 .plan-show-link{
@@ -49,17 +80,19 @@
   text-align: center;
   margin-bottom: 10px;
 }
+/* /リンク箇所 */
 
-.plan-show-link a{
-  display: block;
-}
-
-.plan-show-image-box{
+/* 前ページ */
+.group-page{
+  width: 50%;
   margin: 0 auto;
-  text-align: center;
+  text-align: end;
 }
+/* /前ページ */
 
-.reference-image{
-  text-align: start;
-  padding-left: 100px;
+/* 戻るボタン */
+.back-index-page{
+  width: 50%;
+  margin: 0 auto;
+  text-align: end;
 }
