@@ -2,56 +2,73 @@
   <%= render partial: "shared/main_header", locals: { user: @user, group: @group} %>
 </div>
 
-<div class="back-to-user-link">
-  <%= link_to "戻る", user_path(@user), class: "back-to-user link" %>
-</div>
+<div class="plan-back">
+  <div class="plan-large-box">
+    <%# タイトル %>
+      <div class="plan-index-title">
+        <h2>旅行計画一覧</h2>
+    </div>
+    <%# /タイトル %>
+    <%# 前ページ %>
+      <div class="back-page">
+        <%= link_to "戻る", user_path(@user), class: "back-to-user link" %>
+      </div>
+    <%# /前ページ %>
 
-<div class="user-plans-lists">
-  <dl class="user-plans-list">
-    <% @user.groups.each do |group| %>
-      <div class="group-plans">
-        <h2><%= group.name %></h2>
-        <% if group.plans.present? %>
-          <% group.plans.each do |plan| %>
-            <% unless plan.memory.present? %>
-              <div class="plan-box">
-                <%# 旅行のタイトル %>
-                <div class="user-plan-title">
-                  <h2><%= link_to "#{plan.title}" , group_plan_path(group, plan), class: "link" %></h2>
-                </div>
-                <%# /旅行のタイトル %>
+    <div class="user-plans-lists">
+      <dl class="user-plans-list">
+        <% @user.groups.each do |group| %>
+          <div class="group-plans">
+            <div class="user-plans-group">
+              <h2><%= group.name %></h2>
+            </div>
+            <% if group.plans.present? %>
+              <% group.plans.each do |plan| %>
+                <% unless plan.memory.present? %>
+                  <div class="plan-box">
+                    <%# 旅行のタイトル %>
+                    <div class="user-plan-title">
+                      <h2><%= link_to "#{plan.title}" , group_plan_path(group, plan), class: "link" %></h2>
+                    </div>
+                    <%# /旅行のタイトル %>
 
-                <%# 行先 %>
-                <dt class="desination-guide">
-                  行先
-                </dt>
-                <dd class="user-plan-destination">
-                  <%= plan.destination %>
-                </dd>
-                
-                <%# /行先 %>
+                    <div class="user-plan-contents">
+                      <%# 行先 %>
+                      <dt class="desination-guide">
+                        行先
+                      </dt>
+                      <dd class="user-plan-destination">
+                        <%= plan.destination %>
+                      </dd>
+                      
+                      <%# /行先 %>
 
-                <div class="user-plan-depature">
-                  <dt class="user-plan-depature-guide">
-                    出発日：
-                  </dt>
-                  <dd class="user-depature-day">
-                    <%= plan.departure_day %>
-                  </dd>
-                  <dt class="user-plan-return-guide">
-                    出発日：
-                  </dt>
-                  <dd class="user-return-day">
-                    <%= plan.return_day %>
-                  </dd>
-                </div>
+                      <div class="user-plan-depature">
+                        <dt class="user-plan-depature-guide">
+                          出発日：
+                        </dt>
+                        <dd class="user-depature-day">
+                          <%= plan.departure_day %>
+                        </dd>
+                        <dt class="user-plan-return-guide">
+                          出発日：
+                        </dt>
+                        <dd class="user-return-day">
+                          <%= plan.return_day %>
+                        </dd>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            <% else %>
+              <div class="user-plan-none-contents">
+                旅行計画はありません
               </div>
             <% end %>
-          <% end %>
-        <% else %>
-          旅行計画はありません
+          </div>
         <% end %>
-      </div>
-    <% end %>
-  </ul>
+      </ul>
+    </div>
+  </div>
 </div>

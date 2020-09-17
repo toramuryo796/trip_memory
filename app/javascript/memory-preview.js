@@ -60,7 +60,6 @@ document.addEventListener('DOMContentLoaded', function () {
       btn.addEventListener("change", (e) => {
         const file = e.target.files[0] ;                               // 画像情報をfileに格納
         const blob = window.URL.createObjectURL(file)                  // 画像URLを生成
-        debugger
         createImageHTML(blob, btnNum);                                          // createImageHTML関数を実行
         btnNum = 0;
       });

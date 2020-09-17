@@ -1,6 +1,24 @@
-.group-plans{
-  margin-bottom: 10px;
-  margin-top: 10px;
-  border: dotted 2px #dcdcdc
+.plan-box{
+  width: 50%;
+  margin: 0 auto;
+  border: 2px solid navy;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.45);
+  margin-bottom: 30px;
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
+.user-plans-group{
+  padding-left: 100px;
+}
+
+.user-plan-contents{
+  padding-left: 30px;
+  margin-top: 20px;
+}
+
+.user-plan-none-contents{
+  padding-left: 130px;
+}

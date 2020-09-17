@@ -1,0 +1,14 @@
+.user-candidates-lists{
+  width: 60%;
+  margin: 0 auto;
+}
+
+.user-candidate, .user-memories{
+  margin-top:20px;
+}
+
+.user-candidate-destination, .user-memory-destination{
+  display: block;
+  width: 200px;
+  overflow: scroll;
+}

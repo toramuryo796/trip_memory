@@ -2,19 +2,35 @@
   <%= render partial: "shared/main_header", locals: { user: @user, group: @group} %>
 </div>
 
-<h1>思い出を作成</h1>
-<div class="choose">
-  <h2>どの旅行の思い出を記録しますか？</h2>
-  <div class="plan-list">
-    <ul>
-      <% @plans.each do |plan| %>
-        <li class="memory-check-list">
-          <% unless plan.memory.present? %>
-            <%= link_to "#{plan.title}", new_group_memory_path(@group, plan_id: plan.id), class: "link" %>
-          <% else %>
-            <%= plan.title %> : すでに登録されています
+
+<div class="back-map">
+  <div class="user-journal-largebox">
+    <%# タイトル %>
+    <div class="candidate-index-title"> 
+      <h1>思い出作成</h1>
+    </div>
+    <%# /タイトル %>
+    <%# 前ページ %>
+    <div class="back-page">
+      <%= link_to "戻る", user_path(@user), class: "back-to-user link" %>
+    </div>
+    <%# /前ページ %>
+
+    <div class="choose">
+      <h2>どの旅行の思い出を記録しますか？</h2>
+      <div class="plan-list">
+        <ul>
+          <% @plans.each do |plan| %>
+            <li class="memory-check-list">
+              <% unless plan.memory.present? %>
+                <%= link_to "#{plan.title}", new_group_memory_path(@group, plan_id: plan.id), class: "link" %>
+              <% else %>
+                <%= plan.title %> : すでに登録されています
+              <% end %>
+            </li>
           <% end %>
-        </li>
-      <% end %>
-    </ul>
+        </ul>
+      </div>
+    </div>
   </div>
+</div>

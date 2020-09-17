@@ -1,35 +1,33 @@
 <div class="user-content">
-
   <div class="main-header">
     <%= render partial: "shared/main_header", locals: { user: @user, group: @group} %>
   </div>
-
-  <% if @user.memories.present? %>
-    <%= render partial: "userImage", locals: {user: @user} %>
-  <% end %>
+  <div class="back-ground-image">
+    <%# 写真 %>
+    <% if @user.memories.present? %>
+      <div class="user-show-images">
+        <%= render partial: "userImage", locals: {user: @user} %>
+      </div>
+    <% end %>
+    <%# /写真 %>
   
-  <% unless @user.memories.present? %>
-    <div class="back-ground-image">
-
-      <div class="fav-candidates-box">
-        <p>お気に入りした旅行候補</p>
-        <div class="fav-candidates">
-          <% @favorite_candidates.each do |candidate| %>
-            <% unless candidate.plan.present? %>
-              <div class="fav-candidate">
-                <%= link_to "#{candidate.destination}", group_candidate_path(candidate.group, candidate), class: "link" %>
-                <% if candidate.image.present? %>
-                  <div class="user-candidate-fav-image">
-                    <%= image_tag candidate.image, class:"user-fav-image" %> 
-                  </div>
-                <% end %>
-              </div>
-            <% end %>
+    <div class="fav-candidates-box">
+      <p>お気に入りした旅行候補</p>
+      <div class="fav-candidates">
+        <% @favorite_candidates.each do |candidate| %>
+          <% unless candidate.plan.present? %>
+            <div class="fav-candidate">
+              <%= link_to "#{candidate.destination}", group_candidate_path(candidate.group, candidate), class: "link" %>
+              <% if candidate.image.present? %>
+                <div class="user-candidate-fav-image">
+                  <%= image_tag candidate.image, class:"user-fav-image" %> 
+                </div>
+              <% end %>
+            </div>
           <% end %>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
   </div>
   <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 </div>

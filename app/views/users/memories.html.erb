@@ -2,25 +2,35 @@
   <%= render partial: "shared/main_header", locals: { user: @user, group: @group} %>
 </div>
 
-<div class="back-to-user-link">
-  <%= link_to "戻る", user_path(@user), class: "back-to-user link" %>
-</div>
+<div class="memory-back">
+  <div class="user-candidate-largebox">
+  <%# タイトル %>
+    <div class="candidate-index-title"> 
+      <h1>思い出一覧</h1>
+    </div>
+  <%# /タイトル %>
+
+    <div class="back-page">
+      <%= link_to "戻る", user_path(@user), class: "back-to-user link" %>
+    </div>
 
 <div class="user-candidates-lists">
   <ul class="user-candidates-list">
     <% @groups.each do |group| %>
-      <div class="group-candidates">
-        <%= group.name %>:
-        <% if group.memories.present? %>
-          <li class="user-memories">
-          <% group.memories.each do |memory|%>
-            <%= link_to memory.destination , group_memory_path(memory.group, memory),class: "link" %>
+      <li class="user-memories">
+        <div class="group-candidates">
+          <%# グループ名 %>
+          <h2><%= group.name %></h2>
+          <%# /グループ %>
+          <% if group.memories.present? %>
+            <% group.memories.each do |memory|%>
+              <%= link_to "　#{memory.destination}" , group_memory_path(memory.group, memory),class: "link user-memory-destination" %>
+            <% end %>
+          <% else %>
+              　思い出はありません
           <% end %>
-        <% else %>
-            思い出はありません
-          </li>
-        <% end %>
-      </div>
+        </div>
+      </li>
     <% end %>
   </ul>
 </div>
