@@ -23,7 +23,7 @@ class SchedulesController < ApplicationController
       unless @schedules.present?
         @schedules = Schedule.new(plan_id: @plan_id, day_how_id: @day_how.id)
       end
-      @passed = @day_how.passed
+      @passed = @day_how.passed 
     end
     @user = current_user
     @other_days = DayHow.where(plan_id: @plan.id).select(:plan_id, :passed).distinct.order(passed: :asc)        # palnのday_howを特定
