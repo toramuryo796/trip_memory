@@ -1,0 +1,71 @@
+/* 大枠 */
+.wants-large-box{
+  width: 70%;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+/* /大枠 */
+
+/* タイトル */
+.want-title{
+  margin: 0 auto;
+  text-align: center;
+}
+/* /タイトル */
+
+/* フォーム部分 */
+.want-form-box{
+  width: 40%;
+  height: 150px; 
+  border: solid 2px navy;
+  margin: 0 auto;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.45);
+  overflow: scroll;
+  margin-top: 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.want-guide{
+  position: relative;
+  left: -100px;
+}
+
+.want-submit{
+  position: relative;
+  left: 90%;
+}
+/* /フォーム部分 */
+
+/* りスト */
+.program-large-box{
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 40%;
+  height: 200px;
+  border: 1px solid navy;
+  background-color: rgba(255,255,255,0.45);
+  border-radius: 10px;
+  overflow: scroll;
+}
+
+#want-table{
+  width: 100%;
+}
+
+#want-table td{
+  text-align: center;
+}
+
+.program-content{
+  width: 200px;
+  height: 20px;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  margin: 0;
+  display: inline-block;
+}

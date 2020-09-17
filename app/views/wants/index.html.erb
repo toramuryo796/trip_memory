@@ -2,24 +2,40 @@
   <%= render partial: "shared/main_header", locals: { user: @user, group: @group} %>
 </div>
 
-<div class="wants-large-box">
-  <div class="want-form-box">
-    <%= render partial: "form", locals: {want: Want.new, value: "追加"} %>
-  </div>
-</div>
+<div class="plan-back">
+  <div class="wants-large-box">
+    <%# タイトル %>
+    <div class="want-title">
+      <h1>やりたい事リスト</h1>
+    </div>
+    <%# /タイトル %>
 
-<div class="program-large-box">
-  <table id="want-table">
-    <tbody id="want-tbody">
-      <tr>
-        <th>
-          優先度
-        </th>
-        <th>
-          やりたいこと
-        </th>
-      <tr>
-      <%= render @wants %>
-    </tbody>
-  </table>
+    <%# 前ページに戻る %>
+    <div class="back-page">
+      <%= link_to "旅行計画に戻る", group_plan_path(@group, @plan) ,class: "link"%>
+    </div>
+    <%# /前ページに戻る %>
+
+    <div class="want-form-box">
+      <%= render partial: "form", locals: {want: Want.new, value: "追加"} %>
+    </div>
+  </div>
+
+  <div class="program-large-box">
+    <table id="want-table">
+      <tbody id="want-tbody">
+        <tr>
+          <th>
+            優先度
+          </th>
+          <th>
+            やりたいこと
+          </th>
+          <th></th>
+          <th></th>
+        <tr>
+        <%= render @wants %>
+      </tbody>
+    </table>
+  </div>
 </div>

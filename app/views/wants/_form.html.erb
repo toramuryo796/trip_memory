@@ -5,7 +5,7 @@
   <%# /エラー表示%>
 
   <div class="priority-form">
-    <div class="priority-guide">
+    <div class="priority-guide want-guide">
       優先度
     </div>
     <div class="want-form">
@@ -14,7 +14,7 @@
   </div>
 
   <div class="program-form">
-    <div class="program-guide">
+    <div class="program-guide want-guide">
       やりたいこと
     </div>
     <div class="want-form">
@@ -22,7 +22,9 @@
     </div>
   </div>
 
-  <%= f.submit value %>
+  <div class="want-submit">
+    <%= f.submit value %>
+  </div>
 
   <% if value == "更新" %>
     <%= link_to new_group_plan_want_path(@group, @plan, id: want.id), class: "link", data: {remote: true}  do%>
