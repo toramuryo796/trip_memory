@@ -52,6 +52,11 @@
   width: 450px;
   height: 300px;
 }
+
+.reference-image-box{
+  position: relative;
+  left: -100px;
+}
 /* /写真 */
 
 /* フッター */

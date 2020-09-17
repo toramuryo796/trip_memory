@@ -54,3 +54,17 @@
   background-attachment: fixed;
   overflow: auto;
 }
+
+.memory-back{
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+  background-image: image-url('memory-back.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-color:rgba(255,255,255,0.8);
+  background-blend-mode:lighten;
+  background-attachment: fixed;
+  overflow: auto;
+}
