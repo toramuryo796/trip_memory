@@ -115,15 +115,6 @@ ActiveRecord::Schema.define(version: 2020_09_14_170558) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
-  create_table "goods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "candidate_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["candidate_id"], name: "index_goods_on_candidate_id"
-    t.index ["user_id"], name: "index_goods_on_user_id"
-  end
-
   create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -230,8 +221,6 @@ ActiveRecord::Schema.define(version: 2020_09_14_170558) do
   add_foreign_key "dictionaries", "users"
   add_foreign_key "favorites", "candidates"
   add_foreign_key "favorites", "users"
-  add_foreign_key "goods", "candidates"
-  add_foreign_key "goods", "users"
   add_foreign_key "memories", "groups"
   add_foreign_key "memories", "plans"
   add_foreign_key "memories", "users"

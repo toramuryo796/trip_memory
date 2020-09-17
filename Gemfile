@@ -64,3 +64,6 @@ gem "image_processing", "~> 1.2"
 gem "jquery-rails"
 gem "gretel"
 gem "rails-i18n"
+group :production do
+  gem 'rails_12factor'
+end
