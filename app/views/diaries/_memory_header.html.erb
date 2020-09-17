@@ -3,9 +3,22 @@
   <%= render partial: "shared/main_header", locals: { user: user, group: group} %>
 </div>
 <%# /header %>
-<%= link_to "思い出に戻る", group_memory_path(group, memory), class: "link" %>
+<div class="memory-back">
+  <div class="diary-largebox">
+    <%# タイトル %>
+    <div class=diary-title>
+      <h1>日記</h1>
+    </div>
+    <%# /タイトル %>
+    <%# 出発日〜到着日 %>
+    <div class="trip-date">                                                
+      <%= @memory.departure_day %> 〜 <%= memory.return_day %>
+    </div>
+    <%# /出発日〜到着日 %>
 
-<h1>日記</h1>
-<div class="trip-date">                                                <%# 出発日〜到着日 %>
-  <%= @memory.departure_day %> 〜 <%= memory.return_day %>
-</div>
+    <%# 前ページ %>
+    <div class="back-page"> 
+      <%= link_to "戻る" , group_memory_path(@group, @memory), class:"link" %>
+    </div>
+    <%# /前ページ %>
+  

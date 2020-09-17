@@ -1,0 +1,32 @@
+.diary-show-content{
+  padding-left: 25%;
+}
+
+.diary-show-box{
+  margin-top: 10px;
+}
+
+.diary-content{
+  width:70%;
+}
+
+/* リンク */
+.dairy-option{
+  text-align: center;
+  border: solid 1px royalblue;
+  background-color: rgba(255,255,255,0.45);
+  border-radius: 5px;
+  width: 100px;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.dairy-show-options{
+  display: flex;
+}
+
+.dairy-option a{
+  display: block;
+}

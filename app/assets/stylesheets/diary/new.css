@@ -1,0 +1,29 @@
+.dairy-day-make{
+  width: 40%; 
+  height: 300px;
+  border: solid 2px navy;
+  margin: 0 auto;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.45);
+  overflow: scroll;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.diary-day-content{
+  padding-left: 10%;
+  margin-top: 10px;;
+}
+
+.diary-box{
+  margin-bottom: 10px;
+}
+
+.when-form{
+  width: 40px;
+}
+
+.content-form{
+  width:80%;
+  height: 200px;
+}

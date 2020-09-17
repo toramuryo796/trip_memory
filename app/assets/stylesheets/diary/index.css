@@ -1,0 +1,51 @@
+/* 大枠 */
+.diary-largebox{
+  width: 70%;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+
+.trip-date{
+  text-align: center;
+}
+/* /大枠 */
+
+/* タイトル */
+.diary-title{
+  margin:0 auto;
+  text-align: center;
+  margin-top: 20px;
+}
+/* /タイトル */
+
+/* リスト */
+.diary-lists{
+  width: 20%; 
+  height: 150px;
+  border: solid 2px navy;
+  margin: 0 auto;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.45);
+  overflow: scroll;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.make-diary-link{
+  text-align: center;
+  margin: 0 auto;
+  border: solid 1px royalblue;
+  background-color: midnightblue;
+  border-radius: 5px;
+  width: 100px;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.diary-make-day{
+  color: #fff;
+  display: block;
+}
+/* /リスト */
+
