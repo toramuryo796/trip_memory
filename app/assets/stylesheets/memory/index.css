@@ -2,3 +2,49 @@
   width: 500px;
   height: 500px;
 }
+
+/* 大枠 */
+
+/* リスト */
+.memory-index-largebox{
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.memory-index-contents{
+  width: 40%;
+  margin: 0 auto;
+  border: 2px solid navy;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.45);
+  margin-bottom: 30px;
+  padding-top: 20px;
+}
+
+.memory-index-list{
+  padding-left: 80px;
+  padding-top: 10px;
+}
+
+.memory-none-list{
+  padding-top: 0;
+  text-align: center;
+}
+/* /リスト */
+
+/* 写真 */
+.memory-index-image-box{
+  width: 200px;
+  height: 150px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  margin-top: 20px;;
+}
+
+.memory-index-image{
+  width: 200px;
+  height: 150px;
+  object-fit: contain;
+}
+/* /写真 */

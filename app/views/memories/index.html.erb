@@ -2,37 +2,54 @@
   <%= render partial: "shared/main_header", locals: { user: @user, group: @group} %>
 </div>
 
-<div class="back-to-group">
-  <%= link_to "#{@group.name}", group_path(@group), class: "link" %>
-</div>
+<div class="memory-back">
+  <div class="memory-index-largebox">
 
-<div class="memory-constents">
-  <% if @memories.present? %>
-    <% @memories.each do |memory| %>
+    <div class="memory-title">
+      <h1>思い出一覧</h1>
+    </div>
 
-      <%# タイトル %>
-      <div class="memory-title"> 
-        <%= link_to group_memory_path(@group, memory) , class: "link" do %> 
-          <%= memory.title %>
+    <div class="back-page">
+      <%= link_to "#{@group.name}", group_path(@group), class: "link" %>
+    </div>
+
+    <div class="memory-index-contents">
+      <% if @memories.present? %>
+        <% @memories.each do |memory| %>
+
+          <%# タイトル %>
+          <div class="memory-title memory-list"> 
+            <%= link_to group_memory_path(@group, memory) , class: "link" do %> 
+              <h1><%= memory.title %><h1>
+            <% end %>
+          </div>
+          <%# /タイトル %>
+
+          <%# 行先 %>
+          <div class="memory-destination memory-index-list">
+            行先：<%= memory.destination %>
+          </div>
+          <%# /行先 %>
+
+          <%# 日程 %>
+          <div class="memory-index date memory-index-list">
+            <div class="memory-guide">
+              日程：<%= memory.plan.departure_day %> ~ <%= memory.plan.return_day %>
+            </div>
+          </div>
+          <%# /日程 %>
+
+          <%# 写真 %> 
+          <div class="memory-index-image-box">
+            <%= image_tag memory.images[0], class:"memory-index-image"%>
+          </div>
+          <%# /写真 %>
         <% end %>
-      </div>
-      <%# /タイトル %>
-
-      <%# 行先 %>
-      <div class="memory-destination">
-        行先：<%= memory.destination %>
-      </div>
-      <%# /行先 %>
-
-      <%# 日程 %>
-      <div class="memory-index date">
-        <div class="memory-guide">
-          日程：<%= memory.plan.departure_day %> ~ <%= memory.plan.return_day %>
+      <% else %>
+        <div class="memory-none-list">
+          思い出は登録されていません
         </div>
-      </div>
-      <%# /日程 %>
-    <% end %>
-  <% else %>
-    思い出は登録されていません
-  <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>

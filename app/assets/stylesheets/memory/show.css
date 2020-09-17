@@ -1,15 +1,70 @@
+/* 写真 */
+.memory-image-large-box{
+  display: flex;
+  width: 80%;
+  overflow: scroll;
+}
+
 .memory-image-show{
   object-fit: contain;
   width: 400px;
-  height: 400px;
-}
-
-.memory-image-large-box{
-  display: flex;
+  height: 350px;
 }
 
 .memory-image-box{
   width: 400px;
-  height: 400px;
+  height: 350px;
   margin-left: 5px;
 }
+/* /写真 */
+
+/* タイトル */
+.mamory-title{
+  text-align: center;
+  margin-top: 20px;
+}
+/* /タイトル */
+
+/* メイン詳細部分 */
+.memory-show-box{
+  width: 50%;
+  margin: 0 auto;
+  border: 2px solid navy;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.45);
+  margin-bottom: 10px;
+  margin-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.memory-show-box{
+  padding-left: 100px;
+  overflow: scroll;
+}
+
+.memory-box{
+  margin-bottom: 20px;;
+}
+/* メイン詳細部分 */
+
+/* リンク */
+.memory-options{
+  display: flex;
+}
+
+.memory-option{
+  margin-right: 20px;
+  border: solid 1px royalblue;
+  background-color: #fff;
+  border-radius: 5px;
+  width: 100px;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-right: 20px;
+}
+
+.memory-option a{
+  display: block;
+}
+/* /リンク */

@@ -1,3 +1,83 @@
 .hidden{
   display: none;
 }
+
+/* 大枠 */
+.memory-make-largebox{
+  width: 70%;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+/* /大枠 */
+
+/* contentヘダー部分 */
+.memory-title{
+  margin: 0 auto;
+  text-align: center;
+}
+/* contentヘダー部分 */
+
+/* フォーム部分 */
+.memories-form-largebox{
+  width: 60%;
+  height: 600px; 
+  border: solid 2px navy;
+  margin: 0 auto;
+  border-radius: 30px;
+  overflow: scroll;
+  margin-top: 20px;
+  background: rgba(255,255,255,0.45);
+}
+
+.memory-form-box{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 100px;
+}
+
+.text-fill{
+  width: 60%;
+  height: 100px;
+}
+
+.image-fill{
+  height: 30px;
+}
+
+/* 写真 */
+.memory-preview{
+  display: flex;
+  width: 90%;
+  overflow: scroll;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.memory-preview-box{
+  width: 200px;
+  height: 150px;
+  margin-right: 20px;
+}
+
+.memory-image{
+  width: 200px;
+  height: 150px;
+  object-fit: contain;
+  padding-left: 50px;
+}
+
+.memory-image-form-box{
+  text-align: end;
+  position: relative;
+  right: 100px;
+}
+/* /写真 */
+
+/* editのsubmitボタン */
+.memory-submit-box{
+  text-align: end;
+  position: relative;
+  right: 80px;
+  margin-bottom: 20px;
+}
+/* /editのsubmitボタン */

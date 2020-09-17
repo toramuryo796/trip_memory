@@ -2,181 +2,199 @@
   <%= render partial: "shared/main_header", locals: { user: @user, group: @group} %>
 </div>
 
-<div class="back-to-group@">
-  <%= link_to "#{@group.name}", group_path(@group), class: "link" %>
-</div>
-<div class="memories-form-large-box">
-  <%= form_with(model: [@group, @memory], url: group_memories_path(@group, @memory), method: :post, local: true ) do |f| %>
-
-    <%# エラー表示 %>
-    <%= render partial: 'shared/error_messages', locals: { model: @memory } %>
-    <%# /エラー表示%>
-
-    <%# plan_id %>
-    <div class="hidden">
-      <%= f.text_field :plan_id, value: "#{@plan.id}" %>
-    </div>
-
+<div class="memory-back">
+  <div class="memory-make-largebox">
     <%# タイトル %>
-    <div class="memory-form-box">
-      <div class="memory-title-guide memory-form-guide">
-        タイトル
-      </div>
-      <div class="memory-title-form, memory-form">
-      <%# 旅行計画ですでに書いていたら継承 %>  
-        <% if @plan.title.present? %>
-          <%= f.text_field :title, class:"memory-title-fill", value: "#{@plan.title}" %>
-        <% else %>
-          <%= f.text_field :title, class:"memory-title-fill", placeholder: "タイトルを記入してください" %>
-        <% end %>    
-      </div>
-     </div>
+    <div class="memory-title">
+      <h1>思い出作成</h1>
+    </div>
     <%# /タイトル %>
-    
-    <%# タイトル %>
-    <div class="memory-form-box">
-      <div class="memory-destination-guide memory-form-guide">
-        行先
-      </div>
-      <div class="memory-destination-form, memory-form">
-      <%# 旅行計画ですでに書いていたら継承 %>  
-        <% if @plan.destination.present? %>
-          <%= f.text_field :destination, class:"memory-destination-fill", value: "#{@plan.destination}" %>
-        <% else %>
-          <%= f.text_field :destination, class:"memory-title-fill", placeholder: "タイトルを記入してください" %>
-        <% end %>    
-      </div>
-     </div>
-    <%# /タイトル %>
+    <%# グループリンク %>
+    <div class="back-page">
+      <%= link_to "#{@group.name}", group_path(@group), class: "link" %>
+    </div>
+    <%# /グループリンク %>
 
-    
-    
-    <%# 日程 %>
-    <div class=" memory-form-box">
-      <div class="memory-date-guide memory-form-guide">
-        日程：
-      </div>
-      <div class="memory-date-form">
-      <%# 旅行計画ですでに書いていたら継承 %>  
-      <% if @plan.departure_day.present? && @plan.return_day.present? %>
-        <div class="memory-departure-form memory-form">
-          出発日:<%= f.date_field :departure_day, class:"memory-departure-fill",  value: "#{@plan.departure_day}" %>
+    <%# 思い出form %>
+    <div class="memories-form-largebox">
+      <%= form_with(model: [@group, @memory], url: group_memories_path(@group, @memory), method: :post, local: true ) do |f| %>
+
+        <%# エラー表示 %>
+        <%= render partial: 'shared/error_messages', locals: { model: @memory } %>
+        <%# /エラー表示%>
+        
+        <%# 記入フォーム %>
+        <div class="memory-make-box">
+          <%# plan_id %>
+          <div class="hidden">
+            <%= f.text_field :plan_id, value: "#{@plan.id}" %>
+          </div>
+
+          <%# タイトル %>
+          <div class="memory-form-box">
+            <div class="memory-title-guide memory-form-guide">
+              タイトル
+            </div>
+            <div class="memory-title-form, memory-form">
+            <%# 旅行計画ですでに書いていたら継承 %>  
+              <% if @plan.title.present? %>
+                <%= f.text_field :title, class:"memory-title-fill", value: "#{@plan.title}" %>
+              <% else %>
+                <%= f.text_field :title, class:"memory-title-fill", placeholder: "タイトルを記入してください" %>
+              <% end %>    
+            </div>
+          </div>
+          <%# /タイトル %>
+          
+          <%# タイトル %>
+          <div class="memory-form-box">
+            <div class="memory-destination-guide memory-form-guide">
+              行先
+            </div>
+            <div class="memory-destination-form, memory-form">
+            <%# 旅行計画ですでに書いていたら継承 %>  
+              <% if @plan.destination.present? %>
+                <%= f.text_field :destination, class:"memory-destination-fill", value: "#{@plan.destination}" %>
+              <% else %>
+                <%= f.text_field :destination, class:"memory-title-fill", placeholder: "タイトルを記入してください" %>
+              <% end %>    
+            </div>
+          </div>
+          <%# /タイトル %>
+
+          
+          
+          <%# 日程 %>
+          <div class=" memory-form-box">
+            <div class="memory-date-guide memory-form-guide">
+              日程：
+            </div>
+            <div class="memory-date-form">
+              <%# 旅行計画ですでに書いていたら継承 %>  
+              <% if @plan.departure_day.present? && @plan.return_day.present? %>
+                <div class="memory-departure-form memory-form">
+                  出発日:<%= f.date_field :departure_day, class:"memory-departure-fill",  value: "#{@plan.departure_day}" %>
+                </div>
+                <div class="memory-return-form memory-form">
+                  帰着日:<%= f.date_field :return_day, class:"memory-return-fill", value: "#{@plan.return_day}" %>
+                </div>
+              <% else %>
+                <div class="memory-departure-form memory-form">
+                  出発日:<%= f.date_field :departure_day, class:"memory-departure-fill" %>
+                </div>
+                <div class="memory-return-form memory-form">
+                  帰着日:<%= f.date_field :return_day, class:"memory-return-fill" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <%# /日程 %>
+          
+          <%# 移動手段 %>
+          <div class="memory-form-box">
+            <div class="memory-transportation-guide memory-form-guide ">
+              移動手段
+            </div>  
+            <div class="memory-transportation-form memory-form">
+              <%= f.collection_select(:transportation_id, Transportation.all, :id, :name,{include_blank: "---"}, {class: "transportation_fill"}) %>
+            </div>
+            <div class="memory-transportation-memo-guide memory-form-guide">
+              memo
+            </div>
+            <div class="memory-transportation-mwmo-form memory-form" >
+              <%= f.text_area :trans_memo, class: "trans_memo_fill text-fill", value: "#{@plan.ticket}" %> 
+            </div>
+          </div>
+          <%# /移動手段 %>
+          
+          <%# ホテル %>
+          <div class="memory-form-box">
+              <div class="memory-hotel-guide memory-form-guide">
+                ホテル名
+              </div>
+            <% if @plan.hotel.present? %>
+              <div class="memory-hotel-form memory-form">
+                <%= f.text_field :hotel, class: "hotel-fill", value: "#{@plan.hotel}"%>
+              </div>
+            <% else %>
+              <div class="memory-hotel-form memory-form">
+                <%= f.text_field :hotel, class: "hotel-fill", value: "#{@plan.hotel_memo}" %>
+              </div>
+            <% end %>
+            <div class="memory-hotel-memo-guide memory-form-guide">
+              memo
+            </div>
+            <div class="memory-hotel_mwmo-form memo-form" >
+              <%= f.text_area :hotel_memo, class: "hotel-memo-fill text-fill", placeholder: "ホテル情報をご自由に記入してください" %> 
+            </div>
+          </div>
+          <%# /ホテル %>
+          
+          <%# 一番面白かったこと %>
+          <div class="memory-form-box">
+            <div class="memory-best-guide memory-form-guide">
+              一番面白かったことは？
+            </div>
+            <div class="memory-best">
+              <%= f.text_area :best, class: "best-fill text-fill", placeholder: "100文字以内で記入"%>
+            </div>
+          </div>
+          <%# /一番面白かったこと %>
+          
+          <%# ハプニング %>
+          <div class="memory-form-box">
+            <div class="memory-happening-guide memory-form-guide">
+              一番のハプニングは？
+            </div>
+            <div class="memory-happening">
+              <%= f.text_area :happening, class:"happening-fill text-fill", placeholder: "100文字以内で記入" %>
+            </div>
+          </div>
+          <%# /ハプニング %>
+          
+          <%# またやりたいこと %>
+          <div class="memory-form-box">
+            <div class="memory-again-guide memory-form-guide">
+              また行きたい場所/やりたいこと
+            </div>
+            <div class="memory-ageain">
+              <%= f.text_area :again, class:"again-fill text-fill", placeholder: "100文字以内で記入" %>
+            </div>
+          </div>
+          <%# /またやりたいこと %>
+          
+          <%# 思い出の写真 %>
+          <div class="memory-form-box" id="memory-form-box">
+            <div class="memory-images-guide memory-form-guide">
+              思い出の写真 (最大5枚)
+              <input type="button" class="add-image hidden" id="add-image" value="追加">        <%# 追加ボタン %>
+            </div>
+            
+            <%# 画像選択 %>
+            <div class="image-choose"  data-num="1">
+              <%= f.file_field :images, name: "memory[images][]", class: "image-fill text-fill", id:"image-fill-1", data:{num:1}%>  
+              <input type="button" id="delete-image-1"  class="delete-image hidden"  value="削除" data-num="1">  <%# 削除ボタン %>
+            </div>
+          </div>
+          <%# /思い出の写真 %>
+          
+          <%# previewさせる箇所 %>
+          <div class="memory-preview" id="memory-preview">
+          </div>
+          <%# preview %>
+          
+          <div class="memory-image-form-box">
+            <%= f.submit "登録" %>
+          </div>
         </div>
-        <div class="memory-return-form memory-form">
-          帰着日:<%= f.date_field :return_day, class:"memory-return-fill", value: "#{@plan.return_day}" %>
-        </div>
-      <% else %>
-        <div class="memory-departure-form memory-form">
-          出発日:<%= f.date_field :departure_day, class:"memory-departure-fill" %>
-        </div>
-        <div class="memory-return-form memory-form">
-          帰着日:<%= f.date_field :return_day, class:"memory-return-fill" %>
-        </div>
+        <%# /記入フォーム %>
       <% end %>
-    </div>
-    <%# /日程 %>
-    
-    <%# 移動手段 %>
-    <div class="memory-form-box">
-      <div class="memory-transportation-guide memory-form-guide ">
-        移動手段
-      </div>  
-      <div class="memory-transportation-form memory-form">
-        <%= f.collection_select(:transportation_id, Transportation.all, :id, :name,{include_blank: "---"}, {class: "transportation_fill"}) %>
-      </div>
-      <div class="memory-transportation-memo-guide memory-form-guide">
-        memo
-      </div>
-      <div class="memory-transportation-mwmo-form memory-form" >
-        <%= f.text_area :trans_memo, class: "trans_memo_fill", value: "#{@plan.ticket}" %> 
-      </div>
-    </div>
-    <%# /移動手段 %>
-    
-    <%# ホテル %>
-    <div class="memory-form-box">
-        <div class="memory-hotel-guide memory-form-guide">
-          ホテル名
-        </div>
-      <% if @plan.hotel.present? %>
-        <div class="memory-hotel-form memory-form">
-          <%= f.text_field :hotel, class: "hotel-fill", value: "#{@plan.hotel}"%>
-        </div>
-      <% else %>
-        <div class="memory-hotel-form memory-form">
-          <%= f.text_field :hotel, class: "hotel-fill", value: "#{@plan.hotel_memo}" %>
-        </div>
-      <% end %>
-      <div class="memory-hotel-memo-guide memory-form-guide">
-        memo
-      </div>
-      <div class="memory-hotel_mwmo-form memo-form" >
-        <%= f.text_area :hotel_memo, class: "hotel-memo-fill", placeholder: "ホテル情報をご自由に記入してください" %> 
-      </div>
-    </div>
-    <%# /ホテル %>
-    
-    <%# 一番面白かったこと %>
-    <div class="memory-form-box">
-      <div class="memory-best-guide memory-form-guide">
-        一番面白かったことは？
-      </div>
-      <div class="memory-best">
-        <%= f.text_area :best, class: "best-fill", placeholder: "100文字以内で記入"%>
-      </div>
-    </div>
-    <%# /一番面白かったこと %>
-    
-    <%# ハプニング %>
-    <div class="memory-form-box">
-      <div class="memory-happening-guide memory-form-guide">
-        一番のハプニングは？
-      </div>
-      <div class="memory-happening">
-        <%= f.text_area :happening, class:"happening-fill", placeholder: "100文字以内で記入" %>
-      </div>
-    </div>
-    <%# /ハプニング %>
-    
-    <%# またやりたいこと %>
-    <div class="memory-form-box">
-      <div class="memory-again-guide memory-form-guide">
-        また行きたい場所/やりたいこと
-      </div>
-      <div class="memory-ageain">
-        <%= f.text_area :again, class:"again-fill", placeholder: "100文字以内で記入" %>
-      </div>
-    </div>
-    <%# /またやりたいこと %>
-    
-    <%# 思い出の写真 %>
-    <div class="memory-form-box" id="memory-form-box">
-      <div class="memory-images-guide memory-form-guide">
-        思い出の写真 (最大5枚)
-        <input type="button" class="add-image hidden" id="add-image" value="追加">        <%# 追加ボタン %>
-      </div>
       
-      <%# 画像選択 %>
-      <div class="image-choose"  data-num="1">
-        <%= f.file_field :images, name: "memory[images][]", class: "image-fill", id:"image-fill-1", data:{num:1}%>  
-        <input type="button" id="delete-image-1"  class="delete-image hidden"  value="削除" data-num="1">  <%# 削除ボタン %>
+      <div class="preview">
+        <% @memory.images.each do |image| %>
+          <%= image_tag image, class:"memory-form-image" %>
+        <% end %>
       </div>
     </div>
-    <%# /思い出の写真 %>
-    
-    <%# previewさせる箇所 %>
-    <div class="memory-preview" id="memory-preview">
-    </div>
-    <%# preview %>
-    
-    <div class="memory-form-box">
-      <%= f.submit "登録" %>
-    </div>
-  <% end %>
-  
-  <div class="preview">
-    <% @memory.images.each do |image| %>
-      <%= image_tag image, class:"memory-image" %>
-    <% end %>
   </div>
 </div>
