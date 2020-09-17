@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Candidate, type: :model do
-  describe "行先候補" do 
+  describe "行き先候補" do 
     before do 
       @candidate = FactoryBot.build(:candidate)
     end
@@ -21,16 +21,16 @@ RSpec.describe Candidate, type: :model do
       expect(@candidate.errors.full_messages).to include("日数を入力してください")    
     end
 
-    it "行先が空だと登録できない" do
+    it "行き先が空だと登録できない" do
       @candidate.destination = nil
       @candidate.valid?
-      expect(@candidate.errors.full_messages).to include("行先を入力してください")      
+      expect(@candidate.errors.full_messages).to include("行き先を入力してください")      
     end
 
-    it "行先が41字以上だと登録できない" do
+    it "行き先が41字以上だと登録できない" do
       @candidate.destination = Faker::Lorem.characters(number: 41)
       @candidate.valid?
-      expect(@candidate.errors.full_messages).to include("行先は40字以内で記入してください")      
+      expect(@candidate.errors.full_messages).to include("行き先は40字以内で記入してください")      
     end
 
     it "理由が401字以上だと登録できない" do

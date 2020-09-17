@@ -21,16 +21,16 @@ RSpec.describe Memory, type: :model do
       expect(@memory.errors.full_messages).to include("タイトルは40字以内で記入してください")
     end
 
-    it "行先が空だと登録できない" do
+    it "行き先が空だと登録できない" do
       @memory.destination = nil
       @memory.valid?
-      expect(@memory.errors.full_messages).to include("行先を入力してください")
+      expect(@memory.errors.full_messages).to include("行き先を入力してください")
     end
 
-    it "行先が41字以上だと登録できない" do
+    it "行き先が41字以上だと登録できない" do
       @memory.destination = Faker::Lorem.characters(number: 41)  
       @memory.valid?
-      expect(@memory.errors.full_messages).to include("行先は40字以内で記入してください")
+      expect(@memory.errors.full_messages).to include("行き先は40字以内で記入してください")
     end
 
     it "出発日が空だと登録できない" do

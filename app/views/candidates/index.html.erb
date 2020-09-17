@@ -4,13 +4,13 @@
 </div>
 <%# /header %>
 
-<%# 行先候補がある場合は表示 %>
+<%# 行き先候補がある場合は表示 %>
 <div class="candidate-large-box">
   <div class="candidate-index-box">
     <% if @candidates.present? %>
       
       <div class="candidate-index-title">
-        <h1>行先候補一覧</h1>
+        <h1>行き先候補一覧</h1>
       </div>
 
     <div class="back-page">
@@ -29,7 +29,7 @@
                       提案者：<%= candidate.user.user_ID %>
                     </div>
                     <div class="destination-index candidate-guide">
-                      行先：<%= candidate.destination %>
+                      行き先：<%= candidate.destination %>
                     </div>
                     <div class="budget-index candidate-guide">
                       予算：<%= candidate.budget.name %>
@@ -66,10 +66,10 @@
         <% end %>
       <% end %>
     <% else %>
-    <%# 行先候補がない場合は作成画面のリンクを表示 %>
-      <p>行先候補がありません</p>
+    <%# 行き先候補がない場合は作成画面のリンクを表示 %>
+      <p>行き先候補がありません</p>
       <%= link_to  new_group_candidate_path(@group, @candidate), class: "link" do %>
-        <h1> 行先候補を作成する </h1>
+        <h1> 行き先候補を作成する </h1>
       <% end %>
     <% end %>
   </div>

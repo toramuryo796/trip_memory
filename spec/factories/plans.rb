@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :plan do
     title               {"アイウエオかきくけこsashisusesoNANINUNENO123"}     
-    destination         {"行先abc123"}
+    destination         {"行き先abc123"}
     departure_day       { 12 }
     return_day          { 15 }
     hotel               {"ホテル"}

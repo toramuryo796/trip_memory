@@ -22,16 +22,16 @@ RSpec.describe Plan, type: :model do
       expect(@plan.errors.full_messages).to include("タイトルは40字以内で記入してください")
     end 
 
-    it "行先が空だと登録できない" do
+    it "行き先が空だと登録できない" do
       @plan.destination = nil 
       @plan.valid?
-      expect(@plan.errors.full_messages).to include("行先を入力してください")
+      expect(@plan.errors.full_messages).to include("行き先を入力してください")
     end 
 
-    it "行先が41字以上だと登録できない" do
+    it "行き先が41字以上だと登録できない" do
       @plan.destination =  Faker::Lorem.characters(number: 41)
       @plan.valid?
-      expect(@plan.errors.full_messages).to include("行先は40字以内で記入してください")
+      expect(@plan.errors.full_messages).to include("行き先は40字以内で記入してください")
     end 
 
     it "ホテル名が41字以上だと登録できない" do

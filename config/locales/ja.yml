@@ -11,13 +11,13 @@ ja:
       candidate: 
         budget_id: 予算
         night: 日数
-        destination: 行先
+        destination: 行き先
         reason: 理由
         take_time: 移動時間
         trans_cost: 交通費
       plan:
         title: タイトル
-        destination: 行先
+        destination: 行き先
         hotel: ホテル名
         hotel_memo: ホテル情報
         ticket: 交通機関情報
@@ -32,7 +32,7 @@ ja:
         translation: 外国語
       memory: 
         title: タイトル
-        destination: 行先
+        destination: 行き先
         departure_day: 出発日
         return_day: 帰着日
         transportation_id: 移動手段
@@ -55,7 +55,7 @@ ja:
     attributes:
       day_how_plans:
         title: タイトル
-        destination: 行先
+        destination: 行き先
         hotel: ホテル名
         hotel_memo: ホテル情報
         ticket: 交通機関情報
