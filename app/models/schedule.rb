@@ -10,6 +10,8 @@ class Schedule < ApplicationRecord
 
   with_options presence: true do
     validates :program, length:{ maximum: 100, message: "は100字以内で記入してください"}
+    validates :hour_id
+    validates :minute_id
   end
 
 end
