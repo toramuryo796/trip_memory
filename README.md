@@ -8,13 +8,8 @@
 https://trip-memory.herokuapp.com/
 
 ## テスト用アカウント
-- ユーザーID: ishida 
-  email: ishida@gmail.com
-  password: asd123
-
 - ユーザーID: masuda
-  email: masuda@gmail.com
-  password: asd123
+- パスワード: toramuryo
 
 ## 利用方法
 - グループ作成  
@@ -61,6 +56,17 @@ https://trip-memory.herokuapp.com/
 - 日記
 旅行中の日記を日毎に作成できます。作成の際には何日目の日記か、また、その内容が必須となります。
 並んでいる日をクリックするとその日の日記を見る事ができます。
+
+- 追記
+下記、すでに登録しているユーザー情報となります。  
+
+userID : masuda  
+email : masuda@gmail.com  
+password : asd123  
+
+userID : ryo  
+email : ryo@gmail.com
+password : asd123  
 
 ## 目指した課題解決
 旅行に行く際になかなか行き先が決まらない、打ち合わせの際に毎回、候補を出していくところから始まる
