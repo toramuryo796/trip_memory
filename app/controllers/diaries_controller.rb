@@ -11,17 +11,10 @@ class DiariesController < ApplicationController
 
   def  create
     @diary = Diary.new(diary_params)
-    diaries = @memory.diaries
-    diaries.each do |diary|
-      unless diary.specific == @diary.specific
-        if @diary.save
-          return redirect_to group_memory_diary_path(@group, @memory, @diary)
-        else
-          return render :new
-        end
-      else
-        return render :new
-      end
+    if @diary.save
+      redirect_to group_memory_diary_path(@group, @memory, @diary)
+    else
+      render new
     end
   end
   

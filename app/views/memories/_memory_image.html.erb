@@ -1,7 +1,9 @@
 <div class="memory-image-large-box">
-  <% memory.images.each do |image| %>
-    <div class="memory-image-box">
-      <%= image_tag image, class: "memory-image-show" %>
-    </div>
+  <% if memory.images.present? %>
+    <% memory.images.each do |image| %>
+      <div class="memory-image-box">
+        <%= image_tag image, class: "memory-image-show" %>
+      </div>
+    <% end %>
   <% end %>
 </div>

@@ -58,8 +58,9 @@
           memo
         </div>
         <div class="memory-transportation-memo memory-guide" >
-          　<%= @memory.trans_memo %> 
+          　<%= simple_format(@memory.trans_memo) %> 
         </div>
+
       </div>
       <%# /移動手段 %>
 
@@ -75,7 +76,7 @@
           memo
         </div>
         <div class="memory-hotel_mwmo memo-content" >
-          　<%= @memory.hotel_memo %> 
+          　<%= simple_format(@memory.hotel_memo) %> 
         </div>
       </div>
       <%# /ホテル %>

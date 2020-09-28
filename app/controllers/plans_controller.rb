@@ -10,6 +10,7 @@ class PlansController < ApplicationController
       @candidate_id = @candidate.id
     end
     @plan = Plan.new()
+    bi
   end
 
   def create

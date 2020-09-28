@@ -51,10 +51,20 @@
 .candidate-image{
   width: 450px;
   height: 300px;
+  margin: 0 auto;
+}
+
+.candidate-image-box{
+  text-align: center;
 }
 /* /写真 */
 
 /* フッター */
+.index-footer{
+  text-align: center;
+}
+
+
 .candidate-index-footer{
   display: flex;
 }
@@ -70,5 +80,9 @@
 
 .index-footer-content a{
   display: block;
+}
+
+.created_date{
+  text-align: center;
 }
 /* /フッター */

@@ -29,21 +29,24 @@
           <% else %>
             交通手段：
           <% end %>
-          <div class="trans-time-box candidate-show-guide">
+          <div class="trans-time-box">
             移動時間：<%= @candidate.take_time %>時間
           </div>
-          <div class="trans-cost-box candidate-show-guide">
+          <div class="trans-cost-box">
             交通費(往復の概算)： <%= @candidate.trans_cost.to_s(:delimited) %>円
           </div>
         </div>
         <div class="reason-index candidate-show-guide">
           理由/目的：
-          <div> <%= @candidate.reason %> </div>
+          <div> 
+            <%= simple_format(@candidate.reason) %> 
+          </div>
         </div>
         <div class="reference-show-image-box">
           <div class="reference-image candidate-show-guide">
             参考写真：
-          </div>
+          </div> 
+          <div class="candidate-image-box">
           <%= image_tag @candidate.image.variant(resize:'500x500'), class:"candidate-image" if @candidate.image.attached?%>
         </div>
       </div>
@@ -72,7 +75,7 @@
         </div>
       </div>
       <div class="created_date">
-        <%= @candidate.created_at %>
+        <%= @candidate.created_at.strftime('%Y/%m/%d') %>
       </div>
     </div>
   </div>

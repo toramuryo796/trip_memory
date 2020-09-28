@@ -41,7 +41,9 @@
 
           <%# 写真 %> 
           <div class="memory-index-image-box">
-            <%= image_tag memory.images[0], class:"memory-index-image"%>
+            <% if memory.images.present? %>
+              <%= image_tag memory.images[0], class:"memory-index-image"%>
+            <% end %>
           </div>
           <%# /写真 %>
         <% end %>

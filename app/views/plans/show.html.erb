@@ -60,7 +60,7 @@
             移動手段に関するメモ:
           </div>
           <div class="plan-ticket plan-index">
-            　<%= @plan.ticket %>
+            　<%= simple_format(@plan.ticket) %>
           </div>
         </div>
 
@@ -76,7 +76,7 @@
             ホテルに関するメモ
           </div>
           <div class="plan-hotel-memo plan-index">
-            　<%= @plan.hotel_memo %>
+            　<%= simple_format(@plan.hotel_memo) %>
           </div>
         </div>
       </div>
